@@ -54,7 +54,7 @@ public class ControlDeveloper {
 	
 	public static void main(String[] args) {
 		System.out.println(ControlDeveloper.name);
-		System.out.println("TestString");
+		System.out.println("TestAlpha");
 		System.out.println(ControlDeveloper.getName());
 		
 		ControlDeveloper cP = new ControlDeveloper();
