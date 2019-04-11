@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="ControlDeveloper2/src"/>
+	<classpathentry kind="lib" path="ControlDeveloper2/lib/controldeveloper.jar"/>
+	<classpathentry kind="output" path="ControlDeveloper2/bin"/>
+</classpath>
