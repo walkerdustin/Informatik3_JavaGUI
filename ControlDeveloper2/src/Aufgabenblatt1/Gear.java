@@ -34,8 +34,8 @@ public class Gear extends Command implements IGear {
 	public double getDuration() {
 		return duration;
 	}
-		
-
+	
+	
 	public String toString() {
 		return ("Gear 		[Speed:"+speed+ "/ Duration:"+duration+"]");
 	}
