@@ -8,6 +8,7 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 public class ControlDeveloper {
 	private static String name = "Control-Developer";
 	private Vector<ICommand> commands = new Vector<ICommand>();
+	//private CommandList cL;
 	
 	public static void setName(String newName) {
 		name = newName;
@@ -18,9 +19,7 @@ public class ControlDeveloper {
 
 	public void testCommands() {
 		Random rand = new Random();
-		ICommand temp = new Direction(rand.nextInt(180)-90);
-		System.out.println(temp);
-		commands.add(temp);
+		commands.add(new Direction(rand.nextInt(180)-90));
 		commands.add(new Gear(rand.nextInt(200)-100, (double) rand.nextInt(60)));
 		commands.add(new Pause((double)rand.nextInt(60)));
 		
@@ -52,16 +51,53 @@ public class ControlDeveloper {
 			System.out.println(commands.get(i).getName());
 		}
 	}
-	
+
+	public void testList(ControlDeveloper cD, CommandList cL) {
+		for (int i = 0; i < 10; i++) {
+			cD.commands.add(new Direction(i));
+		}
+		for(int i = 0; i < cD.commands.size();++i) {
+			cL.add(cD.commands.get(i));
+		}
+		
+		System.out.println("printList:");
+		
+		for(int i = 0; i < cL.getSize();++i) {
+			System.out.println(cL.get(i));
+		}
+		
+		
+		
+		System.out.println("Get 5:"+cL.get(5));
+
+		System.out.println("MoveUp 5:    "+cL.get(5)+"   "+cL.moveUp(5));
+		
+		for(int i = 0; i < cL.getSize();++i) {
+			System.out.println(cL.get(i));
+		}
+		
+		System.out.println("MoveDown 4:    "+cL.get(4)+"   "+cL.moveDown(4));
+		
+		for(int i = 0; i < cL.getSize();++i) {
+			System.out.println(cL.get(i));
+		}
+		
+		
+		
+	}
 	
 	public static void main(String[] args) {
+		CommandList cL = new CommandList();
+		ControlDeveloper cD = new ControlDeveloper();
+		
 		System.out.println(ControlDeveloper.name);
 		System.out.println("TestAlpha  und Test Beta");
 		System.out.println(ControlDeveloper.getName());
 		
-		ControlDeveloper cP = new ControlDeveloper();
-		cP.testCommands();
-		cP.printCommands();
+//		cD.testCommands();
+//		cD.printCommands();
+//		cD.testList(cD,cL);
+		
 		
 	}
 

@@ -44,4 +44,11 @@ public class CommandList  {
 		
 		return true;
 	}
+	
+	public int getSize() {
+		return commandList.size();
+	}
+	
+
+	
 }
