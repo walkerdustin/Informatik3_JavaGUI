@@ -24,6 +24,7 @@ public class CommandList  {
 	public ICommand get (int pos) {
 		//Icommand c = commandList.get(pos);
 		return commandList.get(pos);
+		
 	}
 	
 	public boolean moveUp(int pos) {
