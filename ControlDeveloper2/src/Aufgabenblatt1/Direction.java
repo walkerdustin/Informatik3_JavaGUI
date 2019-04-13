@@ -7,6 +7,10 @@ public class Direction extends Command implements IDirection {
 	private final static int LIMMIN = -90;
 	private final static int LIMMAX =  90;
 	
+	public Direction() {
+		setDegree(0);
+		System.out.println("Direction wurde standartm‰ﬂig mit 0 initialisiert");			
+	}
 	public Direction(int degree) {
 		setDegree(degree);		
 	}

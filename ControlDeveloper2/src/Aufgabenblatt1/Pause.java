@@ -5,6 +5,10 @@ import hsrt.mec.controldeveloper.core.com.command.IPause;
 public class Pause extends Command implements IPause {
 	
 	private double duration;
+	public Pause() {
+		setDuration(0);
+		System.out.println("Pause wurde standartm‰ﬂig mit 0 initialisiert");
+	}
 	public Pause(double duration) {
 		setDuration(duration);
 	}

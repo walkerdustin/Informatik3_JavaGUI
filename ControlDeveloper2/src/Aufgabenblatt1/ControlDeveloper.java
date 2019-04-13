@@ -98,6 +98,11 @@ public class ControlDeveloper {
 //		cD.printCommands();
 //		cD.testList(cD,cL);
 		
+//		CommandType cTPause = new CommandType("Pause");
+//		System.out.println(cTPause.createInstance());
+//		CommandType cTDirection = new CommandType("Direction");
+//		System.out.println(cTDirection.createInstance());
+		
 		
 	}
 

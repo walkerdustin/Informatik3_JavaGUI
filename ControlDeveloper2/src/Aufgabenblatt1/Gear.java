@@ -9,6 +9,13 @@ public class Gear extends Command implements IGear {
 	private final static int LIMMIN = -100;
 	private final static int LIMMAX = 1000;
 	
+	public Gear() {
+		setDuration(0);
+		setSpeed(0);
+		System.out.println("Gear wurde standartm‰ﬂig mit 0 initialisiert");
+	}
+	
+	
 	public Gear(int speed, double duration) {
 		setDuration(duration);
 		setSpeed(speed);
