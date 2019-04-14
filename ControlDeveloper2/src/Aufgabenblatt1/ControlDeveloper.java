@@ -91,7 +91,7 @@ public class ControlDeveloper {
 		ControlDeveloper cD = new ControlDeveloper();
 		
 		System.out.println(ControlDeveloper.name);
-		System.out.println("TestAlpha  und Test Beta");
+		System.out.println("TestAlpha  und Test Charlie");
 		System.out.println(ControlDeveloper.getName());
 		
 //		cD.testCommands();
