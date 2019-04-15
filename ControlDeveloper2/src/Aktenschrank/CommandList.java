@@ -1,5 +1,9 @@
 
-package Aufgabenblatt1;
+//Sicherheitskopie für Verkettete Liste mit bestehenden Klassen
+
+/*
+package Aktenschrank;
+ 
 
 import java.util.LinkedList;
 
@@ -53,3 +57,4 @@ public class CommandList  {
 
 	
 }
+*/
