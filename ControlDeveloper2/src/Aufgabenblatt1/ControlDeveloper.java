@@ -16,7 +16,7 @@ public class ControlDeveloper {
 	public static String getName() {
 		return name;
 	}
-
+	
 	public void testCommands() {
 		Random rand = new Random();
 		commands.add(new Direction(rand.nextInt(180)-90));
@@ -44,14 +44,11 @@ public class ControlDeveloper {
 		
 		}
 	}
-	
-	
 	public void printCommands() {
 		for(int i = 0; i < commands.size();++i) {
 			System.out.println(commands.get(i).getName());
 		}
 	}
-
 	public void testList(ControlDeveloper cD, CommandList cL) {
 		for (int i = 0; i < 10; i++) {
 			cD.commands.add(new Direction(i));
@@ -94,19 +91,18 @@ public class ControlDeveloper {
 		
 		
 	}
+
 	
 	public static void main(String[] args) {
-		CommandList cL = new CommandList();
-		ControlDeveloper cD = new ControlDeveloper();
+//		CommandList cL = new CommandList();
+//		ControlDeveloper cD = new ControlDeveloper();
 		
-		System.out.println(ControlDeveloper.name);
-		System.out.println("TestAlpha  und Test Echo´3");
-		// Testkomment
-		System.out.println(ControlDeveloper.getName());
+//		System.out.println(ControlDeveloper.name);
+//		System.out.println(ControlDeveloper.getName());
 		
 //		cD.testCommands();
 //		cD.printCommands();
-		cD.testList(cD,cL);
+//		cD.testList(cD,cL);
 		
 //		CommandType cTPause = new CommandType("Pause");
 //		System.out.println(cTPause.createInstance());
