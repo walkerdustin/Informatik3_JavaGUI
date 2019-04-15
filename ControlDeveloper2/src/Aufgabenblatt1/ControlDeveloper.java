@@ -100,7 +100,7 @@ public class ControlDeveloper {
 		ControlDeveloper cD = new ControlDeveloper();
 		
 		System.out.println(ControlDeveloper.name);
-		System.out.println("TestAlpha  und Test Delta");
+		System.out.println("TestAlpha  und Test Echo");
 		// Testkomment
 		System.out.println(ControlDeveloper.getName());
 		
