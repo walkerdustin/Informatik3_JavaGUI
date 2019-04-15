@@ -15,4 +15,16 @@ public class Element {
 		return this.element;
 	}
 	
+	public Element getNext() {
+		return next;
+	}
+	public Element getPrev() {
+		return prev;
+	}
+	public void setNext(Element next) {
+		this.next = next;		
+	}
+	public void setPrev(Element prev) {
+		this.prev = prev;
+	}
 }

@@ -69,6 +69,15 @@ public class ControlDeveloper {
 		
 		
 		System.out.println("Get 5:"+cL.get(5));
+		System.out.println("Remove 2:  " + cL.remove(2));
+		for(int i = 0; i < cL.getSize();++i) {
+			System.out.println(cL.get(i));
+		}
+		System.out.println("Add 10 at 2:   " + cL.add(new Direction(10), 2) );
+		
+		for(int i = 0; i < cL.getSize();++i) {
+			System.out.println(cL.get(i));
+		}
 
 		System.out.println("MoveUp 5:    "+cL.get(5)+"   "+cL.moveUp(5));
 		
@@ -97,7 +106,7 @@ public class ControlDeveloper {
 		
 //		cD.testCommands();
 //		cD.printCommands();
-//		cD.testList(cD,cL);
+		cD.testList(cD,cL);
 		
 //		CommandType cTPause = new CommandType("Pause");
 //		System.out.println(cTPause.createInstance());
