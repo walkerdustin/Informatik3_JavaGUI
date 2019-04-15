@@ -77,7 +77,7 @@ public class CommandList  {
 			}
 		}
 		else {
-			System.err.println("Desired Position is out of Listrange");
+			System.err.println("Desired position is out of Listrange");
 			return false;
 		}
 		
@@ -144,7 +144,7 @@ public class CommandList  {
 			}
 		}
 		else {
-			System.err.println("Desired Position is out of ListRange");
+			System.err.println("Desired position is out of ListRange");
 			return null;
 		}
 		System.err.println("ERROR: No Element could be deliverd [Position was in ListRange]}");
@@ -171,7 +171,7 @@ public class CommandList  {
 			return false;
 		}
 		else {
-			System.err.println("Desired Position is out of ListRange");
+			System.err.println("Desired position is out of ListRange");
 			return false;
 		}
 		System.err.println("ERROR: No Element could be moved [Position was in ListRange]}");
@@ -194,12 +194,12 @@ public class CommandList  {
 			}
 		}
 		else if (pos == (size - 1)) {
-			System.err.println("ERROR: last Element can not be moved down");
+			System.err.println("ERROR: Last Element can not be moved down");
 			return false;
 			
 		}
 		else {
-			System.err.println("Desired Position is out of ListRange");
+			System.err.println("Desired position is out of ListRange");
 			return false;
 		}
 		System.err.println("ERROR: No Element could be moved [Position was in ListRange]}");
