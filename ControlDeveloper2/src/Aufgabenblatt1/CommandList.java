@@ -70,14 +70,14 @@ public class CommandList  {
 						}
 						runner = runner.getNext();
 					}
-					System.err.println("ERROR: No Element added [Position was in Listrange]");
+					System.err.println("ERROR: No Element added [Position was in ListRange]");
 					return false;
 				}
 			
 			}
 		}
 		else {
-			System.err.println("Desired position is out of Listrange");
+			System.err.println("Desired position is out of ListRange");
 			return false;
 		}
 		

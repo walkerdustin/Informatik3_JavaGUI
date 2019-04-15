@@ -96,17 +96,15 @@ public class ControlDeveloper {
 	}
 	
 	public static void main(String[] args) {
-		CommandList cL = new CommandList();
-		ControlDeveloper cD = new ControlDeveloper();
+//		CommandList cL = new CommandList();
+//		ControlDeveloper cD = new ControlDeveloper();
 		
-		System.out.println(ControlDeveloper.name);
-		System.out.println("TestAlpha  und Test Echo´3");
-		// Testkomment
-		System.out.println(ControlDeveloper.getName());
+//		System.out.println(ControlDeveloper.name);
+//		System.out.println(ControlDeveloper.getName());
 		
 //		cD.testCommands();
 //		cD.printCommands();
-		cD.testList(cD,cL);
+//		cD.testList(cD,cL);
 		
 //		CommandType cTPause = new CommandType("Pause");
 //		System.out.println(cTPause.createInstance());
