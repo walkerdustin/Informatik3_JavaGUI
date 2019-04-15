@@ -92,6 +92,7 @@ public class ControlDeveloper {
 		
 		System.out.println(ControlDeveloper.name);
 		System.out.println("TestAlpha  und Test Delta");
+		// Testkomment
 		System.out.println(ControlDeveloper.getName());
 		
 //		cD.testCommands();
