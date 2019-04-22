@@ -53,8 +53,6 @@ public class CommandList  {
 	public int getSize() {
 		return commandList.size();
 	}
-	
 
-	
 }
 */
