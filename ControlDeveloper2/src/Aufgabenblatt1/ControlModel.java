@@ -3,11 +3,10 @@ package Aufgabenblatt1;
 import java.io.File;
 
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
-import hsrt.mec.controldeveloper.io.IOType;
 
 public class ControlModel {
 	private ControlModel instance = new ControlModel();
-	private CommandType[] commandTypes = {new CommandType("Direction"), new CommandType("Gear"), new CommandType("Pause"), new CommandType("Command")};  //könnte auch in 
+	private CommandType[] commandTypes = {new CommandType("Direction"), new CommandType("Gear"), new CommandType("Pause"), new CommandType("Command")};  //könnte auch in Konstruktor stehen
 	private CommandList controlProzess;
 	
 	private ControlModel() {
@@ -19,6 +18,8 @@ public class ControlModel {
 	}
 	
 	public void createCommandTypes() {
+		// könnte / wird zu fehlern führen wenn es dem Programmierer überlassen wird sich um die befüllung des Arrays zu kümmern!
+		// desshalb:
 		System.out.println("Well..... this is stupid, isnt ist?");
 	}
 	public boolean load(File file) {

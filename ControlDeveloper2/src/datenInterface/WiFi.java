@@ -2,10 +2,14 @@ package datenInterface;
 
 import java.util.Vector;
 
+import hsrt.mec.controldeveloper.core.com.WiFiCard;
 import hsrt.mec.controldeveloper.io.IOType;
 
 public class WiFi implements IOType {
-
+	public WiFi(WiFiCard card) {
+		// TODO Auto-generated constructor stub
+	}
+	
 	@Override
 	public boolean close() {
 		// TODO Auto-generated method stub
