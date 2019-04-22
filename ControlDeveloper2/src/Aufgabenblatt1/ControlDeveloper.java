@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Vector;
 
+import datenInterface.Console;
 import datenInterface.TextFile;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
@@ -119,13 +120,42 @@ public class ControlDeveloper {
 			System.out.println((String) iterator.next());
 		}
 	}
+	
+	public void testConsoleIO() {
+		Console console = new Console();
+		
+		Vector<String> geleseneStrings = new Vector<String>();
+		
+		Vector<String> datenStrings = new Vector<String>();
+		datenStrings.add("test 1");
+		datenStrings.add("test 2");
+		datenStrings.add("test 3");
+		
+		console.write(datenStrings);
+		
+		console.read(geleseneStrings);
+		console.read(geleseneStrings);
+		
+		
+		
+		System.out.println(geleseneStrings);
+		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {			
+			System.out.println((String) iterator.next());
+		}
+		
+	}
 
 	
 	public static void main(String[] args) {
 		
 ////////////////////////Test FileIO////////////////////////////////
+//		ControlDeveloper cD = new ControlDeveloper();
+//		cD.testFileIO();
+////////////////////////////////////////////////////////////////////
+		
+////////////////////////Test ConsoleIO////////////////////////////
 		ControlDeveloper cD = new ControlDeveloper();
-		cD.testFileIO();
+		cD.testConsoleIO();
 ////////////////////////////////////////////////////////////////////
 		
 //		CommandList cL = new CommandList();

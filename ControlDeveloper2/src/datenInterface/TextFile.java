@@ -73,7 +73,7 @@ public class TextFile implements IOType {
 	}
 
 	@Override
-	public boolean write(Vector<String> arg0) {   // writes every string in arg0 at the end of the specified txt file
+	public boolean write(Vector<String> arg0) {   // writes every string in arg0 at the end of the specified txt file    if this file doesnt exist: a new one is generated. The file outlasts the Runtime of the Programm. You can delet ist to reset its content.
 		try {
 			outputStream = new PrintWriter(new FileWriter(file, true)); // append - if true, then bytes will be written to the end of the file rather than the beginning       https://docs.oracle.com/javase/7/docs/api/java/io/FileWriter.html
 

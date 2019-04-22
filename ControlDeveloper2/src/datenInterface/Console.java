@@ -24,7 +24,7 @@ public class Console implements IOType {
 	}
 
 	@Override
-	public boolean read(Vector<String> arg0) {
+	public boolean read(Vector<String> arg0) {   // man kann in der Konsole einen String eingeben und mit ENTER bestätigen    Das Programm wartet bis ein string eingegeben wurde.
 		
 		
 		try {
@@ -38,12 +38,11 @@ public class Console implements IOType {
 	}
 
 	@Override
-	public boolean write(Vector<String> arg0) {
+	public boolean write(Vector<String> arg0) {  // der ganze Vektor wird in der console ausgegeben. Für jeden String eine neue Zeile
 		// jedes String element des Vektors arg0 auf Console ausgeben
 		for (Iterator<String> iterator = arg0.iterator(); iterator.hasNext();) {			
 			System.out.println((String) iterator.next());
 		}
-
 		return true;
 	}
 }
