@@ -1,8 +1,11 @@
 package Aufgabenblatt1;
 
+import java.io.File;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Vector;
 
+import datenInterface.TextFile;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 public class ControlDeveloper {
@@ -87,13 +90,44 @@ public class ControlDeveloper {
 		for(int i = 0; i < cL.getSize();++i) {
 			System.out.println(cL.get(i));
 		}
+	}
+	
+	public void testFileIO() {
+		File file = new File("Test.txt");
+		TextFile textFile = new TextFile(file, true);
+		Vector<String> geleseneStrings = new Vector<String>();
+		Vector<String> datenStrings = new Vector<String>();
+		datenStrings.add("test 1");
+		datenStrings.add("test 2");
+		datenStrings.add("test 3");
 		
+		Vector<String> anderedatenStrings = new Vector<String>();
+		anderedatenStrings.add("Test am Ende anhängen");
 		
+		textFile.write(datenStrings);
 		
+		textFile.read(geleseneStrings);
+		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {			
+			System.out.println((String) iterator.next());
+		}
+		geleseneStrings.clear();
+		
+		textFile.write(anderedatenStrings);
+		
+		textFile.read(geleseneStrings);
+		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {			
+			System.out.println((String) iterator.next());
+		}
 	}
 
 	
 	public static void main(String[] args) {
+		
+////////////////////////Test FileIO////////////////////////////////
+		ControlDeveloper cD = new ControlDeveloper();
+		cD.testFileIO();
+////////////////////////////////////////////////////////////////////
+		
 //		CommandList cL = new CommandList();
 //		ControlDeveloper cD = new ControlDeveloper();
 		

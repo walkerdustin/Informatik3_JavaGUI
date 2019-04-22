@@ -6,8 +6,10 @@ import hsrt.mec.controldeveloper.core.com.WiFiCard;
 import hsrt.mec.controldeveloper.io.IOType;
 
 public class WiFi implements IOType {
+	private WiFiCard card;
+	
 	public WiFi(WiFiCard card) {
-		// TODO Auto-generated constructor stub
+		this.card = card;
 	}
 	
 	@Override
