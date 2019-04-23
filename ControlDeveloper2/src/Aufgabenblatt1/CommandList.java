@@ -198,7 +198,7 @@ public class CommandList {
 			runner = runner.getNext();
 		}
 
-		if (temp == size) {
+		if (temp == size) {       // enspricht return  temp == size; !!
 			return true;
 		} else {
 			return false;
