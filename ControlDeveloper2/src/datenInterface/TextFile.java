@@ -61,6 +61,9 @@ public class TextFile implements IOType {
 
 		} finally {
 
+			
+			//******************************** ALPHA  **************************************
+			// warum nicht Methode close aufrufen=?
 			 if (inputStream != null) {
 				 try {
 					inputStream.close();
@@ -68,6 +71,7 @@ public class TextFile implements IOType {
 					e.printStackTrace();
 				}
 			 }
+			 //****************************** ALPHA END ************************************
 		}
 		return true;
 	}
@@ -85,10 +89,12 @@ public class TextFile implements IOType {
 			e.getCause();
 			return false;
 		} finally {
-
+			//******************************** BETA  **************************************
+			// warum nicht Methode close aufrufen=?
 			if (outputStream != null) {
 				outputStream.close();
 			}
+			//****************************** BETA END ************************************
 		}
 		return true;
 	}

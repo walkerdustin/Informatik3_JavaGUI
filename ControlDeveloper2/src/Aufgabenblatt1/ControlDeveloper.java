@@ -133,11 +133,13 @@ public class ControlDeveloper {
 		
 		console.write(datenStrings);
 		
+		System.out.println("Geben Sie einen String ein: ");
 		console.read(geleseneStrings);
+		System.out.println("Geben Sie einen String ein: ");
 		console.read(geleseneStrings);
 		
 		
-		
+		System.out.println("Folgende Strings wuerden eingelesen");
 		System.out.println(geleseneStrings);
 		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {			
 			System.out.println((String) iterator.next());
