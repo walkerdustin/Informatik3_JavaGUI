@@ -61,21 +61,7 @@ public class TextFile implements IOType {
 
 		} finally {
 
-
-			//Frage1
-			//******************************** ALPHA1  **************************************
-			// warum nicht Methode close aufrufen=?
-
-			 if (inputStream != null) {
-				 try {
-					inputStream.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			 }
-
-			 //****************************** ALPHA1 END ************************************
-
+			 close();
 		}
 		return true;
 	}
@@ -93,15 +79,7 @@ public class TextFile implements IOType {
 			e.getCause();
 			return false;
 		} finally {
-			//Frage2
-			//******************************** BETA1  **************************************
-			// warum nicht Methode close aufrufen=?
-
-			if (outputStream != null) {
-				outputStream.close();
-			}
-			//****************************** BETA1 END ************************************
-
+			close();
 		}
 		return true;
 	}
