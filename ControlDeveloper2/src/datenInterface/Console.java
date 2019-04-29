@@ -25,16 +25,15 @@ public class Console implements IOType {
 
 	@Override
 	public boolean read(Vector<String> arg0) {   // man kann in der Konsole einen String eingeben und mit ENTER bestätigen    Das Programm wartet bis ein string eingegeben wurde.
-		
-		
+		boolean succesfull = true;
 		try {
 			arg0.add(this.bR.readLine());
 		} catch (IOException e) {
 			// wenn beim einlesen des Strings aus der Console etwas schief gelaufen ist, landen wir in catch. ansonsten wird catch übersprungen.
 			e.printStackTrace();
-			return false;
+			succesfull = false;
 		}
-		return true;
+		return succesfull;
 	}
 
 	@Override
