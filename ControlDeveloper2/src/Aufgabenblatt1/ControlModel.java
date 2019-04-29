@@ -33,10 +33,7 @@ public class ControlModel {
 	
 	// lädt commands Zeilenweise aus file
 	public boolean load(File file) {
-		
-		
-		return false;
-		
+		return false;		
 	}
 	
 	// Speichert die CommandList controlProzess als file ab
