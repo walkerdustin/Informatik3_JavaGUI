@@ -61,12 +61,11 @@ public class TextFile implements IOType {
 
 		} finally {
 
-<<<<<<< HEAD
+
 			
 			//******************************** ALPHA1  **************************************
 			// warum nicht Methode close aufrufen=?
-=======
->>>>>>> refs/remotes/origin/master
+
 			 if (inputStream != null) {
 				 try {
 					inputStream.close();
@@ -74,10 +73,9 @@ public class TextFile implements IOType {
 					e.printStackTrace();
 				}
 			 }
-<<<<<<< HEAD
+
 			 //****************************** ALPHA1 END ************************************
-=======
->>>>>>> refs/remotes/origin/master
+
 		}
 		return true;
 	}
@@ -95,19 +93,14 @@ public class TextFile implements IOType {
 			e.getCause();
 			return false;
 		} finally {
-<<<<<<< HEAD
 			//******************************** BETA1  **************************************
 			// warum nicht Methode close aufrufen=?
-=======
 
->>>>>>> refs/remotes/origin/master
 			if (outputStream != null) {
 				outputStream.close();
 			}
-<<<<<<< HEAD
 			//****************************** BETA1 END ************************************
-=======
->>>>>>> refs/remotes/origin/master
+
 		}
 		return true;
 	}
