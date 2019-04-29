@@ -62,7 +62,7 @@ public class TextFile implements IOType {
 		} finally {
 
 
-			
+			//Frage1
 			//******************************** ALPHA1  **************************************
 			// warum nicht Methode close aufrufen=?
 
@@ -93,6 +93,7 @@ public class TextFile implements IOType {
 			e.getCause();
 			return false;
 		} finally {
+			//Frage2
 			//******************************** BETA1  **************************************
 			// warum nicht Methode close aufrufen=?
 
