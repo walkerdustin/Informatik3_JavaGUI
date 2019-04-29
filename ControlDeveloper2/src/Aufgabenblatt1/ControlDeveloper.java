@@ -135,7 +135,7 @@ public class ControlDeveloper {
 		
 		System.out.println("Geben Sie einen String ein: ");
 		console.read(geleseneStrings);
-		System.out.println("Geben Sie einen String ein: ");
+		System.out.println("Geben Sie einen witeren String ein: ");
 		console.read(geleseneStrings);
 		
 		
