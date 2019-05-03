@@ -1,6 +1,8 @@
 
 package Aufgabenblatt1;
 
+import java.util.Vector;
+
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 public class CommandList {
@@ -214,7 +216,14 @@ public class CommandList {
 			return false;
 		}
 	}
-	
+	public Vector<String> ListToVector() {
+		// für Save/Load IOtype
+		Vector<String> tempVector = new Vector<String>();
+		for (int i = 0; i < size; ++i) {
+			tempVector.add(get(i).toString());
+		}
+		return tempVector; 
+	}
 	public void printList() {
 		System.out.println("");
 		for(int i = 0; i < getSize();++i) {
