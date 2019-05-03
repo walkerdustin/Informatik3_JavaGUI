@@ -224,8 +224,19 @@ public class CommandList {
 		}
 		return tempVector; 
 	}
-	public boolean VectortoList(Vector<String> vecString) {
-		
+	public boolean VectorToList(Vector<String> vecString) {		
+		for (int i = 0; i < vecString.size(); ++i) {
+			String[] tempString = vecString.get(i).split("#x#");
+			if (tempString[0] == "Gear") {
+				add(new CommandType(tempString[0], Integer.valueOf(tempString[1]), Double.valueOf(tempString[2])).createInstance());
+			}
+			else {
+				add(new CommandType(tempString[0], Double.valueOf(tempString[1])).createInstance());
+			}
+			
+		}
+		return true;
+			
 	}
 	public void printList() {
 		System.out.println("");
