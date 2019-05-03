@@ -1,6 +1,7 @@
 package Aufgabenblatt1;
 
 import java.io.File;
+
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Vector;
@@ -159,51 +160,61 @@ public class ControlDeveloper {
 		cL.add(new Direction(-90));
 		cL.add(new Gear(5,5));
 		cL.add(new Direction(-90));
+		cL.printList();
 		
+		//mit Dustins Implementierung von TextFile
+		File file = new File("TestCommandList.txt");
+		TextFile textFile = new TextFile(file, false);
+		textFile.write(cL.ListToVector());
 		
-		
-		
+		//dem Chef seins Implementirung von texFfile
+//		File file = new File("TestCommandListAberChefSeins.txt");
+//		TextFile textFile = new TextFile(file, true);
+//		textFile.write(cL.ListToVector());
 		
 		WiFiCardHandler wifis = new WiFiCardHandler();
 		WiFiCard[] cards = wifis.getWiFiCards();
 		WiFi wifiCard = new WiFi(cards[0]);
 		
+		wifiCard.write(cL.ListToVector());	
 	}
 
 	
 	public static void main(String[] args) {
-		
+		ControlDeveloper cD = new ControlDeveloper();
 ////////////////////////Test FileIO/////////////////////////////////
-//		ControlDeveloper cD = new ControlDeveloper();
 //		cD.testFileIO();
 ////////////////////////////////////////////////////////////////////
 		
 ////////////////////////Test ConsoleIO//////////////////////////////
-//		ControlDeveloper cD = new ControlDeveloper();
 //		cD.testConsoleIO();
 ////////////////////////////////////////////////////////////////////
 		
-		CommandList cL = new CommandList();
-		ControlDeveloper cD = new ControlDeveloper();
+////////////////////////Test ConsoleIO//////////////////////////////
+		cD.testWifiIO();
+////////////////////////////////////////////////////////////////////
 		
-		System.out.println(ControlDeveloper.name);
-		
-//		cD.testCommands();
-//		cD.printCommands();
-	cD.testList(cD,cL);
-		
-//		CommandType cTPause = new CommandType("Pause");
-//		System.out.println(cTPause.createInstance());
-//		CommandType cTDirection = new CommandType("Direction");
-//		System.out.println(cTDirection.createInstance());
-		System.out.println("");
-		System.out.println(cL.getSize());
-		//cL.moveUp(5);
-		//cL.moveDown(5);
-		//cL.remove(4);
-		cL.add(new Direction(66));
-		
-		cL.printList();
+//		CommandList cL = new CommandList();
+//		ControlDeveloper cD = new ControlDeveloper();
+//		
+//		System.out.println(ControlDeveloper.name);
+//		
+////		cD.testCommands();
+////		cD.printCommands();
+//		cD.testList(cD,cL);
+//		
+////		CommandType cTPause = new CommandType("Pause");
+////		System.out.println(cTPause.createInstance());
+////		CommandType cTDirection = new CommandType("Direction");
+////		System.out.println(cTDirection.createInstance());
+//		System.out.println("");
+//		System.out.println(cL.getSize());
+//		//cL.moveUp(5);
+//		//cL.moveDown(5);
+//		//cL.remove(4);
+//		cL.add(new Direction(66));
+//		
+//		cL.printList();
 		
 		
 	}

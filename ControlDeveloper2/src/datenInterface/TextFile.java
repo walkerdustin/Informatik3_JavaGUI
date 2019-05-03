@@ -24,11 +24,11 @@ public class TextFile implements IOType {
 	private PrintWriter outputStream = null;
 
 	private File file;
-	private boolean variable;
+	private boolean append;
 
 	public TextFile(File file, boolean variable) {
 		this.file = file;
-		this.variable = variable;
+		this.append = variable;
 
 	}
 
@@ -73,7 +73,7 @@ public class TextFile implements IOType {
 	public boolean write(Vector<String> arg0) {   // writes every string in arg0 at the end of the specified txt file    if this file doesnt exist: a new one is generated. The file outlasts the Runtime of the Programm. You can delet ist to reset its content.
 		boolean succesfull = true;
 		try {
-			outputStream = new PrintWriter(new FileWriter(file, true)); // append - if true, then bytes will be written to the end of the file rather than the beginning       https://docs.oracle.com/javase/7/docs/api/java/io/FileWriter.html
+			outputStream = new PrintWriter(new FileWriter(file, append)); // append - if true, then bytes will be written to the end of the file rather than the beginning       https://docs.oracle.com/javase/7/docs/api/java/io/FileWriter.html
 
 			for (Iterator<String> iterator = arg0.iterator(); iterator.hasNext();) {
 				outputStream.println((String) iterator.next());
