@@ -242,7 +242,7 @@ public class CommandList {
 	public boolean VectorToList(Vector<String> vecString) {
 		for (int i = 0; i < vecString.size(); ++i) {
 			String[] tempString = vecString.get(i).split("#x#");
-			add(new CommandType().createInstance(tempString));	
+			add(new CommandType().createInstance(tempString));
 		}
 		return true;
 
@@ -251,7 +251,7 @@ public class CommandList {
 	public void printList() {
 		System.out.println("");
 		for (int i = 0; i < getSize(); ++i) {
-			//System.out.println(i);
+			// System.out.println(i);
 			System.out.println(get(i));
 		}
 	}

@@ -7,11 +7,11 @@ import hsrt.mec.controldeveloper.io.IOType;
 
 public class WiFi implements IOType {
 	private WiFiCard card;
-	
+
 	public WiFi(WiFiCard card) {
 		this.card = card;
 	}
-	
+
 	@Override
 	public boolean close() {
 		// TODO Auto-generated method stub

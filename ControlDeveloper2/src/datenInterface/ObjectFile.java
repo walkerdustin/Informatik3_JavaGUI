@@ -9,7 +9,7 @@ public class ObjectFile implements IOType {
 	public ObjectFile(File file, boolean variable) {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public boolean close() {
 		// TODO Auto-generated method stub
