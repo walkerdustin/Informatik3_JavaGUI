@@ -95,6 +95,7 @@ public class ControlDeveloper {
 		datenStrings.add("test 1");
 		datenStrings.add("test 2");
 		datenStrings.add("test 3");
+		datenStrings.add("test 4");
 		
 		Vector<String> anderedatenStrings = new Vector<String>();
 		anderedatenStrings.add("Test am Ende anhängen");
