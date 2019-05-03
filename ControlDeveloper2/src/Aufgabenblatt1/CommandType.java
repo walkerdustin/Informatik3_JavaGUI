@@ -22,7 +22,7 @@ public class CommandType {
 		default:
 			System.err.println("Stored NameString is invalid");
 			return null;
-		
 		}
 	}
+	
 }

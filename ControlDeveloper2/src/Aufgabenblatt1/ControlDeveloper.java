@@ -113,6 +113,7 @@ public class ControlDeveloper {
 		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {			
 			System.out.println((String) iterator.next());
 		}
+		
 	}
 	
 	public void testConsoleIO() {
@@ -140,6 +141,8 @@ public class ControlDeveloper {
 		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {			
 			System.out.println((String) iterator.next());
 		}
+	}
+	public void testWifi() {
 		
 	}
 
@@ -171,9 +174,9 @@ public class ControlDeveloper {
 //		System.out.println(cTDirection.createInstance());
 		System.out.println("");
 		System.out.println(cL.getSize());
-		//cL.moveUp(2);
-		//cL.moveDown(2);
-		//cL.remove(2);
+		//cL.moveUp(5);
+		//cL.moveDown(5);
+		//cL.remove(4);
 		cL.add(new Direction(66));
 		
 		cL.printList();
