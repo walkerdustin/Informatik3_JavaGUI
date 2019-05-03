@@ -7,9 +7,9 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 public class CommandList {
 
-	private Element root; 			// erstes Element in der Liste Position [0]
-	private Element treeTop; 		// letztes Element in der Liste Position [size-1]
-	private static int size = 0;	// Anzahl der Elemente in der Liste
+	private Element root; // erstes Element in der Liste Position [0]
+	private Element treeTop; // letztes Element in der Liste Position [size-1]
+	private int size = 0; // Anzahl der Elemente in der Liste
 
 	private void setRoot(Element e) {
 		root = e;
@@ -123,7 +123,19 @@ public class CommandList {
 		}
 	}
 
+	public boolean clear() { // deleting all refrernces to the objects inside // garbage collector will
+								// handle the rest
+		root = null;
+		treeTop = null;
+		size = 0;
+		return true;
+	}
+
 	public ICommand get(int pos) {
+		if (getRoot() == null) {
+			System.err.println("ERROR: List is empty");
+			return null;
+		}
 		if (pos < size && pos >= 0) {
 			Element runner = getRoot();
 			for (int i = 0; i < size; ++i) {
@@ -136,7 +148,7 @@ public class CommandList {
 			System.err.println("Desired position is out of ListRange");
 			return null;
 		}
-		System.err.println("ERROR: No Element could be deliverd [Position was in ListRange]}");
+		System.err.println("ERROR: No Element could be deliverd [Position was in ListRange]");
 		return null;
 	}
 
@@ -144,10 +156,10 @@ public class CommandList {
 		if (pos < size && pos > 0) {
 			Element runner = getRoot().getNext();
 			for (int i = 1; i < size; ++i) {
-				if (i == pos ) {
+				if (i == pos) {
 					runner.getPrev().setNext(runner.getNext());
-					if (i != size -1) {
-					runner.getNext().setPrev(runner.getPrev());
+					if (i != size - 1) {
+						runner.getNext().setPrev(runner.getPrev());
 					}
 					--size;
 					add(runner.getElement(), pos - 1);
@@ -157,7 +169,7 @@ public class CommandList {
 			}
 		} else if (pos == 0) {
 			System.err.println("ERROR: First Element can not be moved up");
-						return false;
+			return false;
 		} else {
 			System.err.println("Desired position is out of ListRange ");
 			return false;
@@ -171,14 +183,12 @@ public class CommandList {
 			Element runner = getRoot();
 			for (int i = 0; i < size - 1; ++i) {
 				if (i == pos) {
-					if ( i == 0) {
+					if (i == 0) {
 						setRoot(runner.getNext());
-					}
-					else {
+					} else {
 						runner.getPrev().setNext(runner.getNext());
 						runner.getNext().setPrev(runner.getPrev());
 					}
-					
 
 					--size;
 					add(runner.getElement(), pos + 1);
@@ -202,46 +212,54 @@ public class CommandList {
 	}
 
 	public boolean checkSize() {
-		int temp = 0;
+		return calculateSize() == size;
+	}
+
+	public int calculateSize() {
+		int actualSize = 0;
+		if (getRoot() == null) { // falls die Liste wirklich leer ist ( Root == null )
+			return 0;
+		}
+
 		Element runner = getRoot();
 
 		while (runner != null) {
-			++temp;
+			++actualSize;
 			runner = runner.getNext();
 		}
-
-		if (temp == size) {       // enspricht return  temp == size; !!
-			return true;
-		} else {
-			return false;
-		}
+		return actualSize;
 	}
+
 	public Vector<String> ListToVector() {
 		// für Save/Load IOtype
 		Vector<String> tempVector = new Vector<String>();
 		for (int i = 0; i < size; ++i) {
 			tempVector.add(get(i).toString());
 		}
-		return tempVector; 
+		return tempVector;
 	}
-	public boolean VectorToList(Vector<String> vecString) {		
+
+	public boolean VectorToList(Vector<String> vecString) {
 		for (int i = 0; i < vecString.size(); ++i) {
 			String[] tempString = vecString.get(i).split("#x#");
 			if (tempString[0] == "Gear") {
-				add(new CommandType(tempString[0], Integer.valueOf(tempString[1]), Double.valueOf(tempString[2])).createInstance());
-			}
-			else {
+				add(new CommandType(tempString[0], Integer.valueOf(tempString[1]), Double.valueOf(tempString[2]))
+						.createInstance());
+			} else {
 				add(new CommandType(tempString[0], Double.valueOf(tempString[1])).createInstance());
 			}
-			
+
 		}
 		return true;
-			
+
 	}
+
 	public void printList() {
 		System.out.println("");
-		for(int i = 0; i < getSize();++i) {
-		System.out.println(get(i));
+		for (int i = 0; i < getSize(); ++i) {
+			System.out.println(i);
+			System.out.println(get(i));
+		}
 	}
-	}
+
 }
