@@ -165,6 +165,7 @@ public class ControlDeveloper {
 		
 		//mit Dustins Implementierung von TextFile
 		File file = new File("TestCommandList.txt");
+		System.out.println(file.getAbsolutePath());
 		TextFile textFile = new TextFile(file, false);
 //		textFile.write(cL.ListToVector());
 		Vector<String> vecTempStrings = new Vector<String>();
