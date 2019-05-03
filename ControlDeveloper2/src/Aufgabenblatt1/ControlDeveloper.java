@@ -154,17 +154,19 @@ public class ControlDeveloper {
 		CommandList cLfromfile = new CommandList();
 		System.out.println(ControlDeveloper.name);
 		
-		cL.add(new Direction(30));
-		cL.add(new Gear(5, 20));
+
+		cL.add(new Direction(0));
+		cL.add(new Gear(1, 20));
 		cL.add(new Pause(2));
-		cL.add(new Direction(-90));
-		cL.add(new Direction(-90));
+		cL.add(new Direction(3));
+		cL.add(new Direction(4));
 		cL.add(new Gear(5,5));
-		cL.add(new Direction(-90));
+		cL.add(new Direction(6));
+		cL.add(new Direction(7));
 		cL.printList();
 		
 		//mit Dustins Implementierung von TextFile
-		File file = new File("TestCommandList.txt");
+		File file = new File("TestCommandList2.txt");
 		System.out.println(file.getAbsolutePath());
 		TextFile textFile = new TextFile(file, false);
 		
