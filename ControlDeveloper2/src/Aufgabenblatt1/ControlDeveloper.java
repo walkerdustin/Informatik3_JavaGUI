@@ -8,6 +8,7 @@ import java.util.Vector;
 
 import datenInterface.Console;
 import datenInterface.TextFile;
+
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
 import hsrt.mec.controldeveloper.core.com.WiFiCardHandler;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
@@ -153,19 +154,25 @@ public class ControlDeveloper {
 		
 		System.out.println(ControlDeveloper.name);
 		
-		cL.add(new Direction(30));
-		cL.add(new Gear(5, 20));
-		cL.add(new Pause(2));
-		cL.add(new Direction(-90));
-		cL.add(new Direction(-90));
-		cL.add(new Gear(5,5));
-		cL.add(new Direction(-90));
+//		cL.add(new Direction(30));
+//		cL.add(new Gear(5, 20));
+//		cL.add(new Pause(2));
+//		cL.add(new Direction(-90));
+//		cL.add(new Direction(-90));
+//		cL.add(new Gear(5,5));
+//		cL.add(new Direction(-90));
 		cL.printList();
 		
 		//mit Dustins Implementierung von TextFile
 		File file = new File("TestCommandList.txt");
 		TextFile textFile = new TextFile(file, false);
-		textFile.write(cL.ListToVector());
+//		textFile.write(cL.ListToVector());
+		Vector<String> vecTempStrings = new Vector<String>();
+		textFile.read(vecTempStrings);
+		System.out.println(vecTempStrings);
+		
+		cL.VectorToList(vecTempStrings);
+		cL.printList();
 		
 		//dem Chef seins Implementirung von texFfile
 //		File file = new File("TestCommandListAberChefSeins.txt");

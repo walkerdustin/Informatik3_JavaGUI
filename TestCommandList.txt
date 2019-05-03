@@ -1,7 +1,7 @@
-Direction 	[Degree:30]
-Gear 		[Speed:5/ Duration:20.0]
-Pause		[Duration: 2.0]
-Direction 	[Degree:-90]
-Direction 	[Degree:-90]
-Gear 		[Speed:5/ Duration:5.0]
-Direction 	[Degree:-90]
+Direction#x#30
+Gear#x#5#x#20.0
+Pause#x#2.0
+Direction#x#-90
+Direction#x#-90
+Gear#x#5#x#5.0
+Direction#x#-90
