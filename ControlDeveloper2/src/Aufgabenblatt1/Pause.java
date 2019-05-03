@@ -21,7 +21,7 @@ public class Pause extends Command implements IPause {
 	}
 	
 	public String toString() {
-		return ("Pause		[Duration: "+ duration+ "]");
+		return ("Pause * "+duration);
 	}
 	public String getName(){
 		return this.toString();

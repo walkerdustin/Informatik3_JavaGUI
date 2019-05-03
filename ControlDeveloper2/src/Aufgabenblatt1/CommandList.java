@@ -224,6 +224,9 @@ public class CommandList {
 		}
 		return tempVector; 
 	}
+	public boolean VectortoList(Vector<String> vecString) {
+		
+	}
 	public void printList() {
 		System.out.println("");
 		for(int i = 0; i < getSize();++i) {

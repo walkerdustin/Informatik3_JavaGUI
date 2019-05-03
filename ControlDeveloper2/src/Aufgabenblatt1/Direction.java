@@ -29,7 +29,7 @@ public class Direction extends Command implements IDirection {
 		return degree;
 	}
 	public String toString() {
-		return ("Direction 	[Degree:"+degree+"]");
+		return ("Direction * "+degree);
 	}
 	
 	public String getName(){
