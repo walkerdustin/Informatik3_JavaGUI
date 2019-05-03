@@ -7,7 +7,10 @@ import java.util.Vector;
 
 import datenInterface.Console;
 import datenInterface.TextFile;
+import hsrt.mec.controldeveloper.core.com.WiFiCard;
+import hsrt.mec.controldeveloper.core.com.WiFiCardHandler;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
+import hsrt.mec.controldeveloper.io.WiFi;
 
 public class ControlDeveloper {
 	private static String name = "Control-Developer";
@@ -143,7 +146,27 @@ public class ControlDeveloper {
 			System.out.println((String) iterator.next());
 		}
 	}
-	public void testWifi() {
+	public void testWifiIO() {
+		CommandList cL = new CommandList();
+		ControlDeveloper cD = new ControlDeveloper();
+		
+		System.out.println(ControlDeveloper.name);
+		
+		cL.add(new Direction(30));
+		cL.add(new Gear(5, 20));
+		cL.add(new Pause(2));
+		cL.add(new Direction(-90));
+		cL.add(new Direction(-90));
+		cL.add(new Gear(5,5));
+		
+		
+		
+		
+		
+		
+		WiFiCardHandler wifis = new WiFiCardHandler();
+		WiFiCard[] cards = wifis.getWiFiCards();
+		WiFi wifiCard = new WiFi(cards[0]);
 		
 	}
 
