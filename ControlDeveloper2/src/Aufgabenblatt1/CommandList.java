@@ -217,11 +217,12 @@ public class CommandList {
 		}
 	}
 	public Vector<String> ListToVector() {
+		// für Save/Load IOtype
 		Vector<String> tempVector = new Vector<String>();
 		for (int i = 0; i < size; ++i) {
 			tempVector.add(get(i).toString());
 		}
-		return tempVector;
+		return tempVector; 
 	}
 	public void printList() {
 		System.out.println("");
