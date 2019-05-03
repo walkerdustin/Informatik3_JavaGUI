@@ -7,7 +7,8 @@ import java.util.Random;
 import java.util.Vector;
 
 import datenInterface.Console;
-import datenInterface.TextFile;
+import hsrt.mec.controldeveloper.io.TextFile;  	// Chefs Implementation
+//import datenInterface.TextFile;  				//Dustins Implementation
 
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
 import hsrt.mec.controldeveloper.core.com.WiFiCardHandler;
@@ -150,41 +151,50 @@ public class ControlDeveloper {
 	}
 	public void testWifiIO() {
 		CommandList cL = new CommandList();
-		ControlDeveloper cD = new ControlDeveloper();
-		
+		CommandList cLfromfile = new CommandList();
 		System.out.println(ControlDeveloper.name);
 		
-//		cL.add(new Direction(30));
-//		cL.add(new Gear(5, 20));
-//		cL.add(new Pause(2));
-//		cL.add(new Direction(-90));
-//		cL.add(new Direction(-90));
-//		cL.add(new Gear(5,5));
-//		cL.add(new Direction(-90));
+		cL.add(new Direction(30));
+		cL.add(new Gear(5, 20));
+		cL.add(new Pause(2));
+		cL.add(new Direction(-90));
+		cL.add(new Direction(-90));
+		cL.add(new Gear(5,5));
+		cL.add(new Direction(-90));
 		cL.printList();
 		
 		//mit Dustins Implementierung von TextFile
 		File file = new File("TestCommandList.txt");
 		System.out.println(file.getAbsolutePath());
 		TextFile textFile = new TextFile(file, false);
-//		textFile.write(cL.ListToVector());
+		
+		
+		
+		
+		textFile.write(cL.ListToVector());
+		textFile.close();
+		
 		Vector<String> vecTempStrings = new Vector<String>();
 		textFile.read(vecTempStrings);
+		textFile.close();
+		
 		System.out.println(vecTempStrings);
+//		System.out.println("Size Vektor: " + vecTempStrings.size());
 		
-		cL.VectorToList(vecTempStrings);
-		cL.printList();
+		cLfromfile.VectorToList(vecTempStrings);
 		
-		//dem Chef seins Implementirung von texFfile
-//		File file = new File("TestCommandListAberChefSeins.txt");
-//		TextFile textFile = new TextFile(file, true);
-//		textFile.write(cL.ListToVector());
+//		System.out.println("size of new cL: " + cLfromfile.getSize());
+//		System.out.println("check Size : " + cLfromfile.checkSize());
+//		System.out.println("anfang print");
+		cLfromfile.printList();
+//		System.out.println("ende print");
 		
-		WiFiCardHandler wifis = new WiFiCardHandler();
-		WiFiCard[] cards = wifis.getWiFiCards();
-		WiFi wifiCard = new WiFi(cards[0]);
 		
-		wifiCard.write(cL.ListToVector());	
+//		WiFiCardHandler wifis = new WiFiCardHandler();
+//		WiFiCard[] cards = wifis.getWiFiCards();
+//		WiFi wifiCard = new WiFi(cards[0]);
+//		
+//		wifiCard.write(cL.ListToVector());	
 	}
 
 	
@@ -198,12 +208,11 @@ public class ControlDeveloper {
 //		cD.testConsoleIO();
 ////////////////////////////////////////////////////////////////////
 		
-////////////////////////Test ConsoleIO//////////////////////////////
+////////////////////////Test WifiIO/////////////////////////////////
 		cD.testWifiIO();
 ////////////////////////////////////////////////////////////////////
 		
 //		CommandList cL = new CommandList();
-//		ControlDeveloper cD = new ControlDeveloper();
 //		
 //		System.out.println(ControlDeveloper.name);
 //		

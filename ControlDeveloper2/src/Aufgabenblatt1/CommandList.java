@@ -257,7 +257,7 @@ public class CommandList {
 	public void printList() {
 		System.out.println("");
 		for (int i = 0; i < getSize(); ++i) {
-			System.out.println(i);
+			//System.out.println(i);
 			System.out.println(get(i));
 		}
 	}
