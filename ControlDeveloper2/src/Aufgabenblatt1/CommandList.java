@@ -5,9 +5,9 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 public class CommandList {
 
-	private Element root; // erstes Element in der Liste Position [0]
-	private Element treeTop; // letztes Element in der Liste Position [size-1]
-	private static int size = 0; // Anzahl der Elemente in der Liste
+	private Element root; 			// erstes Element in der Liste Position [0]
+	private Element treeTop; 		// letztes Element in der Liste Position [size-1]
+	private static int size = 0;	// Anzahl der Elemente in der Liste
 
 	private void setRoot(Element e) {
 		root = e;
@@ -27,6 +27,7 @@ public class CommandList {
 
 	public boolean add(ICommand c) {
 		Element newElement = new Element(c);
+//		System.out.println("blubb");
 		++size;
 		if (getRoot() == null) {
 			// Listeneröffnung
@@ -141,9 +142,11 @@ public class CommandList {
 		if (pos < size && pos > 0) {
 			Element runner = getRoot().getNext();
 			for (int i = 1; i < size; ++i) {
-				if (i == pos) {
+				if (i == pos ) {
 					runner.getPrev().setNext(runner.getNext());
+					if (i != size -1) {
 					runner.getNext().setPrev(runner.getPrev());
+					}
 					--size;
 					add(runner.getElement(), pos - 1);
 					return true;
@@ -152,9 +155,9 @@ public class CommandList {
 			}
 		} else if (pos == 0) {
 			System.err.println("ERROR: First Element can not be moved up");
-			return false;
+						return false;
 		} else {
-			System.err.println("Desired position is out of ListRange");
+			System.err.println("Desired position is out of ListRange ");
 			return false;
 		}
 		System.err.println("ERROR: No Element could be moved [Position was in ListRange]}");
@@ -166,8 +169,15 @@ public class CommandList {
 			Element runner = getRoot();
 			for (int i = 0; i < size - 1; ++i) {
 				if (i == pos) {
-					runner.getPrev().setNext(runner.getNext());
-					runner.getNext().setPrev(runner.getPrev());
+					if ( i == 0) {
+						setRoot(runner.getNext());
+					}
+					else {
+						runner.getPrev().setNext(runner.getNext());
+						runner.getNext().setPrev(runner.getPrev());
+					}
+					
+
 					--size;
 					add(runner.getElement(), pos + 1);
 					return true;
@@ -203,5 +213,12 @@ public class CommandList {
 		} else {
 			return false;
 		}
+	}
+	
+	public void printList() {
+		System.out.println("");
+		for(int i = 0; i < getSize();++i) {
+		System.out.println(get(i));
+	}
 	}
 }

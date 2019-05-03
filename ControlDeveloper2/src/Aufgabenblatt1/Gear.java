@@ -15,12 +15,10 @@ public class Gear extends Command implements IGear {
 		System.out.println("Gear wurde standartmäßig mit 0 initialisiert");
 	}
 	
-	
 	public Gear(int speed, double duration) {
 		setDuration(duration);
 		setSpeed(speed);
 	}
-	
 	
 	public void setSpeed(int speed) {
 		if (speed >= LIMMIN && speed <= LIMMAX) {
@@ -32,12 +30,15 @@ public class Gear extends Command implements IGear {
 			this.duration = 0;
 		}
 	}
+	
 	public int getSpeed() {
 		return speed;
 	}
+	
 	public void setDuration(double duration) {
 		this.duration = duration;
 	}
+	
 	public double getDuration() {
 		return duration;
 	}
