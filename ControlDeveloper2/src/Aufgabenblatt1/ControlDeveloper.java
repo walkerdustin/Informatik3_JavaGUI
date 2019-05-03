@@ -158,7 +158,7 @@ public class ControlDeveloper {
 		cL.add(new Direction(-90));
 		cL.add(new Direction(-90));
 		cL.add(new Gear(5,5));
-		
+		cL.add(new Direction(-90));
 		
 		
 		
