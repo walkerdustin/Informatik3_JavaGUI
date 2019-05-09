@@ -3,4 +3,5 @@ Marco: Arbeite gerade an Commandlist
 
 Dustin:
    -> arbeite an:
-      - IO datenInterface
+      -  IO datenInterface Textfile IO mit Hashing
+      -  Test von Fork
