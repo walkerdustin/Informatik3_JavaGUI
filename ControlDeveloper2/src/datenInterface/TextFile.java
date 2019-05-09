@@ -26,15 +26,39 @@ import hsrt.mec.controldeveloper.io.IOType;
 public class TextFile implements IOType {
 	private BufferedReader inputStream = null;
 	private PrintWriter outputStream = null;
-
+	private Mac sha512_HMAC = null;
+	private String key = "password123";
+	private byte [] byteKey = null;
+	
 	private File file;
 	private boolean append;
 
 	public TextFile(File file, boolean append) {
 		this.file = file;
 		this.append = append;
+		
+		
+		
+		try{
+            byteKey = key.getBytes("UTF-8");
+            final String HMAC_SHA512 = "HmacSHA512";
+            sha512_HMAC = Mac.getInstance(HMAC_SHA512);      
+            SecretKeySpec keySpec = new SecretKeySpec(byteKey, HMAC_SHA512);
+            sha512_HMAC.init(keySpec);
+            
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		
 	}
-
+	
 	@Override
 	public boolean close() { // closes the input streams. This is done automatticaly in read() and write()
 		boolean succesfull = true;
@@ -100,18 +124,12 @@ public class TextFile implements IOType {
 		return succesfull;
 	}
 	
-	private byte createHash(String datastring) {
-		Mac sha512_HMAC = null;
+	private String createHash(String datastring) {
 		String result = null;
-		String key = "password123";
-			
+	
 		//////// https://stackoverflow.com/questions/39355241/compute-hmac-sha512-with-secret-key-in-java
 		try{
-            byte [] byteKey = key.getBytes("UTF-8");
-            final String HMAC_SHA512 = "HmacSHA512";
-            sha512_HMAC = Mac.getInstance(HMAC_SHA512);      
-            SecretKeySpec keySpec = new SecretKeySpec(byteKey, HMAC_SHA512);
-            sha512_HMAC.init(keySpec);
+            
             byte [] mac_data = sha512_HMAC.
              doFinal("My message".getBytes("UTF-8"));
             //result = Base64.encode(mac_data);
@@ -120,15 +138,10 @@ public class TextFile implements IOType {
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }finally{
             System.out.println("Done");
         }
+		return result;
     }
 
     public static String bytesToHex(byte[] bytes) {
