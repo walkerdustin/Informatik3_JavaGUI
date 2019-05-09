@@ -1,0 +1,8 @@
+Direction#x#0
+Gear#x#1#x#20.0
+Pause#x#2.0
+Direction#x#3
+Direction#x#4
+Gear#x#5#x#5.0
+Direction#x#6
+Direction#x#7
