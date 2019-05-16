@@ -130,10 +130,10 @@ public class ControlDeveloper {
 		datenStrings.add("test 2");
 		datenStrings.add("test 3");
 		datenStrings.add("test 4");
-		
+
 		System.out.println("zu schreibende Strings: ");
 		System.out.println(datenStrings);
-		
+
 		Vector<String> anderedatenStrings = new Vector<String>();
 		anderedatenStrings.add("Überschrieben? ");
 
@@ -142,9 +142,9 @@ public class ControlDeveloper {
 		System.out.println();
 		System.out.println("gelesene Strings: ");
 		System.out.println(geleseneStrings);
-		
+
 		geleseneStrings.clear();
-		
+
 		System.out.println();
 		System.out.println("// überschreiben: ");
 		textFile.write(anderedatenStrings);
