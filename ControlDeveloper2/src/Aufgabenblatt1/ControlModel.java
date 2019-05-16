@@ -7,11 +7,20 @@ import java.util.Vector;
 import datenInterface.TextFile;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
+/**
+ * Klasse des ControlModels Enthält Mögliche Commands und eine Liste des
+ * bestehenden Prozesses
+ * 
+ *
+ */
 public class ControlModel {
 	private ControlModel instance = new ControlModel();
 	private CommandType[] commandTypes = new CommandType[4];
 	private CommandList controlProzess;
 
+	/**
+	 * Konstruktor der CommandType Array mit den Möglichen CommandTypes befüllt
+	 */
 	private ControlModel() {
 		controlProzess = new CommandList();
 		commandTypes[0] = new CommandType("Direction");
@@ -20,6 +29,11 @@ public class ControlModel {
 		commandTypes[3] = new CommandType("Command");
 	}
 
+	/**
+	 * Methode die die Instance des ControlModels liefert
+	 * 
+	 * @return Instanz des ControlModels
+	 */
 	public ControlModel getInstance() {
 		return instance;
 	}

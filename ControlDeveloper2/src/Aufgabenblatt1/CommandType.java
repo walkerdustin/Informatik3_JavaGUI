@@ -1,5 +1,10 @@
 package Aufgabenblatt1;
 
+/**
+ * 
+ * Klasse der CommandTypes
+ *
+ */
 public class CommandType {
 	private String name;
 	private int tempInt;
@@ -8,9 +13,17 @@ public class CommandType {
 	// Sollen wir hier evtl. folgendes Anlegen?
 	// private String[] arrContent;
 
+	/**
+	 * Erstellen eines neuen leeren CommandTypes
+	 */
 	public CommandType() {
 	}
 
+	/**
+	 * Erstellen eines neuen bestimmten CommandTypes
+	 * 
+	 * @param Name/Art des Commands
+	 */
 	public CommandType(String name) {
 		this.name = name;
 	}
@@ -29,10 +42,22 @@ public class CommandType {
 //		this.duration = duration;
 //	}
 
+	/**
+	 * Methode die den Namen des CommandTypes, somit die Art des CommandTypes
+	 * liefert
+	 * 
+	 * @return Name des Commandtypes
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Metode zum Erzeugene eines Leeren Commands einer Bestimmten Art. Es werden
+	 * die jeweiligen DefaultWerte initialisiert
+	 * 
+	 * @return Erstellter Command
+	 */
 	public Command createInstance() {
 		switch (name) {
 		case "Direction":
@@ -48,6 +73,13 @@ public class CommandType {
 		}
 	}
 
+	/**
+	 * Methode zum Erzeugen eines neuen Commands basierend auf den Werten au einem
+	 * StringArray
+	 * 
+	 * @param arrStrings zur Initialisierung benötigte Daten (z.B.: Duration)
+	 * @return Erstellter Command
+	 */
 	public Command createInstance(String[] arrStrings) {
 		switch (arrStrings[0]) {
 		case "Direction":

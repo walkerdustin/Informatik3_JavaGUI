@@ -15,11 +15,20 @@ import hsrt.mec.controldeveloper.core.com.WiFiCardHandler;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.WiFi;
 
+/**
+ * Klasse zum Entwickeln der Umgebung. Klasse enthält Main und verschiedene
+ * Testmethoden
+ * 
+ *
+ */
 public class ControlDeveloper {
 	private static String name = "Control-Developer";
 	private Vector<ICommand> commands = new Vector<ICommand>();
 	// private CommandList cL;
 
+	/**
+	 * Methode zum befüllen einer Liste mit zufälligen Commands
+	 */
 	public void testCommands() {
 		Random rand = new Random();
 		commands.add(new Direction(rand.nextInt(180) - 90));
@@ -46,12 +55,22 @@ public class ControlDeveloper {
 		}
 	}
 
+	/**
+	 * Methode um CommandListe in der Konsole auszugeben
+	 */
 	public void printCommands() {
 		for (int i = 0; i < commands.size(); ++i) {
 			System.out.println(commands.get(i).getName());
 		}
 	}
 
+	/**
+	 * (veraltete) Metode um Verkettete Liste und ihre Funktionalität zu testen
+	 * EInzelne Befehle und deren Auswirkungen werden in der Console ausgegeben
+	 * 
+	 * @param cD - ControlDevelepor
+	 * @param cL - CommandList
+	 */
 	public void testList(ControlDeveloper cD, CommandList cL) {
 		for (int i = 0; i < 5; i++) {
 			cD.commands.add(new Direction(i));
@@ -90,6 +109,9 @@ public class ControlDeveloper {
 //		}
 	}
 
+	/**
+	 * Methode um das Lesen und Schreiben in ein Textfile zu testen
+	 */
 	public void testFileIO() {
 		File file = new File("Test.txt");
 		TextFile textFile = new TextFile(file, true);
@@ -120,6 +142,9 @@ public class ControlDeveloper {
 
 	}
 
+	/**
+	 * Methode um Daten über die Console einzulesen und auszugeben
+	 */
 	public void testConsoleIO() {
 		Console console = new Console();
 
@@ -146,6 +171,11 @@ public class ControlDeveloper {
 		}
 	}
 
+	/**
+	 * Methode um Wifi Umgebung zu testen Einlesen einer Liste in ein File und
+	 * Umwandlen in Vektor Auslesen eines Files und Umwandeln von einem Vektor in
+	 * eine Liste
+	 */
 	public void testWifiIO() {
 		CommandList cL = new CommandList();
 		CommandList cLfromfile = new CommandList();
@@ -191,6 +221,11 @@ public class ControlDeveloper {
 //		wifiCard.write(cL.ListToVector());	
 	}
 
+	/**
+	 * Main-Methode Dient zum Aufruf der einzelnen TestMethoden
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		ControlDeveloper cD = new ControlDeveloper();
 ////////////////////////Test FileIO/////////////////////////////////

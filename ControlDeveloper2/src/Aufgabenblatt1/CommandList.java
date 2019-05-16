@@ -4,9 +4,9 @@ package Aufgabenblatt1;
 import java.util.Vector;
 
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
+
 /**
  * Klasse für die Verkettung von Commands (Doppeltverkettete Liste)
- * @author TheRealTripleM
  *
  */
 public class CommandList {
@@ -14,44 +14,49 @@ public class CommandList {
 	private Element root; // erstes Element in der Liste Position [0]
 	private Element treeTop; // letztes Element in der Liste Position [size-1]
 	private int size = 0; // Anzahl der Elemente in der Liste
-	
-/**
- * Methode um die Wurzel (erste Element) der Liste (neu) zu setzten
- * @param e
- */
+
+	/**
+	 * Methode um die Wurzel (erste Element) der Liste (neu) zu setzten
+	 * 
+	 * @param e
+	 */
 	private void setRoot(Element e) {
 		root = e;
 	}
-	
-/**
- * Methode um das letzte Element der Liste zu setzten
- * @param e
- */
+
+	/**
+	 * Methode um das letzte Element der Liste zu setzten
+	 * 
+	 * @param e
+	 */
 	private void setTreeTop(Element e) {
 		treeTop = e;
 	}
-	
-/**
- * Methode liefert Wurzel (erstes Element) der Liste
- * @return erstes Element
- */
+
+	/**
+	 * Methode liefert Wurzel (erstes Element) der Liste
+	 * 
+	 * @return erstes Element
+	 */
 	public Element getRoot() {
 		return root;
 	}
-	
-/**
- * Methode liefert letztes Element der Liste
- * @return letztes Element
- */
+
+	/**
+	 * Methode liefert letztes Element der Liste
+	 * 
+	 * @return letztes Element
+	 */
 	public Element getTreeTop() {
 		return treeTop;
 	}
-	
-/**
- * Methode um übergebenen Command an Liste hinten anzuhängen
- * @param c
- * @return 
- */
+
+	/**
+	 * Methode um übergebenen Command an Liste hinten anzuhängen
+	 * 
+	 * @param c
+	 * @return
+	 */
 	public boolean add(ICommand c) {
 		Element newElement = new Element(c);
 //		System.out.println("blubb");
@@ -69,13 +74,15 @@ public class CommandList {
 			return true;
 		}
 	}
-	
-/**
- * Methode um übergebenen Command an einer bestimmten Stelle der Liste einzufügen
- * @param c
- * @param pos
- * @return
- */
+
+	/**
+	 * Methode um übergebenen Command an einer bestimmten Stelle der Liste
+	 * einzufügen
+	 * 
+	 * @param c
+	 * @param pos
+	 * @return
+	 */
 	public boolean add(ICommand c, int pos) {
 		if (pos <= size && pos >= 0) {
 
@@ -110,12 +117,13 @@ public class CommandList {
 			return false;
 		}
 	}
-	
-/**
- * Methode um Element an der gewünschten Stelle zu entfernen
- * @param pos
- * @return
- */
+
+	/**
+	 * Methode um Element an der gewünschten Stelle zu entfernen
+	 * 
+	 * @param pos
+	 * @return
+	 */
 	public boolean remove(int pos) {
 		if (pos < size && pos >= 0) {
 			Element runner = getRoot();
@@ -158,11 +166,12 @@ public class CommandList {
 			return false;
 		}
 	}
-	
-/**
- * Methode um komplette Liste zu löschen
- * @return
- */
+
+	/**
+	 * Methode um komplette Liste zu löschen
+	 * 
+	 * @return
+	 */
 	public boolean clear() { // deleting all refrernces to the objects inside // garbage collector will
 								// handle the rest
 		root = null;
@@ -170,12 +179,13 @@ public class CommandList {
 		size = 0;
 		return true;
 	}
-	
-/**
- * Methode liefert Element an der gewünschten Position
- * @param pos
- * @return
- */
+
+	/**
+	 * Methode liefert Element an der gewünschten Position
+	 * 
+	 * @param pos
+	 * @return
+	 */
 	public ICommand get(int pos) {
 		if (getRoot() == null) {
 			System.err.println("ERROR: List is empty");
@@ -196,12 +206,14 @@ public class CommandList {
 		System.err.println("ERROR: No Element could be deliverd [Position was in ListRange]");
 		return null;
 	}
-	
-/**
- * Methode um ELement an der gewünschten Stelle um eine Position nach oben zu verschieben
- * @param pos
- * @return
- */
+
+	/**
+	 * Methode um ELement an der gewünschten Stelle um eine Position nach oben zu
+	 * verschieben
+	 * 
+	 * @param pos
+	 * @return
+	 */
 	public boolean moveUp(int pos) {
 		if (pos < size && pos > 0) {
 			Element runner = getRoot().getNext();
@@ -227,12 +239,14 @@ public class CommandList {
 		System.err.println("ERROR: No Element could be moved [Position was in ListRange]}");
 		return false;
 	}
-	
-/**
- * Methode um ELement an der gewünschten Stelle um eine Position nach unten zu verschieben
- * @param pos
- * @return
- */
+
+	/**
+	 * Methode um ELement an der gewünschten Stelle um eine Position nach unten zu
+	 * verschieben
+	 * 
+	 * @param pos
+	 * @return
+	 */
 	public boolean moveDown(int pos) {
 		if (pos < (size - 1) && pos >= 0) {
 			Element runner = getRoot();
@@ -261,27 +275,30 @@ public class CommandList {
 		System.err.println("ERROR: No Element could be moved [Position was in ListRange]}");
 		return false;
 	}
-	
-/**
- * Methode liefert die aktuelle Länge der Liste zurück
- * @return
- */
+
+	/**
+	 * Methode liefert die aktuelle Länge der Liste zurück
+	 * 
+	 * @return
+	 */
 	public int getSize() {
 		return size;
 	}
-	
-/**
- * Methode um die Liste anhand der Länge auf mögliche Fehler zu untersuchen
- * @return
- */
+
+	/**
+	 * Methode um die Liste anhand der Länge auf mögliche Fehler zu untersuchen
+	 * 
+	 * @return
+	 */
 	public boolean checkSize() {
 		return calculateSize() == size;
 	}
-	
-/**
- * Methode um die Listenlänge neu zu ermitteln
- * @return
- */
+
+	/**
+	 * Methode um die Listenlänge neu zu ermitteln
+	 * 
+	 * @return
+	 */
 	public int calculateSize() {
 		int actualSize = 0;
 		if (getRoot() == null) { // falls die Liste wirklich leer ist ( Root == null )
@@ -296,11 +313,12 @@ public class CommandList {
 		}
 		return actualSize;
 	}
-	
-/**
- * Methode die aus der bestehenden Liste einen String-Vektor erstellt
- * @return String Vektor der in der Liste enthaltenen Objekte
- */
+
+	/**
+	 * Methode die aus der bestehenden Liste einen String-Vektor erstellt
+	 * 
+	 * @return String Vektor der in der Liste enthaltenen Objekte
+	 */
 	public Vector<String> ListToVector() {
 		// für Save/Load IOtype
 		Vector<String> tempVector = new Vector<String>();
@@ -312,6 +330,7 @@ public class CommandList {
 
 	/**
 	 * Methode die aus einem bestehenden String-Vektor eine Liste erstellt
+	 * 
 	 * @param vecString
 	 * @return Liste basierend auf String-Vektor
 	 */
@@ -323,10 +342,10 @@ public class CommandList {
 		return true;
 
 	}
-	
-/**
- * Methode um Liste in der Console ausgeben zu lassen
- */
+
+	/**
+	 * Methode um Liste in der Console ausgeben zu lassen
+	 */
 	public void printList() {
 		System.out.println("");
 		for (int i = 0; i < getSize(); ++i) {
