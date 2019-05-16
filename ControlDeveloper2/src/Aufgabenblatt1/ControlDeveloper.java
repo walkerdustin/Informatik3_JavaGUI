@@ -143,6 +143,13 @@ public class ControlDeveloper {
 		System.out.println("gelesene Strings: ");
 		System.out.println(geleseneStrings);
 
+		System.out.println();
+		System.out.println("String: ");
+		System.out.println(datenStrings.toString());
+
+		System.out.println();
+		System.out.println("Hash: ");
+
 		geleseneStrings.clear();
 
 		System.out.println();
