@@ -99,15 +99,15 @@ public class TextFile implements IOType {
 			while (!close()) {
 			} // versucht solange zu schlieﬂen bis er erfolgreich ist. #Hackerstyle ;)
 		}
-		System.out.println("gelesene Strings: " + geleseneStrings);
+		System.out.println("gelesene Strings: " + geleseneStrings + '"');
 		String gelesenerHash = geleseneStrings.lastElement();
 
 		pureStrings = (Vector<String>) geleseneStrings.clone();
 		pureStrings.remove(geleseneStrings.size() - 1);
-		System.out.println("pure Strings: " + pureStrings);
-		System.out.println("gelesener Hash: " + gelesenerHash);
+		System.out.println("pure Strings:     " + pureStrings + '"');
+		System.out.println("gelesener Hash:   " + gelesenerHash + '"');
 		String generirterHash = createHash(pureStrings.toString());
-		System.out.println("generierter Hash: " + generirterHash);
+		System.out.println("generierter Hash: " + generirterHash + '"');
 
 		if (gelesenerHash.contentEquals(generirterHash)) {
 			System.out.println("Hashes sind gleich!");
@@ -117,6 +117,7 @@ public class TextFile implements IOType {
 			System.out.println("Hashes sind nicht gleich!");
 		}
 		System.out.println("reading was " + succesfull);
+		System.out.println();
 		return succesfull;
 	}
 
@@ -166,7 +167,7 @@ public class TextFile implements IOType {
 			byte[] mac_data = sha512_HMAC.doFinal(datastring.getBytes("UTF-8"));
 			// result = Base64.encode(mac_data);
 			result = bytesToHex(mac_data);
-			System.out.println("Hash: " + result);
+			//System.out.println("Hash: " + result);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -177,7 +178,7 @@ public class TextFile implements IOType {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			System.out.println("Done with hashing");
+			//System.out.println("Done with hashing");
 		}
 		return result;
 	}

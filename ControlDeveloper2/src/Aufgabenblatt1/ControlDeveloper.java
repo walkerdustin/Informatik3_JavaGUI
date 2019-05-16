@@ -9,8 +9,8 @@ import java.util.Vector;
 import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
 
 import datenInterface.Console;
-import hsrt.mec.controldeveloper.io.TextFile; // Chefs Implementation
-//import datenInterface.TextFile;  				//Dustins Implementation
+//import hsrt.mec.controldeveloper.io.TextFile; // Chefs Implementation
+import datenInterface.TextFile;  				//Dustins Implementation
 
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
 import hsrt.mec.controldeveloper.core.com.WiFiCardHandler;
@@ -284,7 +284,7 @@ public class ControlDeveloper {
 		cL.add(new Direction(6));
 		cL.add(new Direction(7));
 		cL.printList();
-
+		
 		File loadFile = new File("loadCommandList.txt");
 		System.out.println(loadFile.getAbsolutePath());
 		TextFile textFile = new TextFile(loadFile, false);
@@ -317,7 +317,7 @@ public class ControlDeveloper {
 ////////////////////////////////////////////////////////////////////
 
 ////////////////////////Test FileIO/////////////////////////////////
-		cD.testDustinsTextFile();
+		//cD.testDustinsTextFile();
 ////////////////////////////////////////////////////////////////////		
 
 ////////////////////////Test ConsoleIO//////////////////////////////
@@ -329,7 +329,7 @@ public class ControlDeveloper {
 ////////////////////////////////////////////////////////////////////
 
 ////////////////////////Test ControlModel///////////////////////////
-		// cD.testControlModel();
+		cD.testControlModel();
 ////////////////////////////////////////////////////////////////////
 
 //		CommandList cL = new CommandList();
