@@ -2,10 +2,17 @@ package Aufgabenblatt1;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Vector;
 
-import datenInterface.TextFile;
+import com.sun.corba.se.impl.orbutil.DenseIntMapImpl;
+import com.sun.org.apache.bcel.internal.generic.DADD;
+import com.sun.org.apache.bcel.internal.generic.ISTORE;
+
+//import datenInterface.TextFile;
+import hsrt.mec.controldeveloper.io.TextFile;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
+import jdk.nashorn.internal.codegen.MethodEmitter;
 
 /**
  * Klasse des ControlModels Enthält Mögliche Commands und eine Liste des
@@ -14,9 +21,9 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
  *
  */
 public class ControlModel {
-	private ControlModel instance = new ControlModel();
+	private static ControlModel instance = new ControlModel();
 	private CommandType[] commandTypes = new CommandType[4];
-	private CommandList controlProzess;
+	private CommandList controlProzess = new CommandList();
 
 	/**
 	 * Konstruktor der CommandType Array mit den Möglichen CommandTypes befüllt
@@ -30,14 +37,20 @@ public class ControlModel {
 	}
 
 	/**
-	 * Methode die die Instance des ControlModels liefert
+	 * Methode die die Instance des ControlModels liefert singleton
 	 * 
 	 * @return Instanz des ControlModels
 	 */
-	public ControlModel getInstance() {
+	public static ControlModel getInstance() {
 		return instance;
 	}
 
+	/**
+	 * Funktion, die commandTypes mit den Command Types befüllen sollte. Dies ist
+	 * aber doof da es schon in dem Constructor gemacht wurde könnte / wird zu
+	 * fehlern führen wenn es dem Programmierer überlassen wird sich um die
+	 * befüllung des Arrays zu kümmern!
+	 */
 	public void createCommandTypes() {
 		// könnte / wird zu fehlern führen wenn es dem Programmierer überlassen wird
 		// sich um die befüllung des Arrays zu kümmern!
@@ -45,44 +58,66 @@ public class ControlModel {
 		System.out.println("Well..... this is stupid, isnt it?");
 	}
 
-	// lädt commands Zeilenweise aus file
+	/**
+	 * lädt commands Zeilenweise aus file commands werden überschrieben
+	 * 
+	 * @param file Das file aus dem controlProzess erstellt werden soll
+	 * @return true
+	 */
 	public boolean load(File file) {
-		return false;
+		TextFile commandsFile = new TextFile(file, true);
+		Vector<String> geleseneCommandStrings = new Vector<String>();
+		commandsFile.read(geleseneCommandStrings);
+		controlProzess.VectorToList(geleseneCommandStrings);
+
+		return true;
 	}
 
-	// Speichert die CommandList controlProzess als file ab
+	/**
+	 * Speichert die CommandList controlProzess als file ab. file wird überschrieben
+	 * 
+	 * @param file
+	 * @return
+	 */
 	public boolean save(File file) {
-		TextFile commandsFile = new TextFile(file, true);
+		TextFile textFile = new TextFile(file, false);
 
 		Vector<String> geleseneCommandStrings = new Vector<String>(); // for Testing
 
-		int numberOfCommands = controlProzess.getSize();
-		Vector<String> commands = new Vector<String>();
-		for (int i = 0; i <= numberOfCommands; i++) {
-			commands.add(controlProzess.get(i).getName()); // speichert alle namen der ICommands in einem Vector
-		}
+		System.out.println();// for Testing
 		System.out.println("CommandList controlProcess: "); // for Testing
-		System.out.println(commands); // for Testing
+		System.out.println(controlProzess.ListToVector());// for Testing
 
-		commandsFile.write(commands);
+		boolean erfolgreich = textFile.write(controlProzess.ListToVector());
+		textFile.close();
 
+		System.out.println();// for Testing
 		System.out.println("In file steht jetzt:"); // for Testing
-		System.out.println(); // for Testing
 
 		geleseneCommandStrings.clear(); // for Testing
-		boolean erfolgreich = commandsFile.read(geleseneCommandStrings); // for Testing
-		for (Iterator<String> iterator = geleseneCommandStrings.iterator(); iterator.hasNext();) { // for Testing
-			System.out.println((String) iterator.next()); // for Testing
-		} // for Testing
-		geleseneCommandStrings.clear(); // for Testing
+		textFile.read(geleseneCommandStrings); // for Testing
+
+		textFile.close();
+
+		System.out.println(geleseneCommandStrings);// for Testing
 
 		return erfolgreich;
 	}
 
+	/**
+	 * macht nichts bis jetzt
+	 * 
+	 * @param command
+	 */
 	public void commandPerformed(ICommand command) {
 
 	}
 
+	/**
+	 * Getter für controlProzess
+	 * 
+	 * @return
+	 */
 	public CommandList getControlProcess() {
 		return controlProzess;
 	}

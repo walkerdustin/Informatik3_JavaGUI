@@ -12,12 +12,6 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Vector;
 
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-
 import hsrt.mec.controldeveloper.io.IOType;
 
 // This has bin implemented according to the Turtorial at https://docs.oracle.com/javase/tutorial/essential/io/charstreams.html
@@ -99,5 +93,4 @@ public class TextFile implements IOType {
 		}
 		return succesfull;
 	}
-}			
-
+}
