@@ -18,7 +18,7 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.WiFi;
 
 /**
- * Klasse zum Entwickeln der Umgebung. Klasse enth�lt Main und verschiedene
+ * Klasse zum Entwickeln der Umgebung. Klasse enthaelt Main und verschiedene
  * Testmethoden
  * 
  *
@@ -29,7 +29,7 @@ public class ControlDeveloper {
 	// private CommandList cL;
 
 	/**
-	 * Methode zum bef�llen einer Liste mit zuf�lligen Commands
+	 * Methode zum befuellen einer Liste mit zufaelligen Commands
 	 */
 	public void testCommands() {
 		Random rand = new Random();
@@ -67,7 +67,7 @@ public class ControlDeveloper {
 	}
 
 	/**
-	 * (veraltete) Metode um Verkettete Liste und ihre Funktionalit�t zu testen
+	 * (veraltete) Metode um Verkettete Liste und ihre Funktionalitaet zu testen
 	 * EInzelne Befehle und deren Auswirkungen werden in der Console ausgegeben
 	 * 
 	 * @param cD - ControlDevelepor
@@ -125,7 +125,7 @@ public class ControlDeveloper {
 		datenStrings.add("test 4");
 
 		Vector<String> anderedatenStrings = new Vector<String>();
-		anderedatenStrings.add("Test am Ende anh�ngen");
+		anderedatenStrings.add("Test am Ende anhaengen");
 
 		textFile.write(datenStrings);
 		textFile.close();
@@ -159,7 +159,7 @@ public class ControlDeveloper {
 		System.out.println(datenStrings);
 
 		Vector<String> anderedatenStrings = new Vector<String>();
-		anderedatenStrings.add("�berschrieben? ");
+		anderedatenStrings.add("ueberschrieben? ");
 
 		textFile.write(datenStrings);
 		textFile.read(geleseneStrings);
@@ -177,7 +177,7 @@ public class ControlDeveloper {
 		geleseneStrings.clear();
 
 		System.out.println();
-		System.out.println("// �berschreiben: ");
+		System.out.println("// ueberschreiben: ");
 		textFile.write(anderedatenStrings);
 
 		textFile.read(geleseneStrings);
@@ -188,7 +188,7 @@ public class ControlDeveloper {
 	}
 
 	/**
-	 * Methode um Daten �ber die Console einzulesen und auszugeben
+	 * Methode um Daten Ueber die Console einzulesen und auszugeben
 	 */
 	public void testConsoleIO() {
 		Console console = new Console();
@@ -294,13 +294,11 @@ public class ControlDeveloper {
 
 		textFile.write(cL.ListToVector());
 		textFile.close();
-		
+
 		System.out.println();
 		System.out.println("CommandList controlProcess vor load():");
 		System.out.println(cM.getControlProcess().ListToVector());
-		
-		
-		
+
 		cM.load(loadFile);
 
 		cM.save(saveFile);
@@ -331,7 +329,7 @@ public class ControlDeveloper {
 ////////////////////////////////////////////////////////////////////
 
 ////////////////////////Test ControlModel///////////////////////////
-		cD.testControlModel();
+		// cD.testControlModel();
 ////////////////////////////////////////////////////////////////////
 
 //		CommandList cL = new CommandList();
