@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Vector;
 
+import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
+
 import datenInterface.Console;
 import hsrt.mec.controldeveloper.io.TextFile; // Chefs Implementation
 //import datenInterface.TextFile;  				//Dustins Implementation
@@ -191,7 +193,6 @@ public class ControlDeveloper {
 		cL.add(new Direction(7));
 		cL.printList();
 
-		// mit Dustins Implementierung von TextFile
 		File file = new File("TestCommandList2.txt");
 		System.out.println(file.getAbsolutePath());
 		TextFile textFile = new TextFile(file, false);
@@ -222,6 +223,48 @@ public class ControlDeveloper {
 	}
 
 	/**
+	 * Methode zum testen des ControlModel
+	 * 
+	 */
+	public void testControlModel() {
+		CommandList cL = new CommandList();
+		System.out.println(ControlDeveloper.name);
+
+		ControlModel cM = ControlModel.getInstance();
+
+		cL.add(new Direction(0));
+		cL.add(new Gear(1, 20));
+		cL.add(new Pause(2));
+		cL.add(new Direction(3));
+		cL.add(new Direction(4));
+		cL.add(new Gear(5, 5));
+		cL.add(new Direction(6));
+		cL.add(new Direction(7));
+		cL.printList();
+
+		File loadFile = new File("loadCommandList.txt");
+		System.out.println(loadFile.getAbsolutePath());
+		TextFile textFile = new TextFile(loadFile, false);
+
+		File saveFile = new File("savedCommandList.txt");
+		System.out.println(saveFile.getAbsolutePath());
+
+		textFile.write(cL.ListToVector());
+		textFile.close();
+		
+		System.out.println();
+		System.out.println("CommandList controlProcess vor load():");
+		System.out.println(cM.getControlProcess().ListToVector());
+		
+		
+		
+		cM.load(loadFile);
+
+		cM.save(saveFile);
+
+	}
+
+	/**
 	 * Main-Methode Dient zum Aufruf der einzelnen TestMethoden
 	 * 
 	 * @param args
@@ -237,7 +280,11 @@ public class ControlDeveloper {
 ////////////////////////////////////////////////////////////////////
 
 ////////////////////////Test WifiIO/////////////////////////////////
-		cD.testWifiIO();
+//		cD.testWifiIO();
+////////////////////////////////////////////////////////////////////
+
+////////////////////////Test ControlModel///////////////////////////
+		cD.testControlModel();
 ////////////////////////////////////////////////////////////////////
 
 //		CommandList cL = new CommandList();
