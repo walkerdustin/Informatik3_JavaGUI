@@ -18,7 +18,7 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.WiFi;
 
 /**
- * Klasse zum Entwickeln der Umgebung. Klasse enthält Main und verschiedene
+ * Klasse zum Entwickeln der Umgebung. Klasse enthï¿½lt Main und verschiedene
  * Testmethoden
  * 
  *
@@ -29,7 +29,7 @@ public class ControlDeveloper {
 	// private CommandList cL;
 
 	/**
-	 * Methode zum befüllen einer Liste mit zufälligen Commands
+	 * Methode zum befï¿½llen einer Liste mit zufï¿½lligen Commands
 	 */
 	public void testCommands() {
 		Random rand = new Random();
@@ -67,7 +67,7 @@ public class ControlDeveloper {
 	}
 
 	/**
-	 * (veraltete) Metode um Verkettete Liste und ihre Funktionalität zu testen
+	 * (veraltete) Metode um Verkettete Liste und ihre Funktionalitï¿½t zu testen
 	 * EInzelne Befehle und deren Auswirkungen werden in der Console ausgegeben
 	 * 
 	 * @param cD - ControlDevelepor
@@ -125,27 +125,70 @@ public class ControlDeveloper {
 		datenStrings.add("test 4");
 
 		Vector<String> anderedatenStrings = new Vector<String>();
-		anderedatenStrings.add("Test am Ende anhängen");
+		anderedatenStrings.add("Test am Ende anhï¿½ngen");
 
 		textFile.write(datenStrings);
-
+		textFile.close();
 		textFile.read(geleseneStrings);
+		textFile.close();
 		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {
 			System.out.println((String) iterator.next());
 		}
 		geleseneStrings.clear();
 
 		textFile.write(anderedatenStrings);
-
+		textFile.close();
 		textFile.read(geleseneStrings);
+		textFile.close();
 		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {
 			System.out.println((String) iterator.next());
 		}
+	}
+
+	public void testDustinsTextFile() {
+		File file = new File("Test.txt");
+		datenInterface.TextFile textFile = new datenInterface.TextFile(file, false);
+		Vector<String> geleseneStrings = new Vector<String>();
+		Vector<String> datenStrings = new Vector<String>();
+		datenStrings.add("test 1");
+		datenStrings.add("test 2");
+		datenStrings.add("test 3");
+		datenStrings.add("test 4");
+
+		System.out.println("zu schreibende Strings: ");
+		System.out.println(datenStrings);
+
+		Vector<String> anderedatenStrings = new Vector<String>();
+		anderedatenStrings.add("ï¿½berschrieben? ");
+
+		textFile.write(datenStrings);
+		textFile.read(geleseneStrings);
+		System.out.println();
+		System.out.println("gelesene Strings: ");
+		System.out.println(geleseneStrings);
+
+		System.out.println();
+		System.out.println("String: ");
+		System.out.println(datenStrings.toString());
+
+		System.out.println();
+		System.out.println("Hash: ");
+
+		geleseneStrings.clear();
+
+		System.out.println();
+		System.out.println("// ï¿½berschreiben: ");
+		textFile.write(anderedatenStrings);
+
+		textFile.read(geleseneStrings);
+		System.out.println();
+		System.out.println("gelesene Strings: ");
+		System.out.println(geleseneStrings);
 
 	}
 
 	/**
-	 * Methode um Daten über die Console einzulesen und auszugeben
+	 * Methode um Daten ï¿½ber die Console einzulesen und auszugeben
 	 */
 	public void testConsoleIO() {
 		Console console = new Console();
@@ -274,6 +317,10 @@ public class ControlDeveloper {
 ////////////////////////Test FileIO/////////////////////////////////
 //		cD.testFileIO();
 ////////////////////////////////////////////////////////////////////
+
+////////////////////////Test FileIO/////////////////////////////////
+		cD.testDustinsTextFile();
+////////////////////////////////////////////////////////////////////		
 
 ////////////////////////Test ConsoleIO//////////////////////////////
 //		cD.testConsoleIO();
