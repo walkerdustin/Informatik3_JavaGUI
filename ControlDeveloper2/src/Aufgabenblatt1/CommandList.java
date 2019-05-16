@@ -170,7 +170,7 @@ public class CommandList {
 	/**
 	 * Methode um komplette Liste zu löschen
 	 * 
-	 * @return
+	 * @return true
 	 */
 	public boolean clear() { // deleting all refrernces to the objects inside // garbage collector will
 								// handle the rest
@@ -330,11 +330,13 @@ public class CommandList {
 
 	/**
 	 * Methode die aus einem bestehenden String-Vektor eine Liste erstellt
+	 * überschreibt alle Werte / löscht die Liste 
 	 * 
 	 * @param vecString
 	 * @return Liste basierend auf String-Vektor
 	 */
 	public boolean VectorToList(Vector<String> vecString) {
+		this.clear();
 		for (int i = 0; i < vecString.size(); ++i) {
 			String[] tempString = vecString.get(i).split("#x#");
 			add(new CommandType().createInstance(tempString));
