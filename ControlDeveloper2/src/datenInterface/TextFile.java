@@ -28,37 +28,35 @@ public class TextFile implements IOType {
 	private PrintWriter outputStream = null;
 	private Mac sha512_HMAC = null;
 	private String key = "password123";
-	private byte [] byteKey = null;
-	
+	private byte[] byteKey = null;
+
 	private File file;
 	private boolean append;
 
 	public TextFile(File file, boolean append) {
 		this.file = file;
 		this.append = append;
-		
-		
-		
-		try{
-            byteKey = key.getBytes("UTF-8");
-            final String HMAC_SHA512 = "HmacSHA512";
-            sha512_HMAC = Mac.getInstance(HMAC_SHA512);      
-            SecretKeySpec keySpec = new SecretKeySpec(byteKey, HMAC_SHA512);
-            sha512_HMAC.init(keySpec);
-            
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-		
+
+		try {
+			byteKey = key.getBytes("UTF-8");
+			final String HMAC_SHA512 = "HmacSHA512";
+			sha512_HMAC = Mac.getInstance(HMAC_SHA512);
+			SecretKeySpec keySpec = new SecretKeySpec(byteKey, HMAC_SHA512);
+			sha512_HMAC.init(keySpec);
+
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidKeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	@Override
 	public boolean close() { // closes the input streams. This is done automatticaly in read() and write()
 		boolean succesfull = true;
@@ -123,36 +121,34 @@ public class TextFile implements IOType {
 		}
 		return succesfull;
 	}
-	
+
 	private String createHash(String datastring) {
 		String result = null;
-	
+
 		//////// https://stackoverflow.com/questions/39355241/compute-hmac-sha512-with-secret-key-in-java
-		try{
-            
-            byte [] mac_data = sha512_HMAC.
-             doFinal("My message".getBytes("UTF-8"));
-            //result = Base64.encode(mac_data);
-            result = bytesToHex(mac_data);
-            System.out.println(result);
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }finally{
-            System.out.println("Done");
-        }
+		try {
+
+			byte[] mac_data = sha512_HMAC.doFinal("My message".getBytes("UTF-8"));
+			// result = Base64.encode(mac_data);
+			result = bytesToHex(mac_data);
+			System.out.println(result);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			System.out.println("Done");
+		}
 		return result;
-    }
+	}
 
-    public static String bytesToHex(byte[] bytes) {
-        final  char[] hexArray = "0123456789ABCDEF".toCharArray();
-        char[] hexChars = new char[bytes.length * 2];
-        for ( int j = 0; j < bytes.length; j++ ) {
-            int v = bytes[j] & 0xFF;
-            hexChars[j * 2] = hexArray[v >>> 4];
-            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
-        }
-        return new String(hexChars);
-    }
-}			
-
+	public static String bytesToHex(byte[] bytes) {
+		final char[] hexArray = "0123456789ABCDEF".toCharArray();
+		char[] hexChars = new char[bytes.length * 2];
+		for (int j = 0; j < bytes.length; j++) {
+			int v = bytes[j] & 0xFF;
+			hexChars[j * 2] = hexArray[v >>> 4];
+			hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+		}
+		return new String(hexChars);
+	}
+}

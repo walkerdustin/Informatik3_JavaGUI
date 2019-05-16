@@ -104,19 +104,55 @@ public class ControlDeveloper {
 		anderedatenStrings.add("Test am Ende anhängen");
 
 		textFile.write(datenStrings);
-
+		textFile.close();
 		textFile.read(geleseneStrings);
+		textFile.close();
 		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {
 			System.out.println((String) iterator.next());
 		}
 		geleseneStrings.clear();
 
 		textFile.write(anderedatenStrings);
-
+		textFile.close();
 		textFile.read(geleseneStrings);
+		textFile.close();
 		for (Iterator<String> iterator = geleseneStrings.iterator(); iterator.hasNext();) {
 			System.out.println((String) iterator.next());
 		}
+	}
+
+	public void testDustinsTextFile() {
+		File file = new File("Test.txt");
+		datenInterface.TextFile textFile = new datenInterface.TextFile(file, false);
+		Vector<String> geleseneStrings = new Vector<String>();
+		Vector<String> datenStrings = new Vector<String>();
+		datenStrings.add("test 1");
+		datenStrings.add("test 2");
+		datenStrings.add("test 3");
+		datenStrings.add("test 4");
+		
+		System.out.println("zu schreibende Strings: ");
+		System.out.println(datenStrings);
+		
+		Vector<String> anderedatenStrings = new Vector<String>();
+		anderedatenStrings.add("Überschrieben? ");
+
+		textFile.write(datenStrings);
+		textFile.read(geleseneStrings);
+		System.out.println();
+		System.out.println("gelesene Strings: ");
+		System.out.println(geleseneStrings);
+		
+		geleseneStrings.clear();
+		
+		System.out.println();
+		System.out.println("// überschreiben: ");
+		textFile.write(anderedatenStrings);
+
+		textFile.read(geleseneStrings);
+		System.out.println();
+		System.out.println("gelesene Strings: ");
+		System.out.println(geleseneStrings);
 
 	}
 
@@ -197,12 +233,16 @@ public class ControlDeveloper {
 //		cD.testFileIO();
 ////////////////////////////////////////////////////////////////////
 
+////////////////////////Test FileIO/////////////////////////////////
+		cD.testDustinsTextFile();
+////////////////////////////////////////////////////////////////////		
+
 ////////////////////////Test ConsoleIO//////////////////////////////
 //		cD.testConsoleIO();
 ////////////////////////////////////////////////////////////////////
 
 ////////////////////////Test WifiIO/////////////////////////////////
-		cD.testWifiIO();
+//		cD.testWifiIO();
 ////////////////////////////////////////////////////////////////////
 
 //		CommandList cL = new CommandList();
