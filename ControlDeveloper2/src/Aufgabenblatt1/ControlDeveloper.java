@@ -281,6 +281,7 @@ public class ControlDeveloper {
 		cL.add(new Gear(5, 5));
 		cL.add(new Direction(6));
 		cL.add(new Direction(7));
+		cL.add(new Direction(66));
 		cL.printList();
 
 		File loadFile = new File("loadCommandList.txt");
