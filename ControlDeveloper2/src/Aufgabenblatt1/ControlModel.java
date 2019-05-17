@@ -5,14 +5,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
-import com.sun.corba.se.impl.orbutil.DenseIntMapImpl;
-import com.sun.org.apache.bcel.internal.generic.DADD;
-import com.sun.org.apache.bcel.internal.generic.ISTORE;
-
 import datenInterface.TextFile;
 //import hsrt.mec.controldeveloper.io.TextFile;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
-import jdk.nashorn.internal.codegen.MethodEmitter;
 
 /**
  * Klasse des ControlModels Enthält Mögliche Commands und eine Liste des

@@ -167,7 +167,7 @@ public class TextFile implements IOType {
 			byte[] mac_data = sha512_HMAC.doFinal(datastring.getBytes("UTF-8"));
 			// result = Base64.encode(mac_data);
 			result = bytesToHex(mac_data);
-			//System.out.println("Hash: " + result);
+			// System.out.println("Hash: " + result);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,7 +178,7 @@ public class TextFile implements IOType {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			//System.out.println("Done with hashing");
+			// System.out.println("Done with hashing");
 		}
 		return result;
 	}
