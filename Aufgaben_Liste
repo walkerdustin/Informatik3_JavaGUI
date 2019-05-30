@@ -1,0 +1,20 @@
+Aufgabenblatt 3
+
+Aufgaben:
+
+1. Diagrammablauf darstellen
+2. Befehlstypen darstellen
+3. Befehle konfigurierbar machen
+4. Buttons für Programmsteuerung
+5. Ausgabefenster für aktuelle Befehle
+   5.1   IComListener
+   5.2   class ComHandler
+6. Menue Bar
+7. Wifi verbindung
+
+
+
+
+Package für Gui erstellen
+
+Control developer zu control Tester
