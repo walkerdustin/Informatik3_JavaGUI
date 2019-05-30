@@ -21,7 +21,7 @@ import hsrt.mec.controldeveloper.io.WiFi;
  * 
  *
  */
-public class ControlDeveloper {
+public class ControlTestfunktion {
 	private static String name = "Control-Developer";
 	private Vector<ICommand> commands = new Vector<ICommand>();
 	// private CommandList cL;
@@ -71,7 +71,7 @@ public class ControlDeveloper {
 	 * @param cD - ControlDevelepor
 	 * @param cL - CommandList
 	 */
-	public void testList(ControlDeveloper cD, CommandList cL) {
+	public void testList(ControlTestfunktion cD, CommandList cL) {
 		for (int i = 0; i < 5; i++) {
 			cD.commands.add(new Direction(i));
 		}
@@ -222,7 +222,7 @@ public class ControlDeveloper {
 	public void testWifiIO() {
 		CommandList cL = new CommandList();
 		CommandList cLfromfile = new CommandList();
-		System.out.println(ControlDeveloper.name);
+		System.out.println(ControlTestfunktion.name);
 
 		cL.add(new Direction(0));
 		cL.add(new Gear(1, 20));
@@ -269,7 +269,7 @@ public class ControlDeveloper {
 	 */
 	public void testControlModel() {
 		CommandList cL = new CommandList();
-		System.out.println(ControlDeveloper.name);
+		System.out.println(ControlTestfunktion.name);
 
 		ControlModel cM = ControlModel.getInstance();
 
@@ -312,7 +312,7 @@ public class ControlDeveloper {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ControlDeveloper cD = new ControlDeveloper();
+		ControlTestfunktion cD = new ControlTestfunktion();
 ////////////////////////Test FileIO/////////////////////////////////
 //		cD.testFileIO();
 ////////////////////////////////////////////////////////////////////
