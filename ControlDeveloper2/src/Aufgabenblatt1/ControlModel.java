@@ -117,4 +117,11 @@ public class ControlModel {
 		return controlProzess;
 	}
 
+	public Vector<String> getCommandTypes() {
+		Vector<String> temp = new Vector<String>();
+		for (int i = 0; i < commandTypes.length; i++) {
+			temp.add(commandTypes[i].getName());
+		}
+		return temp;
+	}
 }

@@ -9,6 +9,6 @@ public class ControlDevelepor {
 	
 	public static void main(String[] args) {
 		JFrame cD = new ControlDeveleporView();
-		cD.setBackground(new Color(33, 33, 33));
+		
 	}
 }

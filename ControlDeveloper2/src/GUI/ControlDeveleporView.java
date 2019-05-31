@@ -2,15 +2,19 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
-public class ControlDeveleporView extends JFrame {
+import GUI.PanelTypesView;
+
+
+
+public class ControlDeveleporView extends JFrame implements iGui{
 	
 	public ControlDeveleporView() {
 		
@@ -18,7 +22,7 @@ public class ControlDeveleporView extends JFrame {
 		setLayout(new BorderLayout());
 		setVisible(true);
 		this.setSize(800,400);
-		this.getContentPane().setBackground(new Color(33, 33, 33));
+		//this.getContentPane().setBackground(new Color(33, 33, 33));
 		setTitle("Control-Develepor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -30,13 +34,16 @@ public class ControlDeveleporView extends JFrame {
 		mainPlain2.setLeftComponent(new JLabel("Mitte"));
 		mainPlain2.setRightComponent(new JLabel("Rechts"));
 		
-		mainPlain1.setLeftComponent(new JLabel("Links"));
+
+		
+		mainPlain1.setLeftComponent(PanelTypesView.getTypesView());
 		mainPlain1.setRightComponent(mainPlain2);
 		
 		
-		JSplitPane rootPlane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		rootPlane.setBottomComponent(new JLabel("Ausgabefenster"));
-		rootPlane.setTopComponent(mainPlain1);
+		
+		JSplitPane rootPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		rootPanel.setBottomComponent(new JLabel("Ausgabefenster"));
+		rootPanel.setTopComponent(mainPlain1);
 		
 		JToolBar toolBar = new JToolBar();
 		toolBar.add(new JButton("List"));
@@ -45,8 +52,16 @@ public class ControlDeveleporView extends JFrame {
 		
 		//ERgänzen der Einzelnen Planes
 		add(toolBar, BorderLayout.NORTH);
-		add(rootPlane, BorderLayout.CENTER);
+		add(rootPanel, BorderLayout.CENTER);
 		pack();
+		
+			
+		};
+	
+	@Override
+	public void updateView() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
