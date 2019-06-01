@@ -53,7 +53,7 @@ public class ControlDeveleporView extends JFrame implements iGui{
 		//ERgänzen der Einzelnen Planes
 		add(toolBar, BorderLayout.NORTH);
 		add(rootPanel, BorderLayout.CENTER);
-		pack();
+		//pack();
 		
 			
 		};
