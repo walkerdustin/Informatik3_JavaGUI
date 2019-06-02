@@ -1,10 +1,11 @@
-package GUI;
+package Controller;
 
 import java.awt.Color;
 
 import javax.swing.JFrame;
 
-import Aufgabenblatt1.ControlModel;
+import GUI.ControlDeveleporView;
+import Model.ControlModel;
 
 public class ControlDevelepor {
 	

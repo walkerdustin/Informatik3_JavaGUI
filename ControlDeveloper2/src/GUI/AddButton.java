@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import Controller.ControlDevelepor;
+
 public class AddButton extends JButton { //implements ActionListener{
 	private ControlDevelepor cD;
 	

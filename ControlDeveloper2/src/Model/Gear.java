@@ -1,4 +1,4 @@
-package Aufgabenblatt1;
+package Model;
 
 import hsrt.mec.controldeveloper.core.com.command.IGear;
 

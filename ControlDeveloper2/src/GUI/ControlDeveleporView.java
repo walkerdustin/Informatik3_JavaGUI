@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
+import Controller.ControlDevelepor;
 import GUI.PanelTypesView;
 
 

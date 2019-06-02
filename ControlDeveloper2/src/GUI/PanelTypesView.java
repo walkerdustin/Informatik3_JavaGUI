@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-import Aufgabenblatt1.ControlModel;
+import Controller.ControlDevelepor;
+import Model.ControlModel;
 
 public class PanelTypesView extends JPanel implements iGui{
 	private ControlDevelepor cD;

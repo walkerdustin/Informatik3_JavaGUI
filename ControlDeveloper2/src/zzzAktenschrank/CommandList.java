@@ -1,3 +1,4 @@
+package zzzAktenschrank;
 //
 ////Sicherheitskopie für Verkettete Liste mit bestehenden Klassen
 //

@@ -1,4 +1,4 @@
-package datenInterface;
+package zzzDatenInterface;
 
 // for file.txt communication
 import java.io.FileReader;

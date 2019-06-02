@@ -1,5 +1,5 @@
 
-package Aufgabenblatt1;
+package Model;
 
 import java.util.Vector;
 

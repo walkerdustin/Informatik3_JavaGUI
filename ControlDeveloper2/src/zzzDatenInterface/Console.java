@@ -1,4 +1,4 @@
-package datenInterface;
+package zzzDatenInterface;
 
 import java.io.BufferedReader;
 import java.io.IOException;

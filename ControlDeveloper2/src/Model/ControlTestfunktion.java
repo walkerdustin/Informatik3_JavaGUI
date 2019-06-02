@@ -1,4 +1,4 @@
-package Aufgabenblatt1;
+package Model;
 
 import java.io.File;
 
@@ -6,14 +6,12 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Vector;
 
-//import hsrt.mec.controldeveloper.io.TextFile; // Chefs Implementation
-import datenInterface.TextFile; //Dustins Implementation
-
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
 import hsrt.mec.controldeveloper.core.com.WiFiCardHandler;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.Console;
 import hsrt.mec.controldeveloper.io.WiFi;
+import zzzDatenInterface.TextFile;
 
 /**
  * Klasse zum Entwickeln der Umgebung. Klasse enthaelt Main und verschiedene
@@ -145,7 +143,7 @@ public class ControlTestfunktion {
 
 	public void testDustinsTextFile() {
 		File file = new File("Test.txt");
-		datenInterface.TextFile textFile = new datenInterface.TextFile(file, false);
+		zzzDatenInterface.TextFile textFile = new zzzDatenInterface.TextFile(file, false);
 		Vector<String> geleseneStrings = new Vector<String>();
 		Vector<String> datenStrings = new Vector<String>();
 		datenStrings.add("test 1");

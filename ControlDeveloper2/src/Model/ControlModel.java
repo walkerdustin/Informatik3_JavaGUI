@@ -1,13 +1,13 @@
-package Aufgabenblatt1;
+package Model;
 
 import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
-import datenInterface.TextFile;
 //import hsrt.mec.controldeveloper.io.TextFile;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
+import zzzDatenInterface.TextFile;
 
 /**
  * Klasse des ControlModels Enthält Mögliche Commands und eine Liste des
