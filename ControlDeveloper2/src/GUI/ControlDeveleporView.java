@@ -15,8 +15,13 @@ import GUI.PanelTypesView;
 
 
 public class ControlDeveleporView extends JFrame implements iGui{
-	
-	public ControlDeveleporView() {
+		private PanelTypesView pTV;
+		private ControlDevelepor cD;
+	public ControlDeveleporView(ControlDevelepor cD, String[] arrList) {
+		this.cD = cD;
+		pTV = PanelTypesView.getTypesView(cD, arrList);
+		
+		
 		
 		//Haupteinstellungen
 		setLayout(new BorderLayout());
@@ -36,7 +41,7 @@ public class ControlDeveleporView extends JFrame implements iGui{
 		
 
 		
-		mainPlain1.setLeftComponent(PanelTypesView.getTypesView());
+		mainPlain1.setLeftComponent(pTV);
 		mainPlain1.setRightComponent(mainPlain2);
 		
 		
@@ -61,6 +66,11 @@ public class ControlDeveleporView extends JFrame implements iGui{
 	@Override
 	public void updateView() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	public String getSelectedType() {
+		return pTV.getSelectedType();
 		
 	}
 	

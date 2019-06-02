@@ -25,6 +25,8 @@ public class GUIList extends JList implements iGui{
 	}
 	
 	
+	//public String
+	
 	
 	
 	

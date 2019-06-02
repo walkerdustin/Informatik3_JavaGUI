@@ -11,30 +11,46 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import Aufgabenblatt1.ControlModel;
+
 public class PanelTypesView extends JPanel implements iGui{
-	private static final PanelTypesView pTV = new PanelTypesView();
+	private ControlDevelepor cD;
+	private static PanelTypesView pTV = null;
 	private static GUIList TypesList = null;
 	
-	private  PanelTypesView() {
+	private static final String HEADLINE = "Types";
+	private String[] arrCommandTypes;
+	private AddButton bAdd;
+	
+	private  PanelTypesView(ControlDevelepor cD, String[] arrList) {
 
+		System.out.println("ConstruktorPanel");
+		this.cD = cD;
+		arrCommandTypes = arrList;
+		
 		setLayout(new BorderLayout());
-		add(new JLabel("Types", JLabel.CENTER), BorderLayout.NORTH);
+		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
 		setSize(200, 400);
 
 		
 		
-		System.out.println("PanelAngelegt");
-		System.out.println("ConstruktorPanel");
-		
-		
+		System.out.println("PanelAngelegt");		
 		testList();
+		
+		
+		
+		bAdd = new AddButton(cD);
+		add(bAdd, BorderLayout.SOUTH);
+		
 		
 	}
 	
 
 	
-	static public PanelTypesView getTypesView () {
-
+	static public PanelTypesView getTypesView (ControlDevelepor cD,String[] arrList) {
+		if (pTV == null) {
+			pTV = new PanelTypesView(cD,arrList);
+		}
 		
 		System.out.println("Panel übergeben");
 		return pTV;
@@ -43,9 +59,9 @@ public class PanelTypesView extends JPanel implements iGui{
 	
 	void testList()  {
 		
-		TypesList = new GUIList(new String[] {"Affe","Minischwein", "Faultier"});
+		TypesList = new GUIList(arrCommandTypes);
 		add(new JScrollPane(TypesList,  ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED), BorderLayout.CENTER);
-		TypesList.addElement("Ameisenbär");
+		//TypesList.addElement("Ameisenbär");
 		
 	}
 
@@ -53,7 +69,14 @@ public class PanelTypesView extends JPanel implements iGui{
 	@Override
 	public void updateView() {
 		// TODO Auto-generated method stub
+		TypesList.add("TestString");
+	}
+
+
+
+	public String getSelectedType() {
 		
+		return (String) TypesList.getSelectedValue();
 	}
 
 }
