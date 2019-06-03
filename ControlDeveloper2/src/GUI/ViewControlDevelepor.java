@@ -15,10 +15,10 @@ import GUI.PanelTypesView;
 
 
 
-public class ControlDeveleporView extends JFrame implements iGui{
+public class ViewControlDevelepor extends JFrame implements iGui{
 		private PanelTypesView pTV;
 		private ControlDevelepor cD;
-	public ControlDeveleporView(ControlDevelepor cD, String[] arrList) {
+	public ViewControlDevelepor(ControlDevelepor cD, String[] arrList) {
 		this.cD = cD;
 		pTV = PanelTypesView.getTypesView(cD, arrList);
 		
