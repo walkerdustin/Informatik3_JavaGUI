@@ -1,5 +1,7 @@
 package Model;
 
+import hsrt.mec.controldeveloper.core.com.command.ICommand;
+
 /**
  * 
  * Klasse der CommandTypes
@@ -7,8 +9,8 @@ package Model;
  */
 public class CommandType {
 	private String name;
-	private int tempInt;
-	private double duration;
+	private int tempInt = 0;
+	private double duration = 0;
 	// -------------------Frage--------------------------------
 	// Sollen wir hier evtl. folgendes Anlegen?
 	// private String[] arrContent;
@@ -93,6 +95,47 @@ public class CommandType {
 			System.err.println("Stored NameString is invalid");
 			return null;
 		}
+	}
+	
+	
+	/**
+	 * Statisch Methode die den ICommand in einen StringArray auflöst mit folgenden Werten
+	 * return[0] - CommandType
+	 * return[1] - Configfuration in PrintFOrmat
+	 * @param com
+	 * @return comArray 
+	 */
+	public static String[] showInstance(ICommand com) {
+		String[] tempArray = com.toString().split("#x#");
+		String[] comArray = new String[2];
+		comArray[0] = tempArray[0];
+		StringBuilder sB = new StringBuilder();
+		
+		switch (tempArray[0]) {
+		case "Direction":
+			sB.append(tempArray[1]);
+			sB.append(" Degree");
+			break;
+		case "Gear":
+			sB.append(tempArray[1]);
+			sB.append(" cm/sec     -     ");
+			sB.append(tempArray[2]);
+			sB.append("sec");
+			break;
+		case "Pause":
+			sB.append(tempArray[1]);
+			sB.append(" sec");
+			break;
+
+		default:
+			System.err.println("Stored NameString is invalid");
+			sB.append("ERROR");
+			break;
+		}
+
+		comArray[1] = sB.toString();
+		
+		return comArray;
 	}
 
 }
