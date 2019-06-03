@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import Controller.ControlDevelepor;
 import Controller.Updater;
 
-public class CommandsPanelView extends JPanel implements iUpdater {
+public class PanelCommandsView extends JPanel implements iUpdater {
 	private ControlDevelepor cD;
 	private static PanelTypesView pTV = null;
 	private static GUIList TypesList = null;
@@ -17,7 +17,7 @@ public class CommandsPanelView extends JPanel implements iUpdater {
 	private String[] arrCommandTypes;
 	private AddButton bAdd;
 
-	public CommandsPanelView(ControlDevelepor cD, String[] arrList) {
+	public PanelCommandsView(ControlDevelepor cD, String[] arrList) {
 
 		System.out.println("KonstruktorCommandsPanelView");
 
