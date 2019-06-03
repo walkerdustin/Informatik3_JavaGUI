@@ -20,7 +20,7 @@ import Model.ControlModel;
  * @author TheRealTripleM
  *
  */
-public class PanelTypesView extends JPanel {
+public class PanelTypesView extends JPanel implements iUpdater {
 	private ControlDevelepor cD;
 	private static PanelTypesView pTV = null;
 	private static ListGui TypesList = null;
@@ -83,12 +83,6 @@ public class PanelTypesView extends JPanel {
 
 	}
 
-	@Override
-//	public void updateView() {
-//		// TODO Auto-generated method stub
-//		TypesList.add("TestString");
-//
-//	}
 
 	/**
 	 * Metode um Ausgewaehltes Element aus der Liste zu bekommen
@@ -99,6 +93,12 @@ public class PanelTypesView extends JPanel {
 	public String getSelectedType() {
 
 		return (String) TypesList.getSelectedValue();
+	}
+
+	@Override
+	public void updateView() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
