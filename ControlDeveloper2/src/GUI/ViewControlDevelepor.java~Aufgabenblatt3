@@ -56,7 +56,7 @@ public class ViewControlDevelepor extends JFrame implements iGui{
 		toolBar.add(new JButton("Aktion"));
 		
 		
-		//ERgï¿½nzen der Einzelnen Planes
+		//ERgänzen der Einzelnen Planes
 		add(toolBar, BorderLayout.NORTH);
 		add(rootPanel, BorderLayout.CENTER);
 		//pack();
