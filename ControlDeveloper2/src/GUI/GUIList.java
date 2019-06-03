@@ -3,38 +3,51 @@ package GUI;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
-public class GUIList extends JList implements iGui{
+/**
+ * KLasse um eine Liste mit DefaultListenModel zu erzeugen implements iGUI
+ * 
+ * @author TheRealTripleM
+ *
+ */
+public class GUIList extends JList implements iGui {
 	private DefaultListModel lM;
-	
+
+	/**
+	 * Konstrukter um leere Liste zuerstellen
+	 */
 	public GUIList() {
 		lM = new DefaultListModel();
 		setModel(lM);
 	}
+
+	/**
+	 * Konstruktor um Liste auf Basis eines Stringelements zu erstellen
+	 * 
+	 * @param arrContent
+	 */
 	public GUIList(String[] arrContent) {
 		lM = new DefaultListModel();
-		for (int i = 0; i< arrContent.length; i++) {
+		for (int i = 0; i < arrContent.length; i++) {
 			lM.addElement(arrContent[i]);
 		}
 		setModel(lM);
-		
+
 	}
-	
-	
-	public void addElement (String str) {
+
+	/**
+	 * addElement - Testzwecke
+	 * 
+	 * @param str
+	 */
+	public void addElement(String str) {
 		lM.addElement(str);
 	}
-	
-	
-	//public String
-	
-	
-	
-	
-	
-	
+
+	// public String
+
 	public void updateView() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
