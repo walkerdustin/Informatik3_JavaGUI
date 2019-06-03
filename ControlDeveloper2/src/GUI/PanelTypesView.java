@@ -13,14 +13,13 @@ import javax.swing.ScrollPaneConstants;
 import Controller.ControlDevelepor;
 import Model.ControlModel;
 
-public class PanelTypesView extends JPanel {
 /**
  * Klasse zum Erstellen des Panels TypesView - SINGELTON
  * 
  * @author TheRealTripleM
  *
  */
-public class PanelTypesView extends JPanel  {
+public class PanelTypesView extends JPanel {
 	private ControlDevelepor cD;
 	private static PanelTypesView pTV = null;
 	private static GUIList TypesList = null;

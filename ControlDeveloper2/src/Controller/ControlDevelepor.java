@@ -19,13 +19,13 @@ public class ControlDevelepor {
 	private ControlModel cM;
 
 	// Views
-	private ControlDeveleporView vCD;
+	private ViewControlDevelepor vCD;
 
 	public ControlDevelepor() {
 		cM = ControlModel.getInstance();
 	};
 
-	private void setControlDeveleporView(ControlDeveleporView vCD) {
+	private void setControlDeveleporView(ViewControlDevelepor vCD) {
 		this.vCD = vCD;
 	}
 
@@ -34,7 +34,7 @@ public class ControlDevelepor {
 		String[] arrCommands;
 		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
 
-		cD.setControlDeveleporView(new ControlDeveleporView(cD, arrCommands));
+		cD.setControlDeveleporView(new ViewControlDevelepor(cD, arrCommands));
 
 	}
 
