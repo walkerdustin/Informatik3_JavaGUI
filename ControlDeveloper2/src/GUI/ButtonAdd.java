@@ -15,7 +15,7 @@ import Controller.ControlDevelepor;
  * @author TheRealTripleM
  *
  */
-public class AddButton extends JButton { // implements ActionListener{
+public class ButtonAdd extends JButton { // implements ActionListener{
 	private ControlDevelepor cD;
 
 	private class AddButtonController implements ActionListener {
@@ -31,7 +31,7 @@ public class AddButton extends JButton { // implements ActionListener{
 		}
 	}
 
-	public AddButton(ControlDevelepor cD) {
+	public ButtonAdd(ControlDevelepor cD) {
 		this.cD = cD;
 		setText("ADD");
 

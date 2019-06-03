@@ -9,13 +9,13 @@ import javax.swing.JList;
  * @author TheRealTripleM
  *
  */
-public class GUIList extends JList implements iGui {
+public class ListGui extends JList implements iGui {
 	private DefaultListModel lM;
 
 	/**
 	 * Konstrukter um leere Liste zuerstellen
 	 */
-	public GUIList() {
+	public ListGui() {
 		lM = new DefaultListModel();
 		setModel(lM);
 	}
@@ -25,7 +25,7 @@ public class GUIList extends JList implements iGui {
 	 * 
 	 * @param arrContent
 	 */
-	public GUIList(String[] arrContent) {
+	public ListGui(String[] arrContent) {
 		lM = new DefaultListModel();
 		for (int i = 0; i < arrContent.length; i++) {
 			lM.addElement(arrContent[i]);

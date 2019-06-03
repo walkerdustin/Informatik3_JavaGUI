@@ -22,11 +22,11 @@ import Model.ControlModel;
 public class PanelTypesView extends JPanel {
 	private ControlDevelepor cD;
 	private static PanelTypesView pTV = null;
-	private static GUIList TypesList = null;
+	private static ListGui TypesList = null;
 
 	private static final String HEADLINE = "Types";
 	private String[] arrCommandTypes;
-	private AddButton bAdd;
+	private ButtonAdd bAdd;
 
 	/**
 	 * Konstruktor, erstellt Grunddarstellung
@@ -47,7 +47,7 @@ public class PanelTypesView extends JPanel {
 		System.out.println("PanelAngelegt");
 		testList();
 
-		bAdd = new AddButton(cD);
+		bAdd = new ButtonAdd(cD);
 		add(bAdd, BorderLayout.SOUTH);
 
 	}
@@ -74,7 +74,7 @@ public class PanelTypesView extends JPanel {
 	 */
 	void testList() {
 
-		TypesList = new GUIList(arrCommandTypes);
+		TypesList = new ListGui(arrCommandTypes);
 		add(new JScrollPane(TypesList, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED), BorderLayout.CENTER);
 
