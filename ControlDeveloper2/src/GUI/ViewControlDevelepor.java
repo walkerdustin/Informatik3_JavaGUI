@@ -11,68 +11,61 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 
 import Controller.ControlDevelepor;
+import Controller.Updater;
 import GUI.PanelTypesView;
 
+public class ViewControlDevelepor extends JFrame implements iUpdater {
+	private PanelTypesView pTV;
+	private ControlDevelepor cD;
 
-
-public class ViewControlDevelepor extends JFrame implements iGui{
-		private PanelTypesView pTV;
-		private ControlDevelepor cD;
 	public ViewControlDevelepor(ControlDevelepor cD, String[] arrList) {
+		Updater.add(this); // registrieren beim Observer
+
 		this.cD = cD;
 		pTV = PanelTypesView.getTypesView(cD, arrList);
-		
-		
-		
-		//Haupteinstellungen
+
+		// Haupteinstellungen
 		setLayout(new BorderLayout());
 		setVisible(true);
-		this.setSize(800,400);
-		//this.getContentPane().setBackground(new Color(33, 33, 33));
+		this.setSize(800, 400);
+		// this.getContentPane().setBackground(new Color(33, 33, 33));
 		setTitle("Control-Develepor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-		//Fensteraufteilung
+
+		// Fensteraufteilung
 
 		JSplitPane mainPlain1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		JSplitPane mainPlain2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		mainPlain2.setLeftComponent(new JLabel("Mitte"));
 		mainPlain2.setRightComponent(new JLabel("Rechts"));
-		
 
-		
 		mainPlain1.setLeftComponent(pTV);
 		mainPlain1.setRightComponent(mainPlain2);
-		
-		
-		
+
 		JSplitPane rootPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		rootPanel.setBottomComponent(new JLabel("Ausgabefenster"));
 		rootPanel.setTopComponent(mainPlain1);
-		
+
 		JToolBar toolBar = new JToolBar();
 		toolBar.add(new JButton("List"));
 		toolBar.add(new JButton("Aktion"));
-		
-		
-		//ERgänzen der Einzelnen Planes
+
+		// ERgänzen der Einzelnen Planes
 		add(toolBar, BorderLayout.NORTH);
 		add(rootPanel, BorderLayout.CENTER);
-		//pack();
-		
-			
-		};
-	
+		// pack();
+
+	};
+
 	@Override
 	public void updateView() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getSelectedType() {
 		return pTV.getSelectedType();
-		
+
 	}
-	
+
 }

@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import Controller.ControlDevelepor;
+import Controller.Updater;
 import Model.ControlModel;
 
 /**
@@ -35,6 +36,8 @@ public class PanelTypesView extends JPanel {
 	 * @param arrList - Stringarray zur Listeerstellung
 	 */
 	private PanelTypesView(ControlDevelepor cD, String[] arrList) {
+
+	//	Updater.add(this); // registrieren beim Observer
 
 		System.out.println("ConstruktorPanel");
 		this.cD = cD;

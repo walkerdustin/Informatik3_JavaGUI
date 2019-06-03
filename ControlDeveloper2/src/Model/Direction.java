@@ -53,8 +53,8 @@ public class Direction extends Command implements IDirection {
 	}
 
 	/**
-	 * Methode um aus einem Command ein String mit allen Benötigten
-	 * Inhalten zu erstellen
+	 * Methode um aus einem Command ein String mit allen Benötigten Inhalten zu
+	 * erstellen
 	 * 
 	 * @return String - Name des Commands und Lenkwinkel
 	 */

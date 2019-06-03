@@ -281,7 +281,8 @@ public class ControlTestfunktion {
 		cL.add(new Direction(7));
 		cL.add(new Direction(66));
 		cL.add(new Direction(66));
-		cL.add(new Direction(99));;
+		cL.add(new Direction(99));
+		;
 		cL.printList();
 
 		File loadFile = new File("loadCommandList.txt");

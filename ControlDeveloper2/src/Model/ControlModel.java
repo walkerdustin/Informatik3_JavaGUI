@@ -124,6 +124,5 @@ public class ControlModel {
 		}
 		return temp;
 	}
-	
-	
+
 }

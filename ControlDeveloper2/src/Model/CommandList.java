@@ -330,7 +330,7 @@ public class CommandList {
 
 	/**
 	 * Methode die aus einem bestehenden String-Vektor eine Liste erstellt
-	 * überschreibt alle Werte / löscht die Liste 
+	 * überschreibt alle Werte / löscht die Liste
 	 * 
 	 * @param vecString
 	 * @return Liste basierend auf String-Vektor
