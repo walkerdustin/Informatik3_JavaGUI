@@ -9,7 +9,7 @@ import javax.swing.JList;
  * @author TheRealTripleM
  *
  */
-public class ListGui extends JList implements iGui {
+public class ListGui extends JList {
 	private DefaultListModel lM;
 
 	/**
@@ -41,13 +41,6 @@ public class ListGui extends JList implements iGui {
 	 */
 	public void addElement(String str) {
 		lM.addElement(str);
-	}
-
-	// public String
-
-	public void updateView() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

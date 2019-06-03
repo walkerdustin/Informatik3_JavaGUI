@@ -37,7 +37,7 @@ public class PanelTypesView extends JPanel {
 	 */
 	private PanelTypesView(ControlDevelepor cD, String[] arrList) {
 
-	//	Updater.add(this); // registrieren beim Observer
+		// Updater.add(this); // registrieren beim Observer
 
 		System.out.println("ConstruktorPanel");
 		this.cD = cD;
@@ -67,7 +67,7 @@ public class PanelTypesView extends JPanel {
 			pTV = new PanelTypesView(cD, arrList);
 		}
 
-		System.out.println("Panel �bergeben");
+		System.out.println("Panel uebergeben");
 		return pTV;
 
 	}
@@ -84,14 +84,14 @@ public class PanelTypesView extends JPanel {
 	}
 
 	@Override
-	public void updateView() {
-		// TODO Auto-generated method stub
-		TypesList.add("TestString");
-
-	}
+//	public void updateView() {
+//		// TODO Auto-generated method stub
+//		TypesList.add("TestString");
+//
+//	}
 
 	/**
-	 * Metode um Ausgew�hltes Element aus der Liste zu bekommen
+	 * Metode um Ausgewaehltes Element aus der Liste zu bekommen
 	 * 
 	 * 
 	 * @return
