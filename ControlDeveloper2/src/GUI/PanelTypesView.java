@@ -39,14 +39,14 @@ public class PanelTypesView extends JPanel implements iUpdater {
 
 		// Updater.add(this); // registrieren beim Observer
 
-		System.out.println("ConstruktorPanel");
+		System.out.println("ConstruktorPanelTypesView");
 		this.cD = cD;
 		arrCommandTypes = arrList;
 
 		setLayout(new BorderLayout());
 		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
-		setSize(200, 400);
-
+		setSize(200, 400);    	//JAVA DOC sagt: This method changes layout-related information, and therefore,invalidates the component hierarchy.
+								// die größe dieses Component sollte vom übergeordeten Panel geregelt werden...
 		System.out.println("PanelAngelegt");
 		testList();
 

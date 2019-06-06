@@ -20,12 +20,17 @@ import GUI.PanelTypesView;
 
 public class ViewControlDevelepor extends JFrame implements iUpdater {
 	private static Vector<iUpdater> internUpdateList = new Vector<iUpdater>();
-	private PanelTypesView pTV;
 	private ControlDevelepor cD;
+	
+	/////////////////////////////////Panels: \\\\\\\\\\\\\\\\\
+	private PanelTypesView pTV;
+	private PanelAttributionsView pAV = PanelAttributionsView.getInstance();
 	
 	TableCommandsModel mTM = new TableCommandsModel(cD);
 	TableCommandsView jT = new TableCommandsView(mTM);
 	
+	
+	//----------------------------------------------------------
 	
 
 	public ViewControlDevelepor(ControlDevelepor cD, String[] arrList) {
@@ -33,7 +38,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 		this.cD = cD;
 		pTV = PanelTypesView.getTypesView(cD, arrList);
-
+		
 
 		// Haupteinstellungen
 		setLayout(new BorderLayout());
@@ -47,7 +52,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 		JSplitPane mainPlain1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		JSplitPane mainPlain2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		mainPlain2.setRightComponent(new JLabel("Rechts"));
+		mainPlain2.setRightComponent(pAV);
 		mainPlain2.setLeftComponent(new JScrollPane(jT));
 
 		mainPlain1.setLeftComponent(pTV);
@@ -56,14 +61,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		internUpdateList.add(jT);
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
+
 
 		JSplitPane rootPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		rootPanel.setBottomComponent(new JLabel("Ausgabefenster"));

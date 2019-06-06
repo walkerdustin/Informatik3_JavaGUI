@@ -11,11 +11,10 @@ import Controller.Updater;
 public class PanelCommandsView extends JPanel implements iUpdater {
 	private ControlDevelepor cD;
 	private static PanelTypesView pTV = null;
-	private static GUIList TypesList = null;
 
 	private static final String HEADLINE = "Types";
 	private String[] arrCommandTypes;
-	private AddButton bAdd;
+	
 
 	public PanelCommandsView(ControlDevelepor cD, String[] arrList) {
 
@@ -26,14 +25,7 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 		this.cD = cD;
 		arrCommandTypes = arrList;
 
-		setLayout(new BorderLayout());
-		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
-		setSize(200, 400);
-
-		System.out.println("PanelAngelegt");
-
-		bAdd = new AddButton(cD);
-		add(bAdd, BorderLayout.SOUTH);
+	
 
 	}
 
