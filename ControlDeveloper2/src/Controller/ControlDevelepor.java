@@ -9,6 +9,7 @@ import Model.CommandType;
 import Model.ControlModel;
 import Model.Direction;
 import Model.Gear;
+import sun.security.jca.GetInstance;
 
 /**
  * Hauptcontroller - Koordiniert hoffentlich alle Models und Views
@@ -17,7 +18,8 @@ import Model.Gear;
  *
  */
 public class ControlDevelepor {
-
+	
+	private static ControlDevelepor INSTANCE = new ControlDevelepor();
 	// Models
 	private ControlModel cM;
 	
@@ -25,16 +27,20 @@ public class ControlDevelepor {
 	// Views
 	private ViewControlDevelepor vCD;
 
-	public ControlDevelepor() {
+	private ControlDevelepor() {
 		cM = ControlModel.getInstance();
 	};
+	
+	public static ControlDevelepor getInstance() {
+		return INSTANCE;
+	}
 
 	private void setControlDeveleporView(ViewControlDevelepor vCD) {
 		this.vCD = vCD;
 	}
 	
 	public static void main(String[] args) {
-		ControlDevelepor cD = new ControlDevelepor();
+		ControlDevelepor cD = getInstance();
 
 		String[] arrCommands;
 		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
