@@ -125,4 +125,41 @@ public class ControlModel {
 		return temp;
 	}
 
+	public class ControlProzessManager {
+		public ICommand get(int pos) {
+			return controlProzess.get(pos);
+
+		}
+
+		public boolean add(ICommand c) {
+			return controlProzess.add(c);
+
+		}
+
+		public boolean add(ICommand c, int pos) {
+			return controlProzess.add(c, pos);
+
+		}
+
+		public boolean remove(int pos) {
+			return controlProzess.remove(pos);
+
+		}
+
+		public boolean clear() {
+			return controlProzess.clear();
+
+		}
+
+		public boolean moveUp(int pos) {
+			return controlProzess.moveUp(pos);
+
+		}
+
+		public boolean moveDown(int pos) {
+			return controlProzess.moveDown(pos);
+
+		}
+	}
+
 }
