@@ -19,6 +19,7 @@ import GUI.iUpdater;
  */
 
 public class Updater {
+//	static Updater  instance = null;
 	private static Vector<iUpdater> updateList = new Vector<iUpdater>();
 	// private static Updater instance = new Updater();
 
@@ -26,6 +27,9 @@ public class Updater {
 	}
 
 //	public static Updater getInstance() {
+//		if (instance == null) {
+//			instance = new Updater();
+//		}
 //		return instance;
 //	}
 

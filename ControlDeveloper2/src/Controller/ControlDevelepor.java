@@ -1,11 +1,14 @@
 package Controller;
 
-import java.awt.Color;
+
 
 import javax.swing.JFrame;
 
 import GUI.ViewControlDevelepor;
+import Model.CommandType;
 import Model.ControlModel;
+import Model.Direction;
+import Model.Gear;
 
 /**
  * Hauptcontroller - Koordiniert hoffentlich alle Models und Views
@@ -17,6 +20,7 @@ public class ControlDevelepor {
 
 	// Models
 	private ControlModel cM;
+	
 
 	// Views
 	private ViewControlDevelepor vCD;
@@ -28,13 +32,18 @@ public class ControlDevelepor {
 	private void setControlDeveleporView(ViewControlDevelepor vCD) {
 		this.vCD = vCD;
 	}
-
+	
 	public static void main(String[] args) {
 		ControlDevelepor cD = new ControlDevelepor();
+
 		String[] arrCommands;
 		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
-
-		cD.setControlDeveleporView(new ViewControlDevelepor(cD, arrCommands));
+		ViewControlDevelepor vCD = new ViewControlDevelepor(cD, arrCommands);
+		
+		cD.setControlDeveleporView(vCD);
+		
+		Gear test = new Gear(30, 5.0);
+		System.out.println(CommandType.showInstance(test)[1]);
 
 	}
 
@@ -43,6 +52,8 @@ public class ControlDevelepor {
 	 * Hinzuf�gen eines neuen (leeren) Commands
 	 */
 	public void addType() {
-		System.out.println(vCD.getSelectedType());
+		String strCommand = vCD.getSelectedType();
+		System.out.println("Folgender Command wird angelegt: "+strCommand);
+		Updater.updateAll();
 	}
 }

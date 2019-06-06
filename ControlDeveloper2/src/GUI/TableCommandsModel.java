@@ -6,6 +6,8 @@ import Controller.ControlDevelepor;
 import Model.Command;
 import Model.CommandList;
 import Model.CommandType;
+import Model.Direction;
+import Model.Gear;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 public class TableCommandsModel extends AbstractTableModel {
@@ -18,9 +20,20 @@ public class TableCommandsModel extends AbstractTableModel {
 	public TableCommandsModel(ControlDevelepor cD) {
 		this.cD = cD;
 		listCommands = new CommandList();
+		listCommands.add(new Direction(30));
+		listCommands.add(new Gear(5, 5.0));
+		listCommands.add(new Direction(30));
+		listCommands.add(new Gear(5, 5.0));
+		listCommands.add(new Direction(30));
+		listCommands.add(new Gear(5, 5.0));
 	}
 	
-	
+	public void addCommand(String strCommand) {
+		listCommands.add(new CommandType(strCommand).createInstance());
+		System.out.println(strCommand+" - Kommand wurde angelegt!");
+		fireTableDataChanged();
+		
+	}
 	
 	
 	

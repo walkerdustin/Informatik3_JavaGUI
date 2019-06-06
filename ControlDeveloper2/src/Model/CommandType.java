@@ -120,7 +120,7 @@ public class CommandType {
 			sB.append(tempArray[1]);
 			sB.append(" cm/sec     -     ");
 			sB.append(tempArray[2]);
-			sB.append("sec");
+			sB.append(" sec");
 			break;
 		case "Pause":
 			sB.append(tempArray[1]);

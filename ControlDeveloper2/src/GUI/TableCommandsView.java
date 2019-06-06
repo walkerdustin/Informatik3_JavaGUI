@@ -2,7 +2,19 @@ package GUI;
 
 import javax.swing.JTable;
 
-public class TableCommandsView extends JTable implements iUpdater{
-	
+import Controller.Updater;
 
+public class TableCommandsView extends JTable implements iUpdater {
+
+	public TableCommandsView(TableCommandsModel mTM) {
+		Updater.add(this);
+		setModel(mTM);
+	}
+
+	@Override
+	public void updateView() {
+		System.out.println("Repaint");
+		this.repaint();
+
+	}
 }
