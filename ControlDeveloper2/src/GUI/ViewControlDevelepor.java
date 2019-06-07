@@ -40,6 +40,9 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		pTV = PanelTypesView.getTypesView(cD, arrList);
 		
 
+		internUpdateList.add(jT);
+		jT.setModel(mTM);
+
 		// Haupteinstellungen
 		setLayout(new BorderLayout());
 		setVisible(true);
@@ -58,7 +61,6 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		mainPlain1.setLeftComponent(pTV);
 		mainPlain1.setRightComponent(mainPlain2);
 		
-		internUpdateList.add(jT);
 		
 		
 
@@ -99,4 +101,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	}
 
+	public void addCommand(String strCommand) {
+		mTM.addCommand(strCommand);
+	}
 }

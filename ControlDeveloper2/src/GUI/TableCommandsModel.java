@@ -3,12 +3,10 @@ package GUI;
 import javax.swing.table.AbstractTableModel;
 
 import Controller.ControlDevelepor;
-import Model.Command;
 import Model.CommandList;
 import Model.CommandType;
 import Model.Direction;
 import Model.Gear;
-import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 public class TableCommandsModel extends AbstractTableModel {
 	private ControlDevelepor cD;
@@ -30,9 +28,14 @@ public class TableCommandsModel extends AbstractTableModel {
 	
 	public void addCommand(String strCommand) {
 		listCommands.add(new CommandType(strCommand).createInstance());
-		System.out.println(strCommand+" - Kommand wurde angelegt!");
-		fireTableDataChanged();
 		
+		listCommands.printList();
+		
+		
+		System.out.println(strCommand+" - Command wurde angelegt!");
+	
+		//fireTableRowsInserted(listCommands.getSize(), listCommands.getSize());
+		fireTableDataChanged();
 	}
 	
 	

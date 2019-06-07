@@ -13,8 +13,6 @@ public class TableCommandsView extends JTable implements iUpdater {
 
 	@Override
 	public void updateView() {
-		System.out.println("Repaint");
-		this.repaint();
 
 	}
 }

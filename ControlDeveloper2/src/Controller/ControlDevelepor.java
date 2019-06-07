@@ -48,8 +48,6 @@ public class ControlDevelepor {
 		
 		cD.setControlDeveleporView(vCD);
 		
-		Gear test = new Gear(30, 5.0);
-		System.out.println(CommandType.showInstance(test)[1]);
 
 	}
 
@@ -60,6 +58,7 @@ public class ControlDevelepor {
 	public void addType() {
 		String strCommand = vCD.getSelectedType();
 		System.out.println("Folgender Command wird angelegt: "+strCommand);
+		vCD.addCommand(strCommand);
 		Updater.updateAll();
 	}
 }
