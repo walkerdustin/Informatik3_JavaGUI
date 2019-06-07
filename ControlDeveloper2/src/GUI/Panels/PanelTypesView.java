@@ -1,6 +1,7 @@
 package GUI.Panels;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
@@ -13,8 +14,8 @@ import javax.swing.ScrollPaneConstants;
 import Controller.ControlDevelepor;
 import Controller.Updater;
 import GUI.iUpdater;
-import GUI.Bedienelemente.ListGui;
 import GUI.Bedienelemente.Button.ButtonAdd;
+import GUI.Bedienelemente.List.ListGui;
 import Model.ControlModel;
 
 /**
@@ -53,8 +54,10 @@ public class PanelTypesView extends JPanel implements iUpdater {
 		System.out.println("PanelAngelegt");
 		testList();
 
-		bAdd = new ButtonAdd(cD);
-		add(bAdd, BorderLayout.SOUTH);
+		
+		JPanel ButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		ButtonPanel.add(new ButtonAdd(cD));
+		add(ButtonPanel, BorderLayout.SOUTH);
 
 	}
 
@@ -98,6 +101,12 @@ public class PanelTypesView extends JPanel implements iUpdater {
 		return (String) TypesList.getSelectedValue();
 	}
 
+	
+	
+	
+	
+	
+	
 	@Override
 	public void updateView() {
 		// TODO Auto-generated method stub

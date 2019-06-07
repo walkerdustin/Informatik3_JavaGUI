@@ -22,26 +22,19 @@ import GUI.Panels.PanelTypesView;
 
 public class ViewControlDevelepor extends JFrame implements iUpdater {
 	private ControlDevelepor cD;
-	
-	/////////////////////////////////Panels: \\\\\\\\\\\\\\\\\
+
+	///////////////////////////////// Panels: \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	private PanelTypesView pTV;
 	private PanelAttributionsView pAV = PanelAttributionsView.getInstance();
 	private PanelCommandsView pCV = PanelCommandsView.getInstance();
-	
 
-	
-	
-	//----------------------------------------------------------
-	
+	// ----------------------------------------------------------
 
 	public ViewControlDevelepor(ControlDevelepor cD, String[] arrList) {
 		Updater.add(this); // registrieren beim Observer
 
 		this.cD = cD;
 		pTV = PanelTypesView.getTypesView(cD, arrList);
-		
-
-		
 
 		// Haupteinstellungen
 		setLayout(new BorderLayout());
@@ -60,10 +53,6 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 		mainPlain1.setLeftComponent(pTV);
 		mainPlain1.setRightComponent(mainPlain2);
-		
-		
-		
-
 
 		JSplitPane rootPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		rootPanel.setBottomComponent(new JLabel("Ausgabefenster"));
@@ -77,15 +66,6 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		add(toolBar, BorderLayout.NORTH);
 		add(rootPanel, BorderLayout.CENTER);
 		// pack();
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 	};
 
@@ -95,12 +75,58 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	}
 
+	// ********************************* Types Befehle ***************************
 	public String getSelectedType() {
 		return pTV.getSelectedType();
 
 	}
 
+	// ********************************** Table Befehle ****************************
+
 	public void addCommand(String strCommand) {
 		pCV.addCommand(strCommand);
 	}
+
+	public String getCommandTypeAt(int selectedRow) {
+		return pCV.getCommandTypeAt(selectedRow);
+
+	}
+	
+	public int getSelectedCommandRow() {
+		return pCV.getSelectedCOmmandRow();
+	}
+	
+	public void removeCommand(int row) {
+		pCV.removeCommand(row);
+		
+	}
+
+	public void upCommand(int row) {
+		pCV.upCommand(row);
+		
+	}
+
+	public void downCommand(int row) {
+		pCV.downCommand(row);
+		
+	}
+	// *********************************** Attributes Befehle *******************
+	public void openDirectionPanel() {
+		// TODO Auto-generated method stub
+		System.out.println("Direction wird geöffnet");
+	}
+
+	public void openGearPanel() {
+		// TODO Auto-generated method stub
+		System.out.println("Gear wird geöffnet");
+
+	}
+
+	public void openPausePanel() {
+		// TODO Auto-generated method stub
+		System.out.println("Pause wird geöffnet");
+
+	}
+
+	
 }

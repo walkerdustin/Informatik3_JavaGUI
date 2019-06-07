@@ -24,6 +24,10 @@ public class TableCommandsModel extends AbstractTableModel {
 		listCommands.add(new Gear(5, 5.0));
 		listCommands.add(new Direction(30));
 		listCommands.add(new Gear(5, 5.0));
+		
+		
+
+		
 	}
 	
 	public void addCommand(String strCommand) {
@@ -37,6 +41,25 @@ public class TableCommandsModel extends AbstractTableModel {
 		//fireTableRowsInserted(listCommands.getSize(), listCommands.getSize());
 		fireTableDataChanged();
 	}
+	
+	public void removeCommand(int row) {
+		listCommands.remove(row);
+		fireTableDataChanged();
+		
+	}
+
+	public void upCommand(int row) {
+		listCommands.moveUp(row);
+		fireTableDataChanged();
+		
+	}
+
+	public void downCommand(int row) {
+		listCommands.moveDown(row);
+		fireTableDataChanged();
+		
+	}
+
 	
 	
 	
@@ -56,6 +79,11 @@ public class TableCommandsModel extends AbstractTableModel {
 		// TODO Auto-generated method stub
 		return listCommands.getSize();
 	}
+	
+	@Override
+	public String getColumnName(int column) {
+		return arrCOLUMNNAMES[column];
+	}
 
 	@Override
 	public Object getValueAt(int row, int col) {
@@ -72,5 +100,7 @@ public class TableCommandsModel extends AbstractTableModel {
 		}
 		return o;
 	}
+
+
 
 }
