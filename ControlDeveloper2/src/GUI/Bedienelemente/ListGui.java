@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Bedienelemente;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;

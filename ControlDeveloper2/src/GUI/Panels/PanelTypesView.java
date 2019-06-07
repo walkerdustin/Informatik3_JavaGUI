@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Panels;
 
 import java.awt.BorderLayout;
 import java.util.Vector;
@@ -12,6 +12,9 @@ import javax.swing.ScrollPaneConstants;
 
 import Controller.ControlDevelepor;
 import Controller.Updater;
+import GUI.iUpdater;
+import GUI.Bedienelemente.ListGui;
+import GUI.Bedienelemente.Button.ButtonAdd;
 import Model.ControlModel;
 
 /**

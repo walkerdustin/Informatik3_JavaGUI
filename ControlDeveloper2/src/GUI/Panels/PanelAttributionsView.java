@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Panels;
 
 import java.awt.BorderLayout;
 import java.awt.ComponentOrientation;
@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import GUI.iUpdater;
 
 public class PanelAttributionsView extends JPanel implements iUpdater {
 

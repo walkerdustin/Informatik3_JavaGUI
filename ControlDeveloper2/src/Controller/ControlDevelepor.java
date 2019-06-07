@@ -9,7 +9,6 @@ import Model.CommandType;
 import Model.ControlModel;
 import Model.Direction;
 import Model.Gear;
-import sun.security.jca.GetInstance;
 
 /**
  * Hauptcontroller - Koordiniert hoffentlich alle Models und Views
@@ -61,4 +60,5 @@ public class ControlDevelepor {
 		vCD.addCommand(strCommand);
 		Updater.updateAll();
 	}
+	
 }

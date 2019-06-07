@@ -16,18 +16,19 @@ import javax.swing.JToolBar;
 
 import Controller.ControlDevelepor;
 import Controller.Updater;
-import GUI.PanelTypesView;
+import GUI.Panels.PanelAttributionsView;
+import GUI.Panels.PanelCommandsView;
+import GUI.Panels.PanelTypesView;
 
 public class ViewControlDevelepor extends JFrame implements iUpdater {
-	private static Vector<iUpdater> internUpdateList = new Vector<iUpdater>();
 	private ControlDevelepor cD;
 	
 	/////////////////////////////////Panels: \\\\\\\\\\\\\\\\\
 	private PanelTypesView pTV;
 	private PanelAttributionsView pAV = PanelAttributionsView.getInstance();
+	private PanelCommandsView pCV = PanelCommandsView.getInstance();
 	
-	TableCommandsModel mTM = new TableCommandsModel(cD);
-	TableCommandsView jT = new TableCommandsView(mTM);
+
 	
 	
 	//----------------------------------------------------------
@@ -40,8 +41,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		pTV = PanelTypesView.getTypesView(cD, arrList);
 		
 
-		internUpdateList.add(jT);
-		jT.setModel(mTM);
+		
 
 		// Haupteinstellungen
 		setLayout(new BorderLayout());
@@ -56,7 +56,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		JSplitPane mainPlain1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		JSplitPane mainPlain2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		mainPlain2.setRightComponent(pAV);
-		mainPlain2.setLeftComponent(new JScrollPane(jT));
+		mainPlain2.setLeftComponent(pCV);
 
 		mainPlain1.setLeftComponent(pTV);
 		mainPlain1.setRightComponent(mainPlain2);
@@ -92,7 +92,6 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 	@Override
 	public void updateView() {
 		// TODO Auto-generated method stub
-		jT.repaint();
 
 	}
 
@@ -102,6 +101,6 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 	}
 
 	public void addCommand(String strCommand) {
-		mTM.addCommand(strCommand);
+		pCV.addCommand(strCommand);
 	}
 }

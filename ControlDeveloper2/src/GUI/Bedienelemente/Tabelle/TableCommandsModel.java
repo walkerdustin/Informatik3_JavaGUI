@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Bedienelemente.Tabelle;
 
 import javax.swing.table.AbstractTableModel;
 

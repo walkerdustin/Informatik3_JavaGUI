@@ -1,6 +1,8 @@
-package GUI;
+package GUI.Panels;
 
 import javax.swing.JPanel;
+
+import GUI.iUpdater;
 
 public class PanelAusgabefensterView extends JPanel implements iUpdater {
 	
