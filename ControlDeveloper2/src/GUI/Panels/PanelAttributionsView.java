@@ -133,26 +133,26 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 
 	@Override
 	public void updateView() {
-		int selectedRow = cD.getSelectedRow();
-		String selection = ControlModel.getInstance().controlProzessManager.get(selectedRow).getName(); // get Command
-																										// Type of
-																										// Selected Row
-
-		switch (selection) {
-		case "Direction":
-
-			break;
-		case "Gear":
-
-			break;
-		case "Pause":
-
-			break;
-
-		default:
-			System.err.println("Stored NameString is invalid");
-			break;
-		}
+//		int selectedRow = cD.getSelectedRow();
+//		String selection = ControlModel.getInstance().controlProzessManager.get(selectedRow).getName(); // get Command
+//																										// Type of
+//																										// Selected Row
+//
+//		switch (selection) {
+//		case "Direction":
+//
+//			break;
+//		case "Gear":
+//
+//			break;
+//		case "Pause":
+//
+//			break;
+//
+//		default:
+//			System.err.println("Stored NameString is invalid");
+//			break;
+//		}
 	}
 
 }
