@@ -56,7 +56,7 @@ public class ControlDevelepor {
 		vCD.addCommand(strCommand);
 		Updater.updateAll();
 	}
-	
+
 	public void removeCommand() {
 		vCD.removeCommand(vCD.getSelectedCommandRow());
 
@@ -72,11 +72,11 @@ public class ControlDevelepor {
 
 	}
 
-	
 	public void stop() {
 		System.out.println("Stop");
 
 	}
+
 	public void start() {
 		System.out.println("Start");
 		vCD.testList();

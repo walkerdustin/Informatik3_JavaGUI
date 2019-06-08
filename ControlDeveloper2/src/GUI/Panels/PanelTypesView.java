@@ -49,12 +49,12 @@ public class PanelTypesView extends JPanel implements iUpdater {
 
 		setLayout(new BorderLayout());
 		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
-		setSize(200, 400);    	//JAVA DOC sagt: This method changes layout-related information, and therefore,invalidates the component hierarchy.
-								// die größe dieses Component sollte vom übergeordeten Panel geregelt werden...
+		setSize(200, 400); // JAVA DOC sagt: This method changes layout-related information, and
+							// therefore,invalidates the component hierarchy.
+							// die größe dieses Component sollte vom übergeordeten Panel geregelt werden...
 		System.out.println("PanelAngelegt");
 		testList();
 
-		
 		JPanel ButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		ButtonPanel.add(new ButtonAdd(cD));
 		add(ButtonPanel, BorderLayout.SOUTH);
@@ -89,7 +89,6 @@ public class PanelTypesView extends JPanel implements iUpdater {
 
 	}
 
-
 	/**
 	 * Metode um Ausgewaehltes Element aus der Liste zu bekommen
 	 * 
@@ -101,16 +100,10 @@ public class PanelTypesView extends JPanel implements iUpdater {
 		return (String) TypesList.getSelectedValue();
 	}
 
-	
-	
-	
-	
-	
-	
 	@Override
 	public void updateView() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

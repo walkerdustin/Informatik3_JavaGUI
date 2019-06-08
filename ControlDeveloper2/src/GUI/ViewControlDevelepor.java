@@ -91,25 +91,26 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		return pCV.getCommandTypeAt(selectedRow);
 
 	}
-	
+
 	public int getSelectedCommandRow() {
 		return pCV.getSelectedCOmmandRow();
 	}
-	
+
 	public void removeCommand(int row) {
 		pCV.removeCommand(row);
-		
+
 	}
 
 	public void upCommand(int row) {
 		pCV.upCommand(row);
-		
+
 	}
 
 	public void downCommand(int row) {
 		pCV.downCommand(row);
-		
+
 	}
+
 	// *********************************** Attributes Befehle *******************
 	public void openDirectionPanel() {
 		// TODO Auto-generated method stub
@@ -130,8 +131,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	public void testList() {
 		pCV.testList();
-		
+
 	}
 
-	
 }

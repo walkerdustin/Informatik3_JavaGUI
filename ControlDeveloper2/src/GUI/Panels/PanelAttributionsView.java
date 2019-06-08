@@ -26,13 +26,13 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	///////////////////////////////////////// Textfields
 	JTextField textAttribute1 = new JTextField();
 	JTextField textAttribute2 = new JTextField();
-	Dimension textfieldSize = new Dimension(200,8);
+	Dimension textfieldSize = new Dimension(200, 8);
 	// -------------------------------------------------
 
 	///////////////////////////////////////// Labels
 	JLabel labelAttribute1 = new JLabel("Attribut 1");
 	JLabel labelAttribute2 = new JLabel("Attribut 2");
-	Dimension labelSize = new Dimension(150,8);
+	Dimension labelSize = new Dimension(150, 8);
 	// ---------------------------------------
 
 	/////////////////// Singleton
@@ -59,12 +59,12 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		buttonPanel.add(bSave);
 		// -----------------------------------------------
-		
+
 //		textAttribute1.setPreferredSize(textfieldSize);
 //		textAttribute2.setPreferredSize(textfieldSize);
 //		labelAttribute1.setPreferredSize(labelSize);
 //		labelAttribute2.setPreferredSize(labelSize);
-		
+
 		///////////////////////////////////////// Layout
 		setLayout(new BorderLayout());
 		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
@@ -75,9 +75,9 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		AttributesGrid.add(textAttribute1);
 		AttributesGrid.add(labelAttribute2);
 		AttributesGrid.add(textAttribute2);
-		//AttributesGrid.setPreferredSize(new Dimension(200, 250));
+		// AttributesGrid.setPreferredSize(new Dimension(200, 250));
 		JPanel AttributesGridPanel = new JPanel(new BoxLayout(AttributesGrid, BoxLayout.LINE_AXIS));
-		
+
 		add(AttributesGrid, BorderLayout.CENTER);
 		// -------------------------------------------
 	}

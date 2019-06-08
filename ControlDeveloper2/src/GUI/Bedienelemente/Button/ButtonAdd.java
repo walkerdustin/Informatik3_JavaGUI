@@ -21,6 +21,7 @@ public class ButtonAdd extends JButton { // implements ActionListener{
 
 	private class AddButtonController implements ActionListener {
 		private ControlDevelepor cD;
+
 		public AddButtonController(ControlDevelepor cD) {
 			this.cD = cD;
 		}

@@ -8,7 +8,7 @@ import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
 
-public class ButtonRemove extends JButton{
+public class ButtonRemove extends JButton {
 	public ButtonRemove() {
 		addActionListener(new ActionListener() {
 			@Override
@@ -18,6 +18,6 @@ public class ButtonRemove extends JButton{
 			}
 		});
 		setText("REMOVE");
-		
+
 	}
 }

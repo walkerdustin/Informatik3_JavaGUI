@@ -14,24 +14,22 @@ public class TableCommandsView extends JTable implements iUpdater {
 		Updater.add(this);
 		setModel(mTM);
 		getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-			
+
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				System.out.println(getSelectedRow());
-				if(!e.getValueIsAdjusting()) {
+				if (!e.getValueIsAdjusting()) {
 					System.out.println("CommandChanged");
-					if(getSelectedRow()>=0) {
+					if (getSelectedRow() >= 0) {
 						ControlDevelepor.getInstance().CommandSelectionChanged(getSelectedRow());
-					}
-					else {
+					} else {
 						System.out.println("Noting selected");
 					}
 				}
-				
+
 			}
 		});
-		
-		
+
 	}
 
 	@Override

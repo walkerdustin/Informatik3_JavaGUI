@@ -8,7 +8,7 @@ import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
 
-public class ButtonDown extends JButton{
+public class ButtonDown extends JButton {
 	public ButtonDown() {
 		addActionListener(new ActionListener() {
 			@Override

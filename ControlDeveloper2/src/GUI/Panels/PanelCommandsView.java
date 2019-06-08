@@ -90,6 +90,6 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 
 	public void testList() {
 		mTM.test();
-		
+
 	}
 }
