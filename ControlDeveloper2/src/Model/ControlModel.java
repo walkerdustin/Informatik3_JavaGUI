@@ -17,7 +17,7 @@ import zzzDatenInterface.TextFile;
  */
 public class ControlModel {
 	private static ControlModel instance = new ControlModel();
-	private CommandType[] commandTypes = new CommandType[4];
+	private CommandType[] commandTypes = new CommandType[3];
 	private CommandList controlProzess = new CommandList();
 
 	/**
@@ -28,7 +28,6 @@ public class ControlModel {
 		commandTypes[0] = new CommandType("Direction");
 		commandTypes[1] = new CommandType("Gear");
 		commandTypes[2] = new CommandType("Pause");
-		commandTypes[3] = new CommandType("Command");
 	}
 
 	/**
