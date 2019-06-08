@@ -113,18 +113,15 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	// *********************************** Attributes Befehle *******************
 	public void openDirectionPanel() {
-		// TODO Auto-generated method stub
 		System.out.println("Direction wird geöffnet");
 	}
 
 	public void openGearPanel() {
-		// TODO Auto-generated method stub
 		System.out.println("Gear wird geöffnet");
 
 	}
 
 	public void openPausePanel() {
-		// TODO Auto-generated method stub
 		System.out.println("Pause wird geöffnet");
 
 	}

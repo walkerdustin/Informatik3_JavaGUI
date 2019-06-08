@@ -73,11 +73,13 @@ public class ControlDevelepor {
 	}
 
 	public void stop() {
+		// TODO CommandsPanel StopButton FUnktion implementieren
 		System.out.println("Stop");
 
 	}
 
 	public void start() {
+		// TODO CommandsPanel StartButton FUnktion implementiren
 		System.out.println("Start");
 		vCD.testList();
 
