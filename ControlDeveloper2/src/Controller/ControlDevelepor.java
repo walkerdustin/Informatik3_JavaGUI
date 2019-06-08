@@ -36,12 +36,11 @@ public class ControlDevelepor {
 	}
 
 	public static void main(String[] args) {
+		
+		System.out.println("Programm gestartet");
+		
 		ControlDevelepor cD = getInstance();
-
-		String[] arrCommands;
-		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
-		ViewControlDevelepor vCD = new ViewControlDevelepor(cD, arrCommands);
-
+		ViewControlDevelepor vCD = ViewControlDevelepor.getInstance();
 		cD.setControlDeveleporView(vCD);
 
 	}

@@ -19,22 +19,31 @@ import Controller.Updater;
 import GUI.Panels.PanelAttributionsView;
 import GUI.Panels.PanelCommandsView;
 import GUI.Panels.PanelTypesView;
+import Model.ControlModel;
+
 
 public class ViewControlDevelepor extends JFrame implements iUpdater {
 	private ControlDevelepor cD;
-
+	private static final ViewControlDevelepor INSTANCE = new ViewControlDevelepor();
+	String[] arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
+	
 	///////////////////////////////// Panels: \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	private PanelTypesView pTV;
 	private PanelAttributionsView pAV = PanelAttributionsView.getInstance();
 	private PanelCommandsView pCV = PanelCommandsView.getInstance();
 
 	// ----------------------------------------------------------
-
-	public ViewControlDevelepor(ControlDevelepor cD, String[] arrList) {
+	
+	public static ViewControlDevelepor getInstance() {
+		return INSTANCE;
+	}
+	
+	private ViewControlDevelepor() {
 		Updater.add(this); // registrieren beim Observer
+		
 
-		this.cD = cD;
-		pTV = PanelTypesView.getTypesView(cD, arrList);
+		this.cD = ControlDevelepor.getInstance();
+		pTV = PanelTypesView.getTypesView(cD, arrCommands);
 
 		// Haupteinstellungen
 		setLayout(new BorderLayout());
