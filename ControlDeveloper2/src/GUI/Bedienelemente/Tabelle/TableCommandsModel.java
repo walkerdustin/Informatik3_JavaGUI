@@ -43,18 +43,27 @@ public class TableCommandsModel extends AbstractTableModel {
 	}
 	
 	public void removeCommand(int row) {
+		listCommands.printList();
+		System.out.println("DesiredPosition" + row);
+		System.out.println("List:" + listCommands.getSize());
+		System.out.println("DesiredPosition" + row);
 		listCommands.remove(row);
 		fireTableDataChanged();
 		
 	}
 
 	public void upCommand(int row) {
+		listCommands.printList();
+		System.out.println("DesiredPosition" + row);
+		System.out.println("List:" + listCommands.getSize());
 		listCommands.moveUp(row);
+		listCommands.printList();
 		fireTableDataChanged();
 		
 	}
 
 	public void downCommand(int row) {
+		System.out.println("DesiredPosition" + row);
 		listCommands.moveDown(row);
 		fireTableDataChanged();
 		
@@ -70,13 +79,11 @@ public class TableCommandsModel extends AbstractTableModel {
 	
 	@Override
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
 		return 3;
 	}
 
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
 		return listCommands.getSize();
 	}
 	
@@ -100,7 +107,10 @@ public class TableCommandsModel extends AbstractTableModel {
 		}
 		return o;
 	}
-
-
+	
+	public void test() {
+		listCommands.remove(5);
+		listCommands.remove(4);
+	}
 
 }

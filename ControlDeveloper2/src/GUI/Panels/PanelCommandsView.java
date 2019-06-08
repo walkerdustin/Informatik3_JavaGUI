@@ -87,4 +87,9 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 		mTM.downCommand(row);
 
 	}
+
+	public void testList() {
+		mTM.test();
+		
+	}
 }

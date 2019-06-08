@@ -146,7 +146,9 @@ public class CommandList {
 						}
 					} else if (runner == getTreeTop()) {
 						//
+						System.out.println("DeleteTreeTop");
 						runner.getPrev().setNext(null);
+						setTreeTop(runner.getPrev());
 						--size;
 						return true;
 					} else {
@@ -215,6 +217,7 @@ public class CommandList {
 	 * @return
 	 */
 	public boolean moveUp(int pos) {
+		System.out.println("DesiredMoveUp at POsition" + pos);
 		if (pos < size && pos > 0) {
 			Element runner = getRoot().getNext();
 			for (int i = 1; i < size; ++i) {

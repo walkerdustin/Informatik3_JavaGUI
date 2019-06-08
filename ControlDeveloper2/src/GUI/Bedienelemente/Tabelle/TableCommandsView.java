@@ -20,7 +20,12 @@ public class TableCommandsView extends JTable implements iUpdater {
 				System.out.println(getSelectedRow());
 				if(!e.getValueIsAdjusting()) {
 					System.out.println("CommandChanged");
-					ControlDevelepor.getInstance().CommandSelectionChanged(getSelectedRow());
+					if(getSelectedRow()>=0) {
+						ControlDevelepor.getInstance().CommandSelectionChanged(getSelectedRow());
+					}
+					else {
+						System.out.println("Noting selected");
+					}
 				}
 				
 			}

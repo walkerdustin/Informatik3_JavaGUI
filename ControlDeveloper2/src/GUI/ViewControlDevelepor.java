@@ -128,5 +128,10 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	}
 
+	public void testList() {
+		pCV.testList();
+		
+	}
+
 	
 }

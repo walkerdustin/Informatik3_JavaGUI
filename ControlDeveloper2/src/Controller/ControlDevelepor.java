@@ -79,6 +79,7 @@ public class ControlDevelepor {
 	}
 	public void start() {
 		System.out.println("Start");
+		vCD.testList();
 
 	}
 
