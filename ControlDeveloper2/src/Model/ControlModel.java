@@ -19,11 +19,13 @@ public class ControlModel {
 	private static ControlModel instance = new ControlModel();
 	private CommandType[] commandTypes = new CommandType[3];
 	private CommandList controlProzess = new CommandList();
+	public ControlProzessManager controlProzessManager;
 
 	/**
 	 * Konstruktor der CommandType Array mit den Möglichen CommandTypes befüllt
 	 */
 	private ControlModel() {
+		controlProzessManager = new ControlProzessManager();
 		controlProzess = new CommandList();
 		commandTypes[0] = new CommandType("Direction");
 		commandTypes[1] = new CommandType("Gear");
@@ -125,6 +127,11 @@ public class ControlModel {
 	}
 
 	public class ControlProzessManager {
+
+		private ControlProzessManager() {
+
+		}
+
 		public ICommand get(int pos) {
 			return controlProzess.get(pos);
 

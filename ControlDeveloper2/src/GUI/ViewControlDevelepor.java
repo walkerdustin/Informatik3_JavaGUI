@@ -21,26 +21,24 @@ import GUI.Panels.PanelCommandsView;
 import GUI.Panels.PanelTypesView;
 import Model.ControlModel;
 
-
 public class ViewControlDevelepor extends JFrame implements iUpdater {
 	private ControlDevelepor cD;
 	private static final ViewControlDevelepor INSTANCE = new ViewControlDevelepor();
 	String[] arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
-	
+
 	///////////////////////////////// Panels: \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	private PanelTypesView pTV;
 	private PanelAttributionsView pAV = PanelAttributionsView.getInstance();
 	private PanelCommandsView pCV = PanelCommandsView.getInstance();
 
 	// ----------------------------------------------------------
-	
+
 	public static ViewControlDevelepor getInstance() {
 		return INSTANCE;
 	}
-	
+
 	private ViewControlDevelepor() {
 		Updater.add(this); // registrieren beim Observer
-		
 
 		this.cD = ControlDevelepor.getInstance();
 		pTV = PanelTypesView.getTypesView(cD, arrCommands);
@@ -121,19 +119,20 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 	}
 
 	// *********************************** Attributes Befehle *******************
-	public void openDirectionPanel() {
-		System.out.println("Direction wird geöffnet");
-	}
-
-	public void openGearPanel() {
-		System.out.println("Gear wird geöffnet");
-
-	}
-
-	public void openPausePanel() {
-		System.out.println("Pause wird geöffnet");
-
-	}
+//	public void openDirectionPanel() {
+//		System.out.println("Direction wird geöffnet");
+//	}
+//
+//	public void openGearPanel() {
+//		System.out.println("Gear wird geöffnet");
+//
+//	}
+//
+//	public void openPausePanel() {
+//		System.out.println("Pause wird geöffnet");
+//
+//	}
+	// ***************************************************************************
 
 	public void testList() {
 		pCV.testList();

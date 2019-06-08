@@ -1,6 +1,7 @@
 package GUI.Panels;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -15,13 +16,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Controller.ControlDevelepor;
+import Controller.Updater;
 import GUI.iUpdater;
+import Model.ControlModel;
 
 public class PanelAttributionsView extends JPanel implements iUpdater {
+	ControlDevelepor cD;
 
+	/////////// Constants
 	private static final String HEADLINE = "Attributes";
 
+	private static final String DIRECTINONPANEL = "DIRECTINONPANEL";
+	private static final String GEARPANEL = "GEARPANEL";
+	private static final String PAUSEPANEL = "PAUSEPANEL";
+	/////////////////////////////////
+
+	/////////////////////////////////////////// Visual stuff
 	private JButton bSave = new JButton("Save");
+	private JPanel cards = new JPanel(new CardLayout(40, 30));
+	////////////////////////////////////////////
 
 	///////////////////////////////////////// Textfields
 	JTextField textAttribute1 = new JTextField();
@@ -35,6 +49,15 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	Dimension labelSize = new Dimension(150, 8);
 	// ---------------------------------------
 
+	//////////////////////////////////////// inner Class Button Controller
+	private class SaveButtonControler implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("Save Button gedrückt");
+		}
+	}
+	////////////////////////////////////////////////
+
 	/////////////////// Singleton
 	private static PanelAttributionsView instanceAttributionsView = new PanelAttributionsView();
 
@@ -43,15 +66,11 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	}
 	// ---------------------------
 
-	private class SaveButtonControler implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Save Button gedrückt");
-		}
-	}
-
 	private PanelAttributionsView() {
+
 		System.out.println("ConstruktorPanelAttributionsView");
+		Updater.add(this);
+		this.cD = ControlDevelepor.getInstance();
 
 		///////////////////////////////////////// Button
 		bSave.setPreferredSize(new Dimension(120, 30));
@@ -70,23 +89,70 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
 		add(buttonPanel, BorderLayout.SOUTH);
 
-		JPanel AttributesGrid = new JPanel(new GridLayout(2, 2));
-		AttributesGrid.add(labelAttribute1);
-		AttributesGrid.add(textAttribute1);
-		AttributesGrid.add(labelAttribute2);
-		AttributesGrid.add(textAttribute2);
-		// AttributesGrid.setPreferredSize(new Dimension(200, 250));
-		JPanel AttributesGridPanel = new JPanel(new BoxLayout(AttributesGrid, BoxLayout.LINE_AXIS));
+		////////////////////////////////////////////////////////// CARDS for CardLayout
+		//////////////////////////////////////// DirectionCard
+		JPanel DirectionCard = new JPanel(new GridLayout(1, 2));
+		DirectionCard.add(labelAttribute1);
+		DirectionCard.add(textAttribute1);
 
-		add(AttributesGrid, BorderLayout.CENTER);
+		add(DirectionCard, BorderLayout.CENTER);
+		////////////////////////////////////////
+		//////////////////////////////////////// GearCard
+		JPanel GearCard = new JPanel(new GridLayout(2, 2));
+		GearCard.add(labelAttribute1);
+		GearCard.add(textAttribute1);
+		GearCard.add(labelAttribute2);
+		GearCard.add(textAttribute2);
+
+		////////////////////////////////////////
+		//////////////////////////////////////// PauseCard
+		JPanel PauseCard = new JPanel(new GridLayout(1, 2));
+		PauseCard.add(labelAttribute1);
+		PauseCard.add(textAttribute1);
+
+		////////////////////////////////////////
+		///////////////////////////////////////////////////////////
+
+		// adding all Cards
+		cards.add(DirectionCard, DIRECTINONPANEL);
+		cards.add(GearCard, GEARPANEL);
+		cards.add(PauseCard, PAUSEPANEL);
+		///////////////
+
+//		JPanel AttributesGrid = new JPanel(new GridLayout(2, 2));
+//		AttributesGrid.add(labelAttribute1);
+//		AttributesGrid.add(textAttribute1);
+//		AttributesGrid.add(labelAttribute2);
+//		AttributesGrid.add(textAttribute2);
+//		// AttributesGrid.setPreferredSize(new Dimension(200, 250));
+//		JPanel AttributesGridPanel = new JPanel(new BoxLayout(AttributesGrid, BoxLayout.LINE_AXIS));
+//
+//		add(AttributesGrid, BorderLayout.CENTER);
 		// -------------------------------------------
 	}
 
 	@Override
 	public void updateView() {
-		System.out.println("PanelAttributesView updated");
-		labelAttribute1.setText(""); // TODO
-		labelAttribute1.setText(""); // TODO
+		int selectedRow = cD.getSelectedRow();
+		String selection = ControlModel.getInstance().controlProzessManager.get(selectedRow).getName(); // get Command
+																										// Type of
+																										// Selected Row
+
+		switch (selection) {
+		case "Direction":
+
+			break;
+		case "Gear":
+
+			break;
+		case "Pause":
+
+			break;
+
+		default:
+			System.err.println("Stored NameString is invalid");
+			break;
+		}
 	}
 
 }

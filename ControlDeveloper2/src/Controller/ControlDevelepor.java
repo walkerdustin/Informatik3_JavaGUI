@@ -23,6 +23,9 @@ public class ControlDevelepor {
 	// Views
 	private ViewControlDevelepor vCD;
 
+	// State Variables
+	private int commandRowSelected = 0;
+
 	private ControlDevelepor() {
 		cM = ControlModel.getInstance();
 	};
@@ -36,9 +39,9 @@ public class ControlDevelepor {
 	}
 
 	public static void main(String[] args) {
-		
+
 		System.out.println("Programm gestartet");
-		
+
 		ControlDevelepor cD = getInstance();
 		ViewControlDevelepor vCD = ViewControlDevelepor.getInstance();
 		cD.setControlDeveleporView(vCD);
@@ -88,22 +91,30 @@ public class ControlDevelepor {
 		String selection = vCD.getCommandTypeAt(selectedRow);
 		System.out.println("CommandSelection changed to : \"" + selection + "\"");
 
-		switch (selection) {
-		case "Direction":
-			vCD.openDirectionPanel();
-			break;
-		case "Gear":
-			vCD.openGearPanel();
-			break;
-		case "Pause":
-			vCD.openPausePanel();
-			break;
+		this.commandRowSelected = selectedRow;
+		Updater.updateAll();
 
-		default:
-			System.err.println("Stored NameString is invalid");
-			break;
-		}
+//
+//		switch (selection) {
+//		case "Direction":
+//			vCD.openDirectionPanel();
+//			break;
+//		case "Gear":
+//			vCD.openGearPanel();
+//			break;
+//		case "Pause":
+//			vCD.openPausePanel();
+//			break;
+//
+//		default:
+//			System.err.println("Stored NameString is invalid");
+//			break;
+//		}
 
+	}
+
+	public int getSelectedRow() {
+		return commandRowSelected;
 	}
 
 }

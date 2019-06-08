@@ -29,7 +29,6 @@ public class TableCommandsView extends JTable implements iUpdater {
 
 			}
 		});
-
 	}
 
 	@Override
