@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -30,11 +31,12 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	private static final String DIRECTINONPANEL = "DIRECTINONPANEL";
 	private static final String GEARPANEL = "GEARPANEL";
 	private static final String PAUSEPANEL = "PAUSEPANEL";
+	private static final String NOTHINGPANEL = "NOTHINGPANEL";
 	/////////////////////////////////
 
 	/////////////////////////////////////////// Visual stuff
 	private JButton bSave = new JButton("Save");
-	private JPanel cards = new JPanel(new CardLayout(40, 30));
+	private JPanel cards;
 	////////////////////////////////////////////
 
 	///////////////////////////////////////// Textfields
@@ -59,10 +61,13 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	////////////////////////////////////////////////
 
 	/////////////////// Singleton
-	private static PanelAttributionsView instanceAttributionsView = new PanelAttributionsView();
+	private static PanelAttributionsView instance;
 
 	public static PanelAttributionsView getInstance() {
-		return instanceAttributionsView;
+		if (PanelAttributionsView.instance == null) {
+			PanelAttributionsView.instance = new PanelAttributionsView();
+		}
+		return PanelAttributionsView.instance;
 	}
 	// ---------------------------
 
@@ -85,6 +90,12 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 //		labelAttribute2.setPreferredSize(labelSize);
 
 		///////////////////////////////////////// Layout
+		cards = new JPanel();
+		CardLayout layout = new CardLayout();
+		layout.setHgap(10);
+		layout.setVgap(10);
+		cards.setLayout(layout);
+
 		setLayout(new BorderLayout());
 		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
 		add(buttonPanel, BorderLayout.SOUTH);
@@ -111,13 +122,20 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		PauseCard.add(textAttribute1);
 
 		////////////////////////////////////////
+		//////////////////////////////////////// NothingCard
+		JPanel NothingCard = new JPanel();
+
+		////////////////////////////////////////
 		///////////////////////////////////////////////////////////
 
 		// adding all Cards
-		cards.add(DirectionCard, DIRECTINONPANEL);
-		cards.add(GearCard, GEARPANEL);
+		cards.add(DIRECTINONPANEL, DirectionCard);
+		cards.add(GEARPANEL, GearCard);
 		cards.add(PauseCard, PAUSEPANEL);
+		cards.add(NothingCard, NOTHINGPANEL);
 		///////////////
+
+		this.add(cards, BorderLayout.CENTER);
 
 //		JPanel AttributesGrid = new JPanel(new GridLayout(2, 2));
 //		AttributesGrid.add(labelAttribute1);
@@ -133,26 +151,40 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 
 	@Override
 	public void updateView() {
-//		int selectedRow = cD.getSelectedRow();
-//		String selection = ControlModel.getInstance().controlProzessManager.get(selectedRow).getName(); // get Command
-//																										// Type of
-//																										// Selected Row
-//
-//		switch (selection) {
-//		case "Direction":
-//
-//			break;
-//		case "Gear":
-//
-//			break;
-//		case "Pause":
-//
-//			break;
-//
-//		default:
-//			System.err.println("Stored NameString is invalid");
-//			break;
-//		}
+		int selectedRow = cD.getSelectedRow();
+		int i = 3;
+		System.out.println("PAV.updateView() sagt: selectedRow == ");
+		System.out.print(selectedRow);
+		System.out.println();
+
+		CardLayout cardLayout = (CardLayout) (cards.getLayout());
+		if (selectedRow <= 0) {
+			cardLayout.show(cards, NOTHINGPANEL);
+		} else {
+			String selection = ControlModel.getInstance().controlProzessManager.get(selectedRow).getName(); // get
+																											// Command
+
+			// Type of
+			// Selected Row
+
+			switch (selection) {
+			case "Direction":
+
+				cardLayout.show(this, DIRECTINONPANEL);
+				break;
+			case "Gear":
+				cardLayout.show(this, GEARPANEL);
+				break;
+			case "Pause":
+				cardLayout.show(this, PAUSEPANEL);
+				break;
+
+			default:
+				System.err.println("Stored NameString is invalid");
+				cardLayout.show(this, NOTHINGPANEL);
+				break;
+			}
+		}
 	}
 
 }

@@ -16,15 +16,16 @@ public class TableCommandsView extends JTable implements iUpdater {
 		getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
 			@Override
-			public void valueChanged(ListSelectionEvent e) {
+			public void valueChanged(ListSelectionEvent e) { //TODO getSelectedRow() nur einmal abfragen?!
 				System.out.println(getSelectedRow());
 				if (!e.getValueIsAdjusting()) {
 					System.out.println("CommandChanged");
 					if (getSelectedRow() >= 0) {
-						ControlDevelepor.getInstance().CommandSelectionChanged(getSelectedRow());
+						
 					} else {
 						System.out.println("Noting selected");
 					}
+					ControlDevelepor.getInstance().CommandSelectionChanged(getSelectedRow());
 				}
 
 			}

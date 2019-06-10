@@ -16,7 +16,7 @@ import zzzDatenInterface.TextFile;
  *
  */
 public class ControlModel {
-	private static ControlModel instance = new ControlModel();
+	private static ControlModel instance;
 	private CommandType[] commandTypes = new CommandType[3];
 	private CommandList controlProzess = new CommandList();
 	public ControlProzessManager controlProzessManager;
@@ -38,7 +38,11 @@ public class ControlModel {
 	 * @return Instanz des ControlModels
 	 */
 	public static ControlModel getInstance() {
-		return instance;
+		if (ControlModel.instance == null) {
+			ControlModel.instance = new ControlModel();
+		}
+		return ControlModel.instance;
+
 	}
 
 	/**

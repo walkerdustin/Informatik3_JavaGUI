@@ -23,23 +23,29 @@ import Model.ControlModel;
 
 public class ViewControlDevelepor extends JFrame implements iUpdater {
 	private ControlDevelepor cD;
-	private static final ViewControlDevelepor INSTANCE = new ViewControlDevelepor();
-	String[] arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
+	private static ViewControlDevelepor instance;
+	String[] arrCommands;
 
 	///////////////////////////////// Panels: \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	private PanelTypesView pTV;
-	private PanelAttributionsView pAV = PanelAttributionsView.getInstance();
-	private PanelCommandsView pCV = PanelCommandsView.getInstance();
+	private PanelAttributionsView pAV;
+	private PanelCommandsView pCV;
 
 	// ----------------------------------------------------------
 
 	public static ViewControlDevelepor getInstance() {
-		return INSTANCE;
+		if (ViewControlDevelepor.instance == null) {
+			ViewControlDevelepor.instance = new ViewControlDevelepor();
+		}
+		return ViewControlDevelepor.instance;
 	}
 
 	private ViewControlDevelepor() {
 		Updater.add(this); // registrieren beim Observer
-
+		pAV = PanelAttributionsView.getInstance();
+		pCV = PanelCommandsView.getInstance();
+		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
+		
 		this.cD = ControlDevelepor.getInstance();
 		pTV = PanelTypesView.getTypesView(cD, arrCommands);
 

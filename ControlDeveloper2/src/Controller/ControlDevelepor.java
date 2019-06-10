@@ -24,7 +24,7 @@ public class ControlDevelepor {
 	private ViewControlDevelepor vCD;
 
 	// State Variables
-	private int commandRowSelected = 0;
+	private int commandRowSelected = -1;
 
 	private ControlDevelepor() {
 		cM = ControlModel.getInstance();
