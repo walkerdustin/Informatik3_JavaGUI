@@ -10,7 +10,7 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import zzzDatenInterface.TextFile;
 
 /**
- * Klasse des ControlModels Enthält Mögliche Commands und eine Liste des
+ * Klasse des ControlModels Enthï¿½lt Mï¿½gliche Commands und eine Liste des
  * bestehenden Prozesses
  * 
  *
@@ -18,11 +18,10 @@ import zzzDatenInterface.TextFile;
 public class ControlModel {
 	private static ControlModel instance;
 	private CommandType[] commandTypes = new CommandType[3];
-	private CommandList controlProzess = new CommandList();
-	public ControlProzessManager controlProzessManager;
+	private CommandList controlProzess;
 
 	/**
-	 * Konstruktor der CommandType Array mit den Möglichen CommandTypes befüllt
+	 * Konstruktor der CommandType Array mit den Mï¿½glichen CommandTypes befï¿½llt
 	 */
 	private ControlModel() {
 		controlProzessManager = new ControlProzessManager();
@@ -46,20 +45,20 @@ public class ControlModel {
 	}
 
 	/**
-	 * Funktion, die commandTypes mit den Command Types befüllen sollte. Dies ist
-	 * aber doof da es schon in dem Constructor gemacht wurde könnte / wird zu
-	 * fehlern führen wenn es dem Programmierer überlassen wird sich um die
-	 * befüllung des Arrays zu kümmern!
+	 * Funktion, die commandTypes mit den Command Types befï¿½llen sollte. Dies ist
+	 * aber doof da es schon in dem Constructor gemacht wurde kï¿½nnte / wird zu
+	 * fehlern fï¿½hren wenn es dem Programmierer ï¿½berlassen wird sich um die
+	 * befï¿½llung des Arrays zu kï¿½mmern!
 	 */
 	public void createCommandTypes() {
-		// könnte / wird zu fehlern führen wenn es dem Programmierer überlassen wird
-		// sich um die befüllung des Arrays zu kümmern!
+		// kï¿½nnte / wird zu fehlern fï¿½hren wenn es dem Programmierer ï¿½berlassen wird
+		// sich um die befï¿½llung des Arrays zu kï¿½mmern!
 		// desshalb:
 		System.out.println("Well..... this is stupid, isnt it?");
 	}
 
 	/**
-	 * lädt commands Zeilenweise aus file commands werden überschrieben
+	 * lï¿½dt commands Zeilenweise aus file commands werden ï¿½berschrieben
 	 * 
 	 * @param file Das file aus dem controlProzess erstellt werden soll
 	 * @return true
@@ -74,7 +73,7 @@ public class ControlModel {
 	}
 
 	/**
-	 * Speichert die CommandList controlProzess als file ab. file wird überschrieben
+	 * Speichert die CommandList controlProzess als file ab. file wird ï¿½berschrieben
 	 * 
 	 * @param file
 	 * @return
@@ -114,11 +113,11 @@ public class ControlModel {
 	}
 
 	/**
-	 * Getter für controlProzess
+	 * Getter fï¿½r controlProzess
 	 * 
 	 * @return
 	 */
-	public CommandList getControlProcess() {
+	public static CommandList getControlProcess() {
 		return controlProzess;
 	}
 

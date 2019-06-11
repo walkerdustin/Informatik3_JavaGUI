@@ -1,17 +1,10 @@
 package GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.util.Vector;
-
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTable;
 import javax.swing.JToolBar;
 
 import Controller.ControlDevelepor;
@@ -84,8 +77,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	@Override
 	public void updateView() {
-		// TODO Auto-generated method stub
-
+		// TODO Funktion auskommentieren
 	}
 
 	// ********************************* Types Befehle ***************************

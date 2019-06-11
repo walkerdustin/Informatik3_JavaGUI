@@ -5,6 +5,7 @@ import javax.swing.table.AbstractTableModel;
 import Controller.ControlDevelepor;
 import Model.CommandList;
 import Model.CommandType;
+import Model.ControlModel;
 import Model.Direction;
 import Model.Gear;
 
@@ -15,7 +16,7 @@ public class TableCommandsModel extends AbstractTableModel {
 
 	public TableCommandsModel(ControlDevelepor cD) {
 		this.cD = cD;
-		listCommands = new CommandList();
+		listCommands = ControlModel.getControlProcess();
 		listCommands.add(new Direction(30));
 		listCommands.add(new Gear(5, 5.0));
 		listCommands.add(new Direction(30));
