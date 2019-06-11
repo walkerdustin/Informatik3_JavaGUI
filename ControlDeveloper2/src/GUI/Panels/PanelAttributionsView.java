@@ -230,7 +230,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		int selectedRow = cD.getSelectedRow();
 		int i = 3;
 		System.out.print("PAV.updateView() sagt: selectedRow == ");
-		System.out.print(selectedRow);
+		System.out.println(selectedRow);
 
 		CardLayout cardLayout = (CardLayout) (cards.getLayout());
 		if (selectedRow < 0) {

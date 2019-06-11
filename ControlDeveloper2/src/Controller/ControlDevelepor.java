@@ -133,7 +133,9 @@ public class ControlDevelepor {
 		Object[] options = {"OK", "CANCEL"};
 		int selection = JOptionPane.showOptionDialog(null, "Sie Sind im Begriff ihre komplette Liste zu Löschen... \n Ihre ganze Arbeit,... \n Das was Sie geleistet haben,... \n Es wird gelöscht,... \n Unwiederruflich zerstört,... \n Untergehen in einen unreferenzierten Datenmatsch,... \n Einsen und Nullen ohne jegliches Zugehörichkeitsgefühl...", "WARNING", JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null, options, options[1]);
 		if (selection == 0) {
-			vCD.emptyList();
+			//vCD.emptyList();   //Dustin sagt nööööööö :
+			ControlModel.getInstance().getControlProcess().clear();
+			UpdateTableView();
 			return true;
 		}
 		else {
