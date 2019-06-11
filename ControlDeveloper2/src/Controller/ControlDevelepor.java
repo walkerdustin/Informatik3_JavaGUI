@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import GUI.ViewControlDevelepor;
+import GUI.Panels.PanelAttributionsView;
 import Model.CommandType;
 import Model.ControlModel;
 import Model.Direction;
@@ -93,7 +94,7 @@ public class ControlDevelepor {
 		System.out.println("CommandSelection changed to : \"" + selection + "\"");
 
 		this.commandRowSelected = selectedRow;
-		Updater.updateAll();
+		PanelAttributionsView.getInstance().updateView();
 
 //
 //		switch (selection) {

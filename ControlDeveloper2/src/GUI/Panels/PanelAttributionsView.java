@@ -101,6 +101,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 						"SaveButton sagt: something went really bad you should check the code!! in SaveButtonController.actionPerformed() !!!!!!");
 				break;
 			}
+			Updater.updateAll();
 		}
 	}
 	////////////////////////////////////////////////
