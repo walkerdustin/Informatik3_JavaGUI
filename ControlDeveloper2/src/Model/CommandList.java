@@ -271,8 +271,7 @@ public class CommandList {
 		} else if (pos == (size - 1)) {
 			System.err.println("ERROR: Last Element can not be moved down");
 			return false;
-		}
-			else {
+		} else {
 			System.err.println("Desired position is out of ListRange");
 			return false;
 		}
@@ -358,6 +357,20 @@ public class CommandList {
 			// System.out.println(i);
 			System.out.println(get(i));
 		}
+	}
+
+	public Vector<ICommand> listToICommandsVector() {
+		if (getRoot() == null) { // falls die Liste wirklich leer ist ( Root == null )
+			return null;
+		}
+		Vector<ICommand> commandVector = new Vector<ICommand>();
+		Element runner = getRoot();
+
+		while (runner != null) {
+			commandVector.add(runner.getElement());
+			runner = runner.getNext();
+		}
+		return commandVector;
 	}
 
 }

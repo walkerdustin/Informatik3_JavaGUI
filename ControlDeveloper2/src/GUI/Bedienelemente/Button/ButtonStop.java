@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
+import Model.ControlModel;
 
 public class ButtonStop extends JButton {
 	public ButtonStop() {
@@ -14,7 +15,7 @@ public class ButtonStop extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("StopButton gedrückt");
-				ControlDevelepor.getInstance().stop();
+				ControlModel.getInstance().stop();
 			}
 		});
 		setText("STOP");

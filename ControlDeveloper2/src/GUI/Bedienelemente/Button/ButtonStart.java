@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
+import Model.ControlModel;
 
 public class ButtonStart extends JButton {
 	public ButtonStart() {
@@ -14,7 +15,8 @@ public class ButtonStart extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("StartButton gedrückt");
-				ControlDevelepor.getInstance().start();
+				ControlModel.getInstance().start();
+
 			}
 		});
 		setText("Start");

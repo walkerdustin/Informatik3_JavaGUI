@@ -5,8 +5,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
+import hsrt.mec.controldeveloper.core.com.ComHandler;
+import hsrt.mec.controldeveloper.core.com.IComListener;
+import hsrt.mec.controldeveloper.core.com.WiFiCard;
 //import hsrt.mec.controldeveloper.io.TextFile;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
+import hsrt.mec.controldeveloper.io.WiFi;
 import zzzDatenInterface.TextFile;
 
 /**
@@ -15,10 +19,13 @@ import zzzDatenInterface.TextFile;
  * 
  *
  */
-public class ControlModel {
+public class ControlModel implements IComListener {
 	private static ControlModel instance;
 	private CommandType[] commandTypes = new CommandType[3];
 	private CommandList controlProzess;
+
+	private WiFiCard wiFiCard;
+	private ComHandler comHandler = ComHandler.getInstance();
 
 	/**
 	 * Konstruktor der CommandType Array mit den Moeglichen CommandTypes befuellt
@@ -28,6 +35,8 @@ public class ControlModel {
 		commandTypes[0] = new CommandType("Direction");
 		commandTypes[1] = new CommandType("Gear");
 		commandTypes[2] = new CommandType("Pause");
+
+		comHandler.register(this);
 	}
 
 	/**
@@ -107,7 +116,8 @@ public class ControlModel {
 	 * @param command
 	 */
 	public void commandPerformed(ICommand command) {
-
+		System.out.print("Command performed: ");
+		System.out.println(command.toString());
 	}
 
 	/**
@@ -125,5 +135,17 @@ public class ControlModel {
 			temp.add(commandTypes[i].getName());
 		}
 		return temp;
+	}
+
+	public void setWiFiCard(WiFiCard wiFiCard) {
+		this.wiFiCard = wiFiCard;
+	}
+
+	public boolean start() {
+		return comHandler.start(controlProzess.listToICommandsVector(), new WiFi(wiFiCard));
+	}
+
+	public boolean stop() {
+		return comHandler.stop();
 	}
 }

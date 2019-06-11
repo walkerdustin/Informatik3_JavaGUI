@@ -3,16 +3,21 @@ package GUI.Panels;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Vector;
 
+import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Controller.ControlDevelepor;
 import GUI.ViewControlDevelepor;
 import Model.ControlModel;
+import hsrt.mec.controldeveloper.core.com.WiFiCard;
+import hsrt.mec.controldeveloper.core.com.WiFiCardHandler;
 
 public class PanelMenuBar extends JMenuBar {
 	private static PanelMenuBar instance = null;
@@ -22,11 +27,11 @@ public class PanelMenuBar extends JMenuBar {
 		// ******************** Erstellen der Menüeinträge ********************
 		JMenu mFile = new JMenu("File");
 		JMenu mInfo = new JMenu("Info");
-		JMenu mBlubb = new JMenu("Blubb");
+		JMenu mWifi = new JMenu("Wifi");
 
 		add(mFile);
 		add(mInfo);
-		add(mBlubb);
+		add(mWifi);
 
 		// ******************** Erstellen der Untermenüs ********************
 		JMenu umManage = new JMenu("FileManagement");
@@ -47,6 +52,11 @@ public class PanelMenuBar extends JMenuBar {
 		JMenuItem iAbout = new JMenuItem("About");
 
 		mInfo.add(iAbout);
+
+		// * * * * * WIFI-Einträge * * * * *
+		JMenuItem iSelWifi = new JMenuItem("Select Wifi Card");
+
+		mWifi.add(iSelWifi);
 
 		// ******************** Erstellen der AktionLisenter ********************
 		iLoad.addActionListener(new ActionListener() {
@@ -93,6 +103,41 @@ public class PanelMenuBar extends JMenuBar {
 		iAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+
+			}
+		});
+
+		iSelWifi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				WiFiCardHandler wiFiCardHandler = new WiFiCardHandler();
+				WiFiCard wiFiCards[] = wiFiCardHandler.getWiFiCards();
+				Vector<String> wifiNames = new Vector<String>();
+				// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+				for (WiFiCard wiFiCard : wiFiCards) {
+					wifiNames.add(wiFiCard.getDisplayName());
+				}
+				Object wifiNamesArray[] = wifiNames.toArray();
+
+				String s = (String) JOptionPane.showInputDialog(
+
+						ViewControlDevelepor.getInstance(), "Wähle eine der Wifi Karten aus:", "Choose WiFi",
+						JOptionPane.QUESTION_MESSAGE, null, wifiNamesArray, wifiNamesArray[0]);
+
+				// If a string was returned
+				if ((s != null) && (s.length() > 0)) {
+					System.out.print("Wifi selektiert: ");
+					System.out.println(s);
+					for (WiFiCard wiFiCard : wiFiCards) {
+						if (wiFiCard.getDisplayName() == s) {
+							ControlModel.getInstance().setWiFiCard(wiFiCard);
+							break;
+						}
+					}
+				} else {
+					System.out.println("Fehler beim auswählen der Wifi Karte");
+				}
 
 			}
 		});

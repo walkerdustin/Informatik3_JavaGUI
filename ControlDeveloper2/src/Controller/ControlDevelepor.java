@@ -76,18 +76,19 @@ public class ControlDevelepor {
 
 	}
 
-	public void stop() {
-		// TODO CommandsPanel StopButton FUnktion implementieren
-		System.out.println("Stop");
-
-	}
-
-	public void start() {
-		// TODO CommandsPanel StartButton FUnktion implementiren
-		System.out.println("Start");
-		vCD.testList();
-
-	}
+//	Dustin sagt das kann / muss in Control Model .... Dustin hat das jetzt einfach so gemacht.
+//	public void stop() {
+//		// TODO CommandsPanel StopButton FUnktion implementieren
+//		System.out.println("Stop");
+//
+//	}
+//
+//	public void start() {
+//		// TODO CommandsPanel StartButton FUnktion implementiren
+//		System.out.println("Start");
+//		vCD.testList();
+//
+//	}
 
 	public void CommandSelectionChanged(int selectedRow) {
 		String selection = vCD.getCommandTypeAt(selectedRow);
@@ -119,34 +120,36 @@ public class ControlDevelepor {
 		return commandRowSelected;
 	}
 
-	public void MenuLoadList() {
-		// TODO@Dustin Auto-generated method stub
-		
-	}
-
-	public void MenuSaveList() {
-		// TODO@Dustin Auto-generated method stub
-		
-	}
+////	Dustin sagt das kann / muss in Control Model .... Dustin hat das jetzt einfach so gemacht.
+//	public void MenuLoadList() {
+//		// TODO@Dustin Auto-generated method stub
+//		
+//	}
+//
+//	public void MenuSaveList() {
+//		// TODO@Dustin Auto-generated method stub
+//		
+//	}
 
 	public boolean EmptyList() {
-		Object[] options = {"OK", "CANCEL"};
-		int selection = JOptionPane.showOptionDialog(null, "Sie Sind im Begriff ihre komplette Liste zu Löschen... \n Ihre ganze Arbeit,... \n Das was Sie geleistet haben,... \n Es wird gelöscht,... \n Unwiederruflich zerstört,... \n Untergehen in einen unreferenzierten Datenmatsch,... \n Einsen und Nullen ohne jegliches Zugehörichkeitsgefühl...", "WARNING", JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null, options, options[1]);
+		Object[] options = { "OK", "CANCEL" };
+		int selection = JOptionPane.showOptionDialog(null,
+				"Sie Sind im Begriff ihre komplette Liste zu Löschen... \n Ihre ganze Arbeit,... \n Das was Sie geleistet haben,... \n Es wird gelöscht,... \n Unwiederruflich zerstört,... \n Untergehen in einen unreferenzierten Datenmatsch,... \n Einsen und Nullen ohne jegliches Zugehörichkeitsgefühl...",
+				"WARNING", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
 		if (selection == 0) {
-			//vCD.emptyList();   //Dustin sagt nööööööö :
+			// vCD.emptyList(); //Dustin sagt nööööööö :
 			ControlModel.getInstance().getControlProcess().clear();
 			UpdateTableView();
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
-				
+
 	}
 
 	public void UpdateTableView() {
 		vCD.UpdateTableView();
-		
+
 	}
 
 }
