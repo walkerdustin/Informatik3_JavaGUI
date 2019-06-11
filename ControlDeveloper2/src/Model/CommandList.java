@@ -271,7 +271,8 @@ public class CommandList {
 		} else if (pos == (size - 1)) {
 			System.err.println("ERROR: Last Element can not be moved down");
 			return false;
-		} else {
+		}
+			else {
 			System.err.println("Desired position is out of ListRange");
 			return false;
 		}

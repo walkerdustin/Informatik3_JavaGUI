@@ -1,6 +1,7 @@
 package Controller;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import GUI.ViewControlDevelepor;
 import Model.CommandType;
@@ -115,6 +116,29 @@ public class ControlDevelepor {
 
 	public int getSelectedRow() {
 		return commandRowSelected;
+	}
+
+	public void MenuLoadList() {
+		// TODO@Dustin Auto-generated method stub
+		
+	}
+
+	public void MenuSaveList() {
+		// TODO@Dustin Auto-generated method stub
+		
+	}
+
+	public boolean EmptyList() {
+		Object[] options = {"OK", "CANCEL"};
+		int selection = JOptionPane.showOptionDialog(null, "Empty the List?", "WARNING", JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null, options, options[1]);
+		if (selection == 0) {
+			vCD.emptyList();
+			return true;
+		}
+		else {
+			return false;
+		}
+				
 	}
 
 }

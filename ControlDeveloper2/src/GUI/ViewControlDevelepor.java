@@ -11,6 +11,7 @@ import Controller.ControlDevelepor;
 import Controller.Updater;
 import GUI.Panels.PanelAttributionsView;
 import GUI.Panels.PanelCommandsView;
+import GUI.Panels.PanelMenuBar;
 import GUI.Panels.PanelTypesView;
 import Model.ControlModel;
 
@@ -23,6 +24,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 	private PanelTypesView pTV;
 	private PanelAttributionsView pAV;
 	private PanelCommandsView pCV;
+	private PanelMenuBar pMB;
 
 	// ----------------------------------------------------------
 
@@ -35,8 +37,11 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	private ViewControlDevelepor() {
 		Updater.add(this); // registrieren beim Observer
+		
 		pAV = PanelAttributionsView.getInstance();
 		pCV = PanelCommandsView.getInstance();
+		pMB = PanelMenuBar.getInstance();
+		
 		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
 		
 		this.cD = ControlDevelepor.getInstance();
@@ -64,12 +69,9 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		rootPanel.setBottomComponent(new JLabel("Ausgabefenster"));
 		rootPanel.setTopComponent(mainPlain1);
 
-		JToolBar toolBar = new JToolBar();
-		toolBar.add(new JButton("List"));
-		toolBar.add(new JButton("Aktion"));
 
 		// ERgänzen der Einzelnen Planes
-		add(toolBar, BorderLayout.NORTH);
+		add(pMB, BorderLayout.NORTH);
 		add(rootPanel, BorderLayout.CENTER);
 		// pack();
 
@@ -135,6 +137,11 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 	public void testList() {
 		pCV.testList();
 
+	}
+
+	public void emptyList() {
+		pCV.emptyList();
+		
 	}
 
 }

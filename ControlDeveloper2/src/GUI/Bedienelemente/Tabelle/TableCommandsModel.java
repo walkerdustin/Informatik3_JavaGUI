@@ -45,7 +45,13 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 		System.out.println("DesiredPosition" + row);
 		System.out.println("List:" + listCommands.getSize());
 		System.out.println("DesiredPosition" + row);
-		listCommands.remove(row);
+//		if (listCommands.getSize() == 1) {
+//			if(ControlDevelepor.getInstance().EmptyList()) {
+//				listCommands.remove(row);
+//			}
+//			else {}
+//		}
+//		listCommands.remove(row);
 		fireTableDataChanged();
 
 	}
@@ -109,6 +115,12 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 
 	@Override
 	public void updateView() {
+		
+		//fireTableDataChanged();
+	}
+
+	public void emptyList() {
+		listCommands.clear();
 		fireTableDataChanged();
 		
 	}

@@ -21,11 +21,11 @@ public class TableCommandsView extends JTable implements iUpdater {
 				if (!e.getValueIsAdjusting()) {
 					System.out.println("CommandChanged");
 					if (getSelectedRow() >= 0) {
-						
+						ControlDevelepor.getInstance().CommandSelectionChanged(getSelectedRow());
 					} else {
 						System.out.println("Noting selected");
 					}
-					ControlDevelepor.getInstance().CommandSelectionChanged(getSelectedRow());
+					
 				}
 
 			}
@@ -34,6 +34,6 @@ public class TableCommandsView extends JTable implements iUpdater {
 
 	@Override
 	public void updateView() {
-
+		
 	}
 }
