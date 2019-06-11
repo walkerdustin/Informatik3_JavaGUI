@@ -3,18 +3,21 @@ package GUI.Bedienelemente.Tabelle;
 import javax.swing.table.AbstractTableModel;
 
 import Controller.ControlDevelepor;
+import Controller.Updater;
+import GUI.iUpdater;
 import Model.CommandList;
 import Model.CommandType;
 import Model.ControlModel;
 import Model.Direction;
 import Model.Gear;
 
-public class TableCommandsModel extends AbstractTableModel {
+public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 	private ControlDevelepor cD;
 	private CommandList listCommands;
 	private final String[] arrCOLUMNNAMES = { "Nr.", "Command", "Configuration" };
 
 	public TableCommandsModel(ControlDevelepor cD) {
+		Updater.add(this);
 		this.cD = cD;
 		listCommands = ControlModel.getInstance().getControlProcess(); 
 		listCommands.add(new Direction(30));
@@ -102,6 +105,12 @@ public class TableCommandsModel extends AbstractTableModel {
 	}
 
 	public void test() {
+	}
+
+	@Override
+	public void updateView() {
+		fireTableDataChanged();
+		
 	}
 
 }
