@@ -122,6 +122,7 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 	public void emptyList() {
 		listCommands.clear();
 		fireTableDataChanged();
+		Updater.updateAll();
 		
 	}
 
