@@ -16,7 +16,7 @@ public class TableCommandsModel extends AbstractTableModel {
 
 	public TableCommandsModel(ControlDevelepor cD) {
 		this.cD = cD;
-		listCommands = ControlModel.getControlProcess();
+		listCommands = ControlModel.getInstance().getControlProcess(); 
 		listCommands.add(new Direction(30));
 		listCommands.add(new Gear(5, 5.0));
 		listCommands.add(new Direction(30));

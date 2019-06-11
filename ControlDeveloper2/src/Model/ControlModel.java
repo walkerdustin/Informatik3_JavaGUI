@@ -10,7 +10,7 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import zzzDatenInterface.TextFile;
 
 /**
- * Klasse des ControlModels Enth�lt M�gliche Commands und eine Liste des
+ * Klasse des ControlModels Enthaelt Moegliche Commands und eine Liste des
  * bestehenden Prozesses
  * 
  *
@@ -21,10 +21,9 @@ public class ControlModel {
 	private CommandList controlProzess;
 
 	/**
-	 * Konstruktor der CommandType Array mit den M�glichen CommandTypes bef�llt
+	 * Konstruktor der CommandType Array mit den Moeglichen CommandTypes befuellt
 	 */
 	private ControlModel() {
-		controlProzessManager = new ControlProzessManager();
 		controlProzess = new CommandList();
 		commandTypes[0] = new CommandType("Direction");
 		commandTypes[1] = new CommandType("Gear");
@@ -45,20 +44,18 @@ public class ControlModel {
 	}
 
 	/**
-	 * Funktion, die commandTypes mit den Command Types bef�llen sollte. Dies ist
-	 * aber doof da es schon in dem Constructor gemacht wurde k�nnte / wird zu
-	 * fehlern f�hren wenn es dem Programmierer �berlassen wird sich um die
-	 * bef�llung des Arrays zu k�mmern!
+	 * Funktion, die commandTypes mit den Command Types befuellen sollte. Dies ist
+	 * aber doof da es schon in dem Constructor gemacht wurde koennte / wird zu
+	 * fehlern fuehren wenn es dem Programmierer ueberlassen wird sich um die
+	 * befuellung des Arrays zu kuemmern!
 	 */
 	public void createCommandTypes() {
-		// k�nnte / wird zu fehlern f�hren wenn es dem Programmierer �berlassen wird
-		// sich um die bef�llung des Arrays zu k�mmern!
 		// desshalb:
 		System.out.println("Well..... this is stupid, isnt it?");
 	}
 
 	/**
-	 * l�dt commands Zeilenweise aus file commands werden �berschrieben
+	 * laedt commands Zeilenweise aus file commands werden ueberschrieben
 	 * 
 	 * @param file Das file aus dem controlProzess erstellt werden soll
 	 * @return true
@@ -73,7 +70,8 @@ public class ControlModel {
 	}
 
 	/**
-	 * Speichert die CommandList controlProzess als file ab. file wird �berschrieben
+	 * Speichert die CommandList controlProzess als file ab. file wird
+	 * ueberschrieben
 	 * 
 	 * @param file
 	 * @return
@@ -113,11 +111,11 @@ public class ControlModel {
 	}
 
 	/**
-	 * Getter f�r controlProzess
+	 * Getter fuer controlProzess
 	 * 
 	 * @return
 	 */
-	public static CommandList getControlProcess() {
+	public CommandList getControlProcess() {
 		return controlProzess;
 	}
 
@@ -128,47 +126,4 @@ public class ControlModel {
 		}
 		return temp;
 	}
-
-	public class ControlProzessManager {
-
-		private ControlProzessManager() {
-
-		}
-
-		public ICommand get(int pos) {
-			return controlProzess.get(pos);
-
-		}
-
-		public boolean add(ICommand c) {
-			return controlProzess.add(c);
-
-		}
-
-		public boolean add(ICommand c, int pos) {
-			return controlProzess.add(c, pos);
-
-		}
-
-		public boolean remove(int pos) {
-			return controlProzess.remove(pos);
-
-		}
-
-		public boolean clear() {
-			return controlProzess.clear();
-
-		}
-
-		public boolean moveUp(int pos) {
-			return controlProzess.moveUp(pos);
-
-		}
-
-		public boolean moveDown(int pos) {
-			return controlProzess.moveDown(pos);
-
-		}
-	}
-
 }

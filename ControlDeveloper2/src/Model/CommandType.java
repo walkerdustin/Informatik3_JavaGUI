@@ -61,6 +61,7 @@ public class CommandType {
 	 * @return Erstellter Command
 	 */
 	public Command createInstance() {
+		System.out.println("CommandType.createInstance() sagt: name == " + name);
 		switch (name) {
 		case "Direction":
 			return (new Direction(tempInt));

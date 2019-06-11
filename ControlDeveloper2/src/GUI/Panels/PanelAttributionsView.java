@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import Controller.ControlDevelepor;
 import Controller.Updater;
 import GUI.iUpdater;
+import Model.CommandType;
 import Model.ControlModel;
 
 public class PanelAttributionsView extends JPanel implements iUpdater {
@@ -153,35 +154,35 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	public void updateView() {
 		int selectedRow = cD.getSelectedRow();
 		int i = 3;
-		System.out.println("PAV.updateView() sagt: selectedRow == ");
+		System.out.print("PAV.updateView() sagt: selectedRow == ");
 		System.out.print(selectedRow);
-		System.out.println();
 
 		CardLayout cardLayout = (CardLayout) (cards.getLayout());
-		if (selectedRow <= 0) {
+		if (selectedRow < 0) {
 			cardLayout.show(cards, NOTHINGPANEL);
 		} else {
-			String selection = ControlModel.getInstance().controlProzessManager.get(selectedRow).getName(); // get
-																											// Command
-
+			String commandName = ControlModel.getInstance().getControlProcess().get(selectedRow).getName(); // get
+			// Command
+			String[] tempString = commandName.split("#x#");
+			String selection = tempString[0];
 			// Type of
 			// Selected Row
-
+			System.out.println("  , String Selection == " + selection);
 			switch (selection) {
 			case "Direction":
 
-				cardLayout.show(this, DIRECTINONPANEL);
+				cardLayout.show(cards, DIRECTINONPANEL);
 				break;
 			case "Gear":
-				cardLayout.show(this, GEARPANEL);
+				cardLayout.show(cards, GEARPANEL);
 				break;
 			case "Pause":
-				cardLayout.show(this, PAUSEPANEL);
+				cardLayout.show(cards, PAUSEPANEL);
 				break;
 
 			default:
 				System.err.println("Stored NameString is invalid");
-				cardLayout.show(this, NOTHINGPANEL);
+				cardLayout.show(cards, NOTHINGPANEL);
 				break;
 			}
 		}
