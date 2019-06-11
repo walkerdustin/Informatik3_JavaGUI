@@ -97,4 +97,9 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 		mTM.emptyList();
 		
 	}
+
+	public void UpdateTableView() {
+		mTM.fireTableDataChanged();
+		
+	}
 }

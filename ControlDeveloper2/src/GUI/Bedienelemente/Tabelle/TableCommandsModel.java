@@ -115,8 +115,7 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 
 	@Override
 	public void updateView() {
-		
-		//fireTableDataChanged();
+	
 	}
 
 	public void emptyList() {

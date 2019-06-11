@@ -144,4 +144,9 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		
 	}
 
+	public void UpdateTableView() {
+		pCV.UpdateTableView();
+		
+	}
+
 }

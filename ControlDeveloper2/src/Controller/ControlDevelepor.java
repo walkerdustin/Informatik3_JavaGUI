@@ -142,4 +142,9 @@ public class ControlDevelepor {
 				
 	}
 
+	public void UpdateTableView() {
+		vCD.UpdateTableView();
+		
+	}
+
 }

@@ -102,6 +102,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 				break;
 			}
 			Updater.updateAll();
+			ControlDevelepor.getInstance().UpdateTableView();
 		}
 	}
 	////////////////////////////////////////////////
