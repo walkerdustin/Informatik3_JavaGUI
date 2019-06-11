@@ -131,7 +131,7 @@ public class ControlDevelepor {
 
 	public boolean EmptyList() {
 		Object[] options = {"OK", "CANCEL"};
-		int selection = JOptionPane.showOptionDialog(null, "Sie Sind im Begriff ihre komplette Liste zu Löschen... Ihre ganze Arbeit,... Das was Sie geleistet haben,... Es wird gelöscht,... Unwiederruflich zerstört,... Untergehen in einen unreferenzierten Datenmatsch,... Einsen und Nullen ohne jegliches Zugehörichkeitsgefühl...", "WARNING", JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null, options, options[1]);
+		int selection = JOptionPane.showOptionDialog(null, "Sie Sind im Begriff ihre komplette Liste zu Löschen... \n Ihre ganze Arbeit,... \n Das was Sie geleistet haben,... \n Es wird gelöscht,... \n Unwiederruflich zerstört,... \n Untergehen in einen unreferenzierten Datenmatsch,... \n Einsen und Nullen ohne jegliches Zugehörichkeitsgefühl...", "WARNING", JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null, options, options[1]);
 		if (selection == 0) {
 			vCD.emptyList();
 			return true;
