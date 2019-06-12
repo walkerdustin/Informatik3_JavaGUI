@@ -16,6 +16,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -73,27 +74,60 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 			System.out.println("Save Button gedrückt");
 
 			int selectedRow = cD.getSelectedRow();
-			ControlModel.getInstance().getControlProcess().remove(selectedRow);
+			// ControlModel.getInstance().getControlProcess().remove(selectedRow);
 
-			int attribut1;
-			double attribut2;
+			int attribut1 = -1000;
+			double attribut2 = -1.0;
+			boolean succesfulTypeConversion = true;
 
 			switch (currentPanelString) {
 			case DIRECTINONPANEL:
-				attribut1 = Integer.parseInt(textAttributeDir.getText());
-				ControlModel.getInstance().getControlProcess().add(new Direction(attribut1), selectedRow);
+				try {
+					attribut1 = Integer.parseInt(textAttributeDir.getText());
+				} catch (NumberFormatException e) {
+					succesfulTypeConversion = false;
+					e.printStackTrace();
+					ungueltigeArgumenteWarnung();
+
+				}
+				if (succesfulTypeConversion) {
+
+					ControlModel.getInstance().getControlProcess().remove(selectedRow);
+					ControlModel.getInstance().getControlProcess().add(new Direction(attribut1), selectedRow);
+				}
 				break;
 			case GEARPANEL:
-				attribut1 = Integer.parseInt(textAttributeGear1.getText());
-				attribut2 = Double.parseDouble(textAttributeGear2.getText());
+				try {
+					attribut1 = Integer.parseInt(textAttributeGear1.getText());
+					attribut2 = Double.parseDouble(textAttributeGear2.getText());
+				} catch (NumberFormatException e) {
+					succesfulTypeConversion = false;
+					e.printStackTrace();
+					ungueltigeArgumenteWarnung();
 
-				ControlModel.getInstance().getControlProcess().add(new Gear(attribut1, attribut2), selectedRow);
+				}
 
+				if (succesfulTypeConversion) {
+
+					ControlModel.getInstance().getControlProcess().remove(selectedRow);
+					ControlModel.getInstance().getControlProcess().add(new Gear(attribut1, attribut2), selectedRow);
+				}
 				break;
 			case PAUSEPANEL:
-				attribut2 = Double.parseDouble(textAttributePause.getText());
-				ControlModel.getInstance().getControlProcess().add(new Pause(attribut2), selectedRow);
+				try {
+					attribut2 = Double.parseDouble(textAttributePause.getText());
+				} catch (NumberFormatException e) {
+					succesfulTypeConversion = false;
+					e.printStackTrace();
+					ungueltigeArgumenteWarnung();
 
+				}
+
+				if (succesfulTypeConversion) {
+
+					ControlModel.getInstance().getControlProcess().remove(selectedRow);
+					ControlModel.getInstance().getControlProcess().add(new Pause(attribut2), selectedRow);
+				}
 				break;
 			case NOTHINGPANEL:
 				System.out.println("Save Button sagt : Nothing to save here!!");
@@ -220,6 +254,14 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 //
 //		add(AttributesGrid, BorderLayout.CENTER);
 		// -------------------------------------------
+	}
+
+	private void ungueltigeArgumenteWarnung() {
+		System.out.println("Es wurden ungueltige Argumente ausgewaehlt");
+		Object[] options = { "sorry", "Tut mir Leid", "War keine Absicht" };
+		JOptionPane.showOptionDialog(null,
+				"Sie haben ungueltige Werte eingegeben! \n Es sind nur Zahlen erlaubt \n Float  ist z.B: 13.3 ",
+				"Attribut Fehler!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 	}
 
 	/**

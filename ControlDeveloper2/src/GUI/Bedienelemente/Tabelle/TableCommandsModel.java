@@ -35,7 +35,7 @@ public class TableCommandsModel extends AbstractTableModel {
 	}
 
 	/**
-	 * Methode um einen Command zu erstellen und diesen der Tabelle hinzufügen
+	 * Methode um einen Command zu erstellen und diesen der Tabelle hinzufï¿½gen
 	 * 
 	 * @param strCommand
 	 */
@@ -51,7 +51,7 @@ public class TableCommandsModel extends AbstractTableModel {
 	}
 
 	/**
-	 * Methode um einen Command aus der Tabelle zu löschen
+	 * Methode um einen Command aus der Tabelle zu lï¿½schen
 	 * 
 	 * @param row
 	 */
@@ -72,7 +72,7 @@ public class TableCommandsModel extends AbstractTableModel {
 	}
 
 	/**
-	 * Methode um einen ausgewählten Command um eine Zeile nach oben zu verschieben
+	 * Methode um einen ausgewï¿½hlten Command um eine Zeile nach oben zu verschieben
 	 * 
 	 * @param row
 	 */
@@ -87,7 +87,7 @@ public class TableCommandsModel extends AbstractTableModel {
 	}
 
 	/**
-	 * Methode um einen Ausgewählten Command um eine Zeile nach unten zu verschieben
+	 * Methode um einen Ausgewï¿½hlten Command um eine Zeile nach unten zu verschieben
 	 * 
 	 * @param row
 	 */
@@ -116,7 +116,7 @@ public class TableCommandsModel extends AbstractTableModel {
 	}
 
 	/**
-	 * Methode die dei Spaltenüberschirften festlegt
+	 * Methode die dei Spaltenï¿½berschirften festlegt
 	 */
 	@Override
 	public String getColumnName(int column) {
@@ -149,7 +149,7 @@ public class TableCommandsModel extends AbstractTableModel {
 	}
 
 	/**
-	 * Methode um die Tabelle zu löschen
+	 * Methode um die Tabelle zu loeschen
 	 */
 	public void emptyList() {
 		listCommands.clear();

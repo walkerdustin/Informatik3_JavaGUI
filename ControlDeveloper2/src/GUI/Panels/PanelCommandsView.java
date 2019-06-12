@@ -155,6 +155,7 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 	 * @param strCommand
 	 */
 	public void UpdateTableView() {
+
 		mTM.fireTableDataChanged();
 
 	}

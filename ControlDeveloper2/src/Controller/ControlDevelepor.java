@@ -181,12 +181,13 @@ public class ControlDevelepor {
 		if (selection == 0) {
 			// vCD.emptyList(); //Dustin sagt nööööööö :
 			ControlModel.getInstance().getControlProcess().clear();
+			this.commandRowSelected = -1;
 			UpdateTableView();
+			Updater.updateAll();
 			return true;
 		} else {
 			return false;
 		}
-
 	}
 
 	/**

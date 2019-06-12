@@ -100,6 +100,7 @@ public class PanelMenuBar extends JMenuBar {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Menueintrag 'Empty' ausgewählt");
 				ControlDevelepor.getInstance().EmptyList();
+				
 			}
 		});
 
