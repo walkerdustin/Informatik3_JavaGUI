@@ -42,7 +42,6 @@ public class PanelTypesView extends JPanel implements iUpdater {
 		// Updater.add(this); // registrieren beim Observer
 
 		System.out.println("ConstruktorPanelTypesView");
-		this.cD = cD;
 		arrCommandTypes = arrList;
 
 		setLayout(new BorderLayout());
