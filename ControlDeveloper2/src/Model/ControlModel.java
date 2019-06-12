@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import hsrt.mec.controldeveloper.core.com.ComHandler;
 import hsrt.mec.controldeveloper.core.com.IComListener;
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
@@ -24,7 +26,7 @@ public class ControlModel implements IComListener {
 	private CommandType[] commandTypes = new CommandType[3];
 	private CommandList controlProzess;
 
-	private WiFiCard wiFiCard;
+	private WiFiCard wiFiCard = null;
 	private ComHandler comHandler = ComHandler.getInstance();
 
 	/**
@@ -157,7 +159,13 @@ public class ControlModel implements IComListener {
 	 * @return ob das starten erfolgreich war
 	 */
 	public boolean start() {
-		// TODO Fehlermeldung, wenn keine WifiCard selektiert ist.
+		if (wiFiCard == null) {
+			System.out.println("Keine WifiKarte ist selektiert");
+			Object[] options = { "sorry", "Tut mir Leid", "War keine Absicht" };
+			JOptionPane.showOptionDialog(null, "Sie haben keine WifiKarte ausgewählt ", "Kein WiFi ausgewählt",
+					JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+			return false;
+		}
 		return comHandler.start(controlProzess.listToICommandsVector(), new WiFi(wiFiCard));
 	}
 
