@@ -7,11 +7,15 @@ import javax.swing.event.ListSelectionListener;
 import Controller.ControlDevelepor;
 import Controller.Updater;
 import GUI.iUpdater;
-
-public class TableCommandsView extends JTable implements iUpdater {
+/**
+ * ViewKlasse der Tabelle
+ * @author TheRealTripleM
+ *
+ */
+public class TableCommandsView extends JTable{
 
 	public TableCommandsView(TableCommandsModel mTM) {
-		Updater.add(this);
+
 		setModel(mTM);
 		getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
@@ -30,10 +34,5 @@ public class TableCommandsView extends JTable implements iUpdater {
 
 			}
 		});
-	}
-
-	@Override
-	public void updateView() {
-		
 	}
 }

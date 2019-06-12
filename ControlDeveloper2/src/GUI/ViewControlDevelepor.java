@@ -15,6 +15,12 @@ import GUI.Panels.PanelMenuBar;
 import GUI.Panels.PanelTypesView;
 import Model.ControlModel;
 
+/**
+ * Klasse für die Hauptview. Erstellt JFrame und fügt alle Panels zusammen
+ * 
+ * @author TheRealTripleM
+ *
+ */
 public class ViewControlDevelepor extends JFrame implements iUpdater {
 	private ControlDevelepor cD;
 	private static ViewControlDevelepor instance;
@@ -27,7 +33,11 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 	private PanelMenuBar pMB;
 
 	// ----------------------------------------------------------
-
+	/**
+	 * Methode liefert Instance
+	 * 
+	 * @return
+	 */
 	public static ViewControlDevelepor getInstance() {
 		if (ViewControlDevelepor.instance == null) {
 			ViewControlDevelepor.instance = new ViewControlDevelepor();
@@ -37,13 +47,13 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	private ViewControlDevelepor() {
 		Updater.add(this); // registrieren beim Observer
-		
+
 		pAV = PanelAttributionsView.getInstance();
 		pCV = PanelCommandsView.getInstance();
 		pMB = PanelMenuBar.getInstance();
-		
+
 		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
-		
+
 		this.cD = ControlDevelepor.getInstance();
 		pTV = PanelTypesView.getTypesView(cD, arrCommands);
 
@@ -69,7 +79,6 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		rootPanel.setBottomComponent(new JLabel("Ausgabefenster"));
 		rootPanel.setTopComponent(mainPlain1);
 
-
 		// ERgänzen der Einzelnen Planes
 		add(pMB, BorderLayout.NORTH);
 		add(rootPanel, BorderLayout.CENTER);
@@ -83,70 +92,103 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 	}
 
 	// ********************************* Types Befehle ***************************
+	/**
+	 * Methode um Befehl an PanelTypesView weiterzuleiten
+	 * 
+	 * @return
+	 */
 	public String getSelectedType() {
 		return pTV.getSelectedType();
 
 	}
 
 	// ********************************** Table Befehle ****************************
-
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void addCommand(String strCommand) {
 		pCV.addCommand(strCommand);
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public String getCommandTypeAt(int selectedRow) {
 		return pCV.getCommandTypeAt(selectedRow);
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public int getSelectedCommandRow() {
 		return pCV.getSelectedCOmmandRow();
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void removeCommand(int row) {
 		pCV.removeCommand(row);
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void upCommand(int row) {
 		pCV.upCommand(row);
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void downCommand(int row) {
 		pCV.downCommand(row);
 
 	}
 
-	// *********************************** Attributes Befehle *******************
-//	public void openDirectionPanel() {
-//		System.out.println("Direction wird geöffnet");
-//	}
-//
-//	public void openGearPanel() {
-//		System.out.println("Gear wird geöffnet");
-//
-//	}
-//
-//	public void openPausePanel() {
-//		System.out.println("Pause wird geöffnet");
-//
-//	}
-	// ***************************************************************************
-
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void testList() {
 		pCV.testList();
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void emptyList() {
 		pCV.emptyList();
-		
+
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void UpdateTableView() {
 		pCV.UpdateTableView();
-		
+
 	}
 
 }

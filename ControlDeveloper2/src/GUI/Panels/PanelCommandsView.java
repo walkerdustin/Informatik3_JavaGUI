@@ -16,6 +16,12 @@ import GUI.Bedienelemente.Button.ButtonUp;
 import GUI.Bedienelemente.Tabelle.TableCommandsModel;
 import GUI.Bedienelemente.Tabelle.TableCommandsView;
 
+/**
+ * Klasse des Panels CommandsView
+ * 
+ * @author TheRealTripleM
+ *
+ */
 public class PanelCommandsView extends JPanel implements iUpdater {
 	private ControlDevelepor cD;
 	private static PanelCommandsView instance = new PanelCommandsView();
@@ -50,6 +56,11 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 
 	}
 
+	/**
+	 * Methode die die Instanz des Panels liefert
+	 * 
+	 * @return
+	 */
 	public static PanelCommandsView getInstance() {
 		return instance;
 	}
@@ -60,46 +71,91 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void addCommand(String strCommand) {
 		mTM.addCommand(strCommand);
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public String getCommandTypeAt(int row) {
 		return mTM.getValueAt(row, 1).toString();
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public int getSelectedCOmmandRow() {
 		return jT.getSelectedRow();
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void removeCommand(int row) {
 		mTM.removeCommand(row);
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void upCommand(int row) {
 		mTM.upCommand(row);
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void downCommand(int row) {
 		mTM.downCommand(row);
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void testList() {
 		mTM.test();
 
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void emptyList() {
 		mTM.emptyList();
-		
+
 	}
 
+	/**
+	 * Methode um Befehl an TableModel Weiterzuleiten
+	 * 
+	 * @param strCommand
+	 */
 	public void UpdateTableView() {
 		mTM.fireTableDataChanged();
-		
+
 	}
 }

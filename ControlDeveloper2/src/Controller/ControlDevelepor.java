@@ -11,7 +11,7 @@ import Model.Direction;
 import Model.Gear;
 
 /**
- * Hauptcontroller - Koordiniert hoffentlich alle Models und Views
+ * Hauptcontroller - Koordiniert hoffentlich alle Models und Views Singleton
  * 
  * @author TheRealTripleM
  *
@@ -29,9 +29,14 @@ public class ControlDevelepor {
 	private int commandRowSelected = -1;
 
 	private ControlDevelepor() {
-		//cM = ControlModel.getInstance();
+		// cM = ControlModel.getInstance();
 	};
 
+	/**
+	 * Methode die die Instance des ControlDeleper liefert.
+	 * 
+	 * @return
+	 */
 	public static ControlDevelepor getInstance() {
 		if (INSTANCE == null) {
 			INSTANCE = new ControlDevelepor();
@@ -39,10 +44,20 @@ public class ControlDevelepor {
 		return INSTANCE;
 	}
 
+	/**
+	 * Übergeben der ViewControlDevelepor
+	 * 
+	 * @param vCD
+	 */
 	private void setControlDeveleporView(ViewControlDevelepor vCD) {
 		this.vCD = vCD;
 	}
 
+	/**
+	 * Main_methode dient zum Aufrufen
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		System.out.println("Programm gestartet");
@@ -64,16 +79,25 @@ public class ControlDevelepor {
 		Updater.updateAll();
 	}
 
+	/**
+	 * Methode um einen Command in der Tabelle zu löschen
+	 */
 	public void removeCommand() {
 		vCD.removeCommand(vCD.getSelectedCommandRow());
 
 	}
 
+	/**
+	 * Methode um einen Command in der Tabelle um eins nach oben zu verschieben
+	 */
 	public void UpCommand() {
 		vCD.upCommand(vCD.getSelectedCommandRow());
 
 	}
 
+	/**
+	 * Methode um einen Command in der Tabelle um eins anch unten zu verschieben
+	 */
 	public void DownCommand() {
 		vCD.downCommand(vCD.getSelectedCommandRow());
 
@@ -93,6 +117,11 @@ public class ControlDevelepor {
 //
 //	}
 
+	/**
+	 * Methode die Ausgelöst wird wenn dich die selektierte Zeile ändert
+	 * 
+	 * @param selectedRow
+	 */
 	public void CommandSelectionChanged(int selectedRow) {
 		String selection = vCD.getCommandTypeAt(selectedRow);
 		System.out.println("CommandSelection changed to : \"" + selection + "\"");
@@ -119,6 +148,11 @@ public class ControlDevelepor {
 
 	}
 
+	/**
+	 * Methode die die aktuellselektierte Zeile leifert
+	 * 
+	 * @return
+	 */
 	public int getSelectedRow() {
 		return commandRowSelected;
 	}
@@ -134,6 +168,11 @@ public class ControlDevelepor {
 //		
 //	}
 
+	/**
+	 * Methode um die Komplette Tabelle zu löschen
+	 * 
+	 * @return
+	 */
 	public boolean EmptyList() {
 		Object[] options = { "OK", "CANCEL" };
 		int selection = JOptionPane.showOptionDialog(null,
@@ -150,6 +189,9 @@ public class ControlDevelepor {
 
 	}
 
+	/**
+	 * Methode um die TableView zu aktualisieren
+	 */
 	public void UpdateTableView() {
 		vCD.UpdateTableView();
 

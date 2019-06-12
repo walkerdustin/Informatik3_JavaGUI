@@ -130,6 +130,11 @@ public class ControlModel implements IComListener {
 		return controlProzess;
 	}
 
+	/**
+	 * Methode die Alle CommandTypes als Vector liefert
+	 * 
+	 * @return
+	 */
 	public Vector<String> getCommandTypes() {
 		Vector<String> temp = new Vector<String>();
 		for (int i = 0; i < commandTypes.length; i++) {

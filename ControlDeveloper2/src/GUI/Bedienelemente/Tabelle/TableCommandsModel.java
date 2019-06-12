@@ -11,15 +11,20 @@ import Model.ControlModel;
 import Model.Direction;
 import Model.Gear;
 
-public class TableCommandsModel extends AbstractTableModel implements iUpdater{
+/**
+ * Model der Tabelle aus PanelTableView
+ * 
+ * @author TheRealTripleM
+ *
+ */
+public class TableCommandsModel extends AbstractTableModel {
 	private ControlDevelepor cD;
 	private CommandList listCommands;
 	private final String[] arrCOLUMNNAMES = { "Nr.", "Command", "Configuration" };
 
 	public TableCommandsModel(ControlDevelepor cD) {
-		Updater.add(this);
 		this.cD = cD;
-		listCommands = ControlModel.getInstance().getControlProcess(); 
+		listCommands = ControlModel.getInstance().getControlProcess();
 		listCommands.add(new Direction(30));
 		listCommands.add(new Gear(5, 5.0));
 		listCommands.add(new Direction(30));
@@ -29,6 +34,11 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 
 	}
 
+	/**
+	 * Methode um einen Command zu erstellen und diesen der Tabelle hinzufügen
+	 * 
+	 * @param strCommand
+	 */
 	public void addCommand(String strCommand) {
 		listCommands.add(new CommandType(strCommand).createInstance());
 
@@ -40,6 +50,11 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 		fireTableDataChanged();
 	}
 
+	/**
+	 * Methode um einen Command aus der Tabelle zu löschen
+	 * 
+	 * @param row
+	 */
 	public void removeCommand(int row) {
 		listCommands.printList();
 		System.out.println("DesiredPosition" + row);
@@ -56,6 +71,11 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 
 	}
 
+	/**
+	 * Methode um einen ausgewählten Command um eine Zeile nach oben zu verschieben
+	 * 
+	 * @param row
+	 */
 	public void upCommand(int row) {
 		listCommands.printList();
 		System.out.println("DesiredPosition" + row);
@@ -66,6 +86,11 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 
 	}
 
+	/**
+	 * Methode um einen Ausgewählten Command um eine Zeile nach unten zu verschieben
+	 * 
+	 * @param row
+	 */
 	public void downCommand(int row) {
 		System.out.println("DesiredPosition" + row);
 		listCommands.moveDown(row);
@@ -73,21 +98,34 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 
 	}
 
+	/**
+	 * Methode die die Anzahl der Spalten festlegt
+	 */
 	@Override
 	public int getColumnCount() {
 		return 3;
 	}
 
+	/**
+	 * Methode die die ANzhahl der Zeilen festlegt
+	 * 
+	 */
 	@Override
 	public int getRowCount() {
 		return listCommands.getSize();
 	}
 
+	/**
+	 * Methode die dei Spaltenüberschirften festlegt
+	 */
 	@Override
 	public String getColumnName(int column) {
 		return arrCOLUMNNAMES[column];
 	}
 
+	/**
+	 * Methode die den Wert an einer bestimmten Stelle liefert
+	 */
 	@Override
 	public Object getValueAt(int row, int col) {
 		Object o = "";
@@ -110,19 +148,14 @@ public class TableCommandsModel extends AbstractTableModel implements iUpdater{
 		return o;
 	}
 
-	public void test() {
-	}
-
-	@Override
-	public void updateView() {
-	
-	}
-
+	/**
+	 * Methode um die Tabelle zu löschen
+	 */
 	public void emptyList() {
 		listCommands.clear();
 		fireTableDataChanged();
 		Updater.updateAll();
-		
+
 	}
 
 }

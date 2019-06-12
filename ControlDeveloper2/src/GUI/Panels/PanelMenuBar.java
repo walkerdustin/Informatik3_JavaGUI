@@ -19,6 +19,12 @@ import Model.ControlModel;
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
 import hsrt.mec.controldeveloper.core.com.WiFiCardHandler;
 
+/**
+ * Klasse des Panels MenuBar
+ * 
+ * @author TheRealTripleM
+ *
+ */
 public class PanelMenuBar extends JMenuBar {
 	private static PanelMenuBar instance = null;
 	private final JFileChooser fChooser = new JFileChooser();

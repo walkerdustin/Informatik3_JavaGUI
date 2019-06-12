@@ -8,6 +8,14 @@ import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
 
+/**
+ * Klasse für das Erstellen des DownButtons im PanelTableView
+ * 
+ * Verknüfung mit ControlDevelepor
+ * 
+ * @author TheRealTripleM
+ *
+ */
 public class ButtonDown extends JButton {
 	public ButtonDown() {
 		addActionListener(new ActionListener() {

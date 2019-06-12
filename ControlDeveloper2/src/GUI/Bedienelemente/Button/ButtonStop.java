@@ -9,6 +9,14 @@ import javax.swing.JButton;
 import Controller.ControlDevelepor;
 import Model.ControlModel;
 
+/**
+ * Klasse für das Erstellen des StopButtons im PanelTableView
+ * 
+ * Verknüfung mit ControlDevelepor
+ * 
+ * @author TheRealTripleM
+ *
+ */
 public class ButtonStop extends JButton {
 	public ButtonStop() {
 		addActionListener(new ActionListener() {

@@ -8,6 +8,14 @@ import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
 
+/**
+ * Klasse für das Erstellen des UPButtons im PanelTableView
+ * 
+ * Verknüfung mit ControlDevelepor
+ * 
+ * @author TheRealTripleM
+ *
+ */
 public class ButtonUp extends JButton {
 	public ButtonUp() {
 		addActionListener(new ActionListener() {

@@ -9,6 +9,14 @@ import javax.swing.JButton;
 import Controller.ControlDevelepor;
 import Model.ControlModel;
 
+/**
+ * Klasse für das Erstellen des StartButtons im PanelTableView
+ * 
+ * Verknüfung mit ControlDevelepor
+ * 
+ * @author TheRealTripleM
+ *
+ */
 public class ButtonStart extends JButton {
 	public ButtonStart() {
 		addActionListener(new ActionListener() {
