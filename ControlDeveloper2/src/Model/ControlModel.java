@@ -17,7 +17,7 @@ import zzzDatenInterface.TextFile;
  * Klasse des ControlModels Enthaelt Moegliche Commands und eine Liste des
  * bestehenden Prozesses
  * 
- *
+ * Hier werden alle Funktionen und Daten des eigentlichen Programms gespeichert
  */
 public class ControlModel implements IComListener {
 	private static ControlModel instance;
@@ -67,15 +67,16 @@ public class ControlModel implements IComListener {
 	 * laedt commands Zeilenweise aus file commands werden ueberschrieben
 	 * 
 	 * @param file Das file aus dem controlProzess erstellt werden soll
-	 * @return true
+	 * @return Ob das laden der Liste erfolgreich war
 	 */
 	public boolean load(File file) {
+		boolean erfolgreich = false;
 		TextFile commandsFile = new TextFile(file, true);
 		Vector<String> geleseneCommandStrings = new Vector<String>();
-		commandsFile.read(geleseneCommandStrings);
+		erfolgreich = commandsFile.read(geleseneCommandStrings);
 		controlProzess.VectorToList(geleseneCommandStrings);
 
-		return true;
+		return erfolgreich;
 	}
 
 	/**
@@ -83,7 +84,7 @@ public class ControlModel implements IComListener {
 	 * ueberschrieben
 	 * 
 	 * @param file
-	 * @return
+	 * @return Ob das speichern der Liste erfolgreich war.
 	 */
 	public boolean save(File file) {
 		TextFile textFile = new TextFile(file, false);
@@ -111,7 +112,7 @@ public class ControlModel implements IComListener {
 	}
 
 	/**
-	 * macht nichts bis jetzt
+	 * wird durch ComHandler aufgerufen, wenn ein neuer command Performed wird
 	 * 
 	 * @param command
 	 */
@@ -121,7 +122,7 @@ public class ControlModel implements IComListener {
 	}
 
 	/**
-	 * Getter fuer controlProzess
+	 * Getter fuer die CommandList controlProzess
 	 * 
 	 * @return
 	 */
@@ -137,14 +138,29 @@ public class ControlModel implements IComListener {
 		return temp;
 	}
 
+	/*
+	 * Setter für die aktuell selectierte WiFiCard
+	 */
 	public void setWiFiCard(WiFiCard wiFiCard) {
 		this.wiFiCard = wiFiCard;
 	}
 
+	/*
+	 * ruft die comHandler.start() auf mit der intern gespeicherten CommandList und
+	 * der intern gespeicherten WiFiCard
+	 * 
+	 * @return ob das starten erfolgreich war
+	 */
 	public boolean start() {
+		// TODO Fehlermeldung, wenn keine WifiCard selektiert ist.
 		return comHandler.start(controlProzess.listToICommandsVector(), new WiFi(wiFiCard));
 	}
 
+	/*
+	 * ruft comHandler.stop() auf
+	 * 
+	 * @return ob das stoppen erfolgreich war
+	 */
 	public boolean stop() {
 		return comHandler.stop();
 	}

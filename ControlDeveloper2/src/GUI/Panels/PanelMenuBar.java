@@ -67,7 +67,6 @@ public class PanelMenuBar extends JMenuBar {
 
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					File file = fChooser.getSelectedFile();
-					// This is where a real application would open the file.
 					ControlModel.getInstance().load(file);
 				} else {
 					System.out.println("Panel Menu Bar: Load File abgebrochen");
@@ -79,13 +78,11 @@ public class PanelMenuBar extends JMenuBar {
 		iSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Menueintrag 'Save' ausgewählt");
-				// ControlDevelepor.getInstance().MenuSaveList();
 
 				int returnVal = fChooser.showSaveDialog(ViewControlDevelepor.getInstance());
 
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					File file = fChooser.getSelectedFile();
-					// This is where a real application would open the file.
 					ControlModel.getInstance().save(file);
 				} else {
 					System.out.println("Panel Menu Bar: Save File abgebrochen");
@@ -110,11 +107,11 @@ public class PanelMenuBar extends JMenuBar {
 		iSelWifi.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { // https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
 				WiFiCardHandler wiFiCardHandler = new WiFiCardHandler();
 				WiFiCard wiFiCards[] = wiFiCardHandler.getWiFiCards();
 				Vector<String> wifiNames = new Vector<String>();
-				// https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+
 				for (WiFiCard wiFiCard : wiFiCards) {
 					wifiNames.add(wiFiCard.getDisplayName());
 				}
@@ -129,26 +126,28 @@ public class PanelMenuBar extends JMenuBar {
 				if ((s != null) && (s.length() > 0)) {
 					System.out.print("Wifi selektiert: ");
 					System.out.println(s);
+					// Raussuchen des ausgewählten WiFiCardObjektes
 					for (WiFiCard wiFiCard : wiFiCards) {
 						if (wiFiCard.getDisplayName() == s) {
 							ControlModel.getInstance().setWiFiCard(wiFiCard);
-							break;
+							break; // ab hier muss nicht mehr weiter gesucht werden...abbrechen der for schleife
 						}
 					}
 				} else {
-					System.out.println("Fehler beim auswählen der Wifi Karte");
+					System.out.println("Fehler beim auswählen der Wifi Karte: Kein String wurde zurückgegeben");
 				}
-
 			}
 		});
 
 	}
 
+	/*
+	 * @return returns The Singleton Instance of PMB
+	 */
 	public static PanelMenuBar getInstance() {
 		if (instance == null) {
 			instance = new PanelMenuBar();
 		}
-
 		return instance;
 	}
 }

@@ -39,7 +39,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	private static final String GEARPANEL = "GEARPANEL";
 	private static final String PAUSEPANEL = "PAUSEPANEL";
 	private static final String NOTHINGPANEL = "NOTHINGPANEL";
-	private static String currentPanelString;
+	private static String currentPanelString = NOTHINGPANEL; // entspricht dem defaultwert des CardLayout
 	/////////////////////////////////
 
 	/////////////////////////////////////////// Visual stuff
@@ -64,6 +64,9 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	// ---------------------------------------
 
 	//////////////////////////////////////// inner Class Button Controller
+	/*
+	 * Innere Classe als Button Controller
+	 */
 	private class SaveButtonControler implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -110,6 +113,9 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	/////////////////// Singleton
 	private static PanelAttributionsView instance;
 
+	/*
+	 * @return returns the Singleton instance of PAV
+	 */
 	public static PanelAttributionsView getInstance() {
 		if (PanelAttributionsView.instance == null) {
 			PanelAttributionsView.instance = new PanelAttributionsView();
@@ -118,6 +124,13 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	}
 	// ---------------------------
 
+	/*
+	 * Konstrutor für PanelAttributesView
+	 * 
+	 * hier werden alle Gui Elemente instanziiert und mit content befüllt das Layout
+	 * wird festgelegt
+	 * 
+	 */
 	private PanelAttributionsView() {
 
 		System.out.println("ConstruktorPanelAttributionsView");
@@ -188,10 +201,11 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		///////////////////////////////////////////////////////////
 
 		// adding all Cards
-		cards.add(DIRECTINONPANEL, DirectionCard);
-		cards.add(GEARPANEL, GearCard);
+		cards.add(NothingCard, NOTHINGPANEL); // Als erstes geaddet, dadurch ist es der default wert
+		cards.add(DirectionCard, DIRECTINONPANEL);
+		cards.add(GearCard, GEARPANEL);
 		cards.add(PauseCard, PAUSEPANEL);
-		cards.add(NothingCard, NOTHINGPANEL);
+
 		///////////////
 
 		this.add(cards, BorderLayout.CENTER);
@@ -209,6 +223,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	}
 
 	/**
+	 * returns the card that is visible
 	 * 
 	 * @return the panel that is visible in the CardLayout Panel
 	 */
@@ -226,6 +241,10 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	}
 
 	@Override
+	/*
+	 * Entscheidet Welche Card des CardLayout gezeigt werden sollte anhand der
+	 * momentan ausgewählten Zeile im TableCommandsView
+	 */
 	public void updateView() {
 		int selectedRow = cD.getSelectedRow();
 		int i = 3;
@@ -245,6 +264,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 			String selection = tempStringArray[0];
 
 			System.out.println("  , String Selection == " + selection);
+
 			switch (selection) {
 			case "Direction":
 				cardLayout.show(cards, DIRECTINONPANEL);
