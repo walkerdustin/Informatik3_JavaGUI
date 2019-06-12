@@ -18,7 +18,7 @@ import Model.Gear;
  */
 public class ControlDevelepor {
 
-	private static ControlDevelepor INSTANCE = new ControlDevelepor();
+	private static ControlDevelepor INSTANCE = null;
 	// Models
 	private ControlModel cM;
 
@@ -29,10 +29,13 @@ public class ControlDevelepor {
 	private int commandRowSelected = -1;
 
 	private ControlDevelepor() {
-		cM = ControlModel.getInstance();
+		//cM = ControlModel.getInstance();
 	};
 
 	public static ControlDevelepor getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new ControlDevelepor();
+		}
 		return INSTANCE;
 	}
 
