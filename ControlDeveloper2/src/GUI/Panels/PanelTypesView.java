@@ -25,13 +25,11 @@ import Model.ControlModel;
  *
  */
 public class PanelTypesView extends JPanel implements iUpdater {
-	private ControlDevelepor cD;
 	private static PanelTypesView pTV = null;
 	private static ListGui TypesList = null;
 
 	private static final String HEADLINE = "Types";
 	private String[] arrCommandTypes;
-	private ButtonAdd bAdd;
 
 	/**
 	 * Konstruktor, erstellt Grunddarstellung
