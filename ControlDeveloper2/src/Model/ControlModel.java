@@ -7,6 +7,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import GUI.Panels.PanelAusgabefensterView;
 import hsrt.mec.controldeveloper.core.com.ComHandler;
 import hsrt.mec.controldeveloper.core.com.IComListener;
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
@@ -120,7 +121,8 @@ public class ControlModel implements IComListener {
 	 */
 	public void commandPerformed(ICommand command) {
 		System.out.print("Command performed: ");
-		System.out.println(command.toString());
+		System.out.println(command.getName());
+		PanelAusgabefensterView.getInstance().showStringInPanel(command.getName());
 	}
 
 	/**

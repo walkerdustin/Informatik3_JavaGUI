@@ -3,17 +3,12 @@ package GUI.Panels;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.font.TextAttribute;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,13 +18,14 @@ import javax.swing.JTextField;
 import Controller.ControlDevelepor;
 import Controller.Updater;
 import GUI.iUpdater;
-import Model.CommandType;
 import Model.ControlModel;
 import Model.Direction;
 import Model.Gear;
 import Model.Pause;
-import sun.security.action.GetBooleanAction;
 
+/*
+ * In dieser Klasse wirs das Attributes Panel erstellt und implementiert  -SINGLETON
+ */
 public class PanelAttributionsView extends JPanel implements iUpdater {
 	ControlDevelepor cD;
 
@@ -256,6 +252,10 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		// -------------------------------------------
 	}
 
+	/*
+	 * gibt einen Warndialog aus eigentlich nur um den Benutzer noch mehr zu
+	 * demütigen...
+	 */
 	private void ungueltigeArgumenteWarnung() {
 		System.out.println("Es wurden ungueltige Argumente ausgewaehlt");
 		Object[] options = { "sorry", "Tut mir Leid", "War keine Absicht" };
@@ -289,7 +289,6 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	 */
 	public void updateView() {
 		int selectedRow = cD.getSelectedRow();
-		int i = 3;
 		System.out.print("PAV.updateView() sagt: selectedRow == ");
 		System.out.println(selectedRow);
 

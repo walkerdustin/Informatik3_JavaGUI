@@ -1,15 +1,13 @@
 package GUI;
 
 import java.awt.BorderLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
 
 import Controller.ControlDevelepor;
 import Controller.Updater;
 import GUI.Panels.PanelAttributionsView;
+import GUI.Panels.PanelAusgabefensterView;
 import GUI.Panels.PanelCommandsView;
 import GUI.Panels.PanelMenuBar;
 import GUI.Panels.PanelTypesView;
@@ -30,6 +28,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 	private PanelTypesView pTV;
 	private PanelAttributionsView pAV;
 	private PanelCommandsView pCV;
+	private PanelAusgabefensterView pAFV;
 	private PanelMenuBar pMB;
 
 	// ----------------------------------------------------------
@@ -51,6 +50,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		pAV = PanelAttributionsView.getInstance();
 		pCV = PanelCommandsView.getInstance();
 		pMB = PanelMenuBar.getInstance();
+		pAFV = PanelAusgabefensterView.getInstance();
 
 		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
 
@@ -76,7 +76,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		mainPlain1.setRightComponent(mainPlain2);
 
 		JSplitPane rootPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		rootPanel.setBottomComponent(new JLabel("Ausgabefenster"));
+		rootPanel.setBottomComponent(pAFV);
 		rootPanel.setTopComponent(mainPlain1);
 
 		// ERgänzen der Einzelnen Planes

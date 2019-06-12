@@ -7,12 +7,14 @@ import javax.swing.event.ListSelectionListener;
 import Controller.ControlDevelepor;
 import Controller.Updater;
 import GUI.iUpdater;
+
 /**
  * ViewKlasse der Tabelle
+ * 
  * @author TheRealTripleM
  *
  */
-public class TableCommandsView extends JTable{
+public class TableCommandsView extends JTable {
 
 	public TableCommandsView(TableCommandsModel mTM) {
 
