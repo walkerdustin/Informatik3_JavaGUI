@@ -64,7 +64,7 @@ public class Gear extends Command implements IGear {
 	 * @param duration - Dauer
 	 */
 	public void setDuration(double duration) {
-		if (duration< 0) {
+		if (duration < 0) {
 			System.err.println("DurationInput is out of Range");
 			duration = 0.0;
 		}

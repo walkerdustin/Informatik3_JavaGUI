@@ -225,8 +225,7 @@ public class CommandList {
 					runner.getPrev().setNext(runner.getNext());
 					if (i != size - 1) {
 						runner.getNext().setPrev(runner.getPrev());
-					}
-					else {
+					} else {
 						setTreeTop(runner.getPrev());
 					}
 					--size;

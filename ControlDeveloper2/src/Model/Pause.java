@@ -20,7 +20,7 @@ public class Pause extends Command implements IPause {
 	 * @param duration - Dauer
 	 */
 	public Pause(double duration) {
-		if (duration< 0) {
+		if (duration < 0) {
 			System.err.println("DurationInput is out of Range");
 			duration = 0.0;
 		}

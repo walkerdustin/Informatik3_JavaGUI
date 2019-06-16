@@ -129,7 +129,6 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 
 	}
 
-
 	/**
 	 * Methode um Befehl an TableModel Weiterzuleiten
 	 * 

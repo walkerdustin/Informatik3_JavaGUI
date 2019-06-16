@@ -44,5 +44,4 @@ public class PanelAusgabefensterView extends JPanel {
 		aktuellerBefehl.setText(string);
 	}
 
-
 }

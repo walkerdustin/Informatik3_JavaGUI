@@ -161,7 +161,6 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	}
 
-
 	/**
 	 * Methode um Befehl an TableModel Weiterzuleiten
 	 * 

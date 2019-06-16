@@ -50,7 +50,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	JTextField textAttributeGear1 = new JTextField();
 	JTextField textAttributeGear2 = new JTextField();
 	JTextField textAttributePause = new JTextField();
-	Dimension textfieldSize = new Dimension(200, 20);
+	Dimension textfieldSize = new Dimension(70, 20);
 	// -------------------------------------------------
 
 	///////////////////////////////////////// Labels
@@ -58,15 +58,20 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	JLabel labelAttributeGear1 = new JLabel("Speed");
 	JLabel labelAttributeGear2 = new JLabel("Duration");
 	JLabel labelAttributePause = new JLabel("Duration");
-	Dimension labelSize = new Dimension(100, 20);
+	Dimension labelSize = new Dimension(70, 20);
 	// ---------------------------------------
-	///////////////////////////////////////////////simple Container to respect preferedsize of all the above
-	JPanel ctAD = new JPanel(new FlowLayout(FlowLayout.CENTER));
-	JPanel clAD = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	/////////////////////////////////////////////// simple Container to respect
+	// preferedsize of all the above
+	JPanel ctextAttributeDir = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	JPanel ctextAttributeGear1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	JPanel ctextAttributeGear2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	JPanel ctextAttributePause = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	JPanel clabelAttributeDir = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	JPanel clabelAttributeGear1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	JPanel clabelAttributeGear2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	JPanel clabelAttributePause = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-	
 	///////////////////////////////////////////////
-	
 
 	//////////////////////////////////////// inner Class Button Controller
 	/*
@@ -187,12 +192,19 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		buttonPanel.add(bSave);
 		//////////////////////////////////////////
-		
-		//////////////////////////////////////////prefered Size
-//		textAttributeDir.setPreferredSize(textfieldSize);
-//		labelAttributeDir.setPreferredSize(labelSize);
-		//////////////////////////////////////////
 
+		////////////////////////////////////////// prefered Size
+		this.setMinimumSize(new Dimension(180, 500));
+		textAttributeDir.setPreferredSize(textfieldSize);
+		textAttributeGear1.setPreferredSize(textfieldSize);
+		textAttributeGear2.setPreferredSize(textfieldSize);
+		textAttributePause.setPreferredSize(textfieldSize);
+
+		labelAttributeDir.setPreferredSize(labelSize);
+		labelAttributeGear1.setPreferredSize(labelSize);
+		labelAttributeGear2.setPreferredSize(labelSize);
+		labelAttributePause.setPreferredSize(labelSize);
+		//////////////////////////////////////////
 
 		///////////////////////////////////////// Layout
 		cards = new JPanel();
@@ -204,29 +216,37 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		setLayout(new BorderLayout());
 		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
 		add(buttonPanel, BorderLayout.SOUTH);
-		
+
 		////////////////////////////////////////////////////////// CARDS for CardLayout
 		//////////////////////////////////////// DirectionCard
-		clAD.add(labelAttributeDir);
-		ctAD.add(textAttributeDir);
+		clabelAttributeDir.add(labelAttributeDir);
+		ctextAttributeDir.add(textAttributeDir);
 		JPanel DirectionCard = new JPanel(new GridLayout(1, 2));
-		DirectionCard.add(clAD);
-		DirectionCard.add(ctAD);
+		DirectionCard.add(clabelAttributeDir);
+		DirectionCard.add(ctextAttributeDir);
 
 		add(DirectionCard, BorderLayout.CENTER);
 		////////////////////////////////////////
 		//////////////////////////////////////// GearCard
+		clabelAttributeGear1.add(labelAttributeGear1);
+		ctextAttributeGear1.add(textAttributeGear1);
+		clabelAttributeGear2.add(labelAttributeGear2);
+		ctextAttributeGear2.add(textAttributeGear2);
+
 		JPanel GearCard = new JPanel(new GridLayout(2, 2));
-		GearCard.add(labelAttributeGear1);
-		GearCard.add(textAttributeGear1);
-		GearCard.add(labelAttributeGear2);
-		GearCard.add(textAttributeGear2);
+		GearCard.add(clabelAttributeGear1);
+		GearCard.add(ctextAttributeGear1);
+		GearCard.add(clabelAttributeGear2);
+		GearCard.add(ctextAttributeGear2);
 
 		////////////////////////////////////////
 		//////////////////////////////////////// PauseCard
+		clabelAttributePause.add(labelAttributePause);
+		ctextAttributePause.add(textAttributePause);
+
 		JPanel PauseCard = new JPanel(new GridLayout(1, 2));
-		PauseCard.add(labelAttributePause);
-		PauseCard.add(textAttributePause);
+		PauseCard.add(clabelAttributePause);
+		PauseCard.add(ctextAttributePause);
 
 		////////////////////////////////////////
 		//////////////////////////////////////// NothingCard
