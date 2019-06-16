@@ -27,7 +27,8 @@ import Model.Pause;
  * In dieser Klasse wirs das Attributes Panel erstellt und implementiert  -SINGLETON
  */
 public class PanelAttributionsView extends JPanel implements iUpdater {
-	ControlDevelepor cD;
+	/////////////////// Singleton
+	private static PanelAttributionsView instance;
 
 	/////////// Constants
 	private static final String HEADLINE = "Attributes";
@@ -49,7 +50,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	JTextField textAttributeGear1 = new JTextField();
 	JTextField textAttributeGear2 = new JTextField();
 	JTextField textAttributePause = new JTextField();
-	Dimension textfieldSize = new Dimension(200, 8);
+	Dimension textfieldSize = new Dimension(200, 20);
 	// -------------------------------------------------
 
 	///////////////////////////////////////// Labels
@@ -57,8 +58,15 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	JLabel labelAttributeGear1 = new JLabel("Speed");
 	JLabel labelAttributeGear2 = new JLabel("Duration");
 	JLabel labelAttributePause = new JLabel("Duration");
-	Dimension labelSize = new Dimension(150, 8);
+	Dimension labelSize = new Dimension(100, 20);
 	// ---------------------------------------
+	///////////////////////////////////////////////simple Container to respect preferedsize of all the above
+	JPanel ctAD = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	JPanel clAD = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+	
+	///////////////////////////////////////////////
+	
 
 	//////////////////////////////////////// inner Class Button Controller
 	/*
@@ -69,7 +77,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Save Button gedrückt");
 
-			int selectedRow = cD.getSelectedRow();
+			int selectedRow = ControlDevelepor.getInstance().getSelectedRow();
 			// ControlModel.getInstance().getControlProcess().remove(selectedRow);
 
 			int attribut1 = -1000;
@@ -138,10 +146,6 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 			ControlDevelepor.getInstance().UpdateTableView();
 		}
 	}
-	////////////////////////////////////////////////
-
-	/////////////////// Singleton
-	private static PanelAttributionsView instance;
 
 	/*
 	 * @return returns the Singleton instance of PAV
@@ -165,7 +169,6 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 
 		System.out.println("ConstruktorPanelAttributionsView");
 		Updater.add(this);
-		this.cD = ControlDevelepor.getInstance();
 
 		//////////////////////////////////////////////////////////////////// Test
 		textAttributeDir.addActionListener(new ActionListener() {
@@ -174,7 +177,6 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 			public void actionPerformed(ActionEvent e) {
 
 				System.out.println(textAttributeDir.getText());
-
 			}
 		});
 		////////////////////////////////////////////////////////////////////////
@@ -184,12 +186,13 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		bSave.addActionListener(new SaveButtonControler());
 		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		buttonPanel.add(bSave);
-		// -----------------------------------------------
+		//////////////////////////////////////////
+		
+		//////////////////////////////////////////prefered Size
+//		textAttributeDir.setPreferredSize(textfieldSize);
+//		labelAttributeDir.setPreferredSize(labelSize);
+		//////////////////////////////////////////
 
-//		textAttribute1.setPreferredSize(textfieldSize);
-//		textAttribute2.setPreferredSize(textfieldSize);
-//		labelAttribute1.setPreferredSize(labelSize);
-//		labelAttribute2.setPreferredSize(labelSize);
 
 		///////////////////////////////////////// Layout
 		cards = new JPanel();
@@ -201,12 +204,14 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 		setLayout(new BorderLayout());
 		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
 		add(buttonPanel, BorderLayout.SOUTH);
-
+		
 		////////////////////////////////////////////////////////// CARDS for CardLayout
 		//////////////////////////////////////// DirectionCard
+		clAD.add(labelAttributeDir);
+		ctAD.add(textAttributeDir);
 		JPanel DirectionCard = new JPanel(new GridLayout(1, 2));
-		DirectionCard.add(labelAttributeDir);
-		DirectionCard.add(textAttributeDir);
+		DirectionCard.add(clAD);
+		DirectionCard.add(ctAD);
 
 		add(DirectionCard, BorderLayout.CENTER);
 		////////////////////////////////////////
@@ -240,16 +245,6 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 
 		this.add(cards, BorderLayout.CENTER);
 
-//		JPanel AttributesGrid = new JPanel(new GridLayout(2, 2));
-//		AttributesGrid.add(labelAttribute1);
-//		AttributesGrid.add(textAttribute1);
-//		AttributesGrid.add(labelAttribute2);
-//		AttributesGrid.add(textAttribute2);
-//		// AttributesGrid.setPreferredSize(new Dimension(200, 250));
-//		JPanel AttributesGridPanel = new JPanel(new BoxLayout(AttributesGrid, BoxLayout.LINE_AXIS));
-//
-//		add(AttributesGrid, BorderLayout.CENTER);
-		// -------------------------------------------
 	}
 
 	/*
@@ -288,7 +283,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 	 * momentan ausgewählten Zeile im TableCommandsView
 	 */
 	public void updateView() {
-		int selectedRow = cD.getSelectedRow();
+		int selectedRow = ControlDevelepor.getInstance().getSelectedRow();
 		System.out.print("PAV.updateView() sagt: selectedRow == ");
 		System.out.println(selectedRow);
 
