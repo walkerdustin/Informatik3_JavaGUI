@@ -118,30 +118,37 @@ public class PanelMenuBar extends JMenuBar {
 				WiFiCardHandler wiFiCardHandler = new WiFiCardHandler();
 				WiFiCard wiFiCards[] = wiFiCardHandler.getWiFiCards();
 				Vector<String> wifiNames = new Vector<String>();
-
-				for (WiFiCard wiFiCard : wiFiCards) {
-					wifiNames.add(wiFiCard.getDisplayName());
-				}
-				Object wifiNamesArray[] = wifiNames.toArray();
-
-				String s = (String) JOptionPane.showInputDialog(
-
-						ViewControlDevelepor.getInstance(), "Wähle eine der Wifi Karten aus:", "Choose WiFi",
-						JOptionPane.QUESTION_MESSAGE, null, wifiNamesArray, wifiNamesArray[0]);
-
-				// If a string was returned
-				if ((s != null) && (s.length() > 0)) {
-					System.out.print("Wifi selektiert: ");
-					System.out.println(s);
-					// Raussuchen des ausgewählten WiFiCardObjektes
+				if (wiFiCards.length != 0) {
 					for (WiFiCard wiFiCard : wiFiCards) {
-						if (wiFiCard.getDisplayName() == s) {
-							ControlModel.getInstance().setWiFiCard(wiFiCard);
-							break; // ab hier muss nicht mehr weiter gesucht werden...abbrechen der for schleife
+						wifiNames.add(wiFiCard.getDisplayName());
+					}
+					Object wifiNamesArray[] = wifiNames.toArray();
+
+					String s = (String) JOptionPane.showInputDialog(
+
+							ViewControlDevelepor.getInstance(), "Wähle eine der Wifi Karten aus:", "Choose WiFi",
+							JOptionPane.QUESTION_MESSAGE, null, wifiNamesArray, wifiNamesArray[0]);
+
+					// If a string was returned
+					if ((s != null) && (s.length() > 0)) {
+						System.out.print("Wifi selektiert: ");
+						System.out.println(s);
+						// Raussuchen des ausgewählten WiFiCardObjektes
+						for (WiFiCard wiFiCard : wiFiCards) {
+							if (wiFiCard.getDisplayName() == s) {
+								ControlModel.getInstance().setWiFiCard(wiFiCard);
+								break; // ab hier muss nicht mehr weiter gesucht werden...abbrechen der for schleife
+							}
 						}
+					} else {
+						System.out.println("Fehler beim auswählen der Wifi Karte: Kein String wurde zurückgegeben");
 					}
 				} else {
-					System.out.println("Fehler beim auswählen der Wifi Karte: Kein String wurde zurückgegeben");
+					Object[] options = { "sorry", "Tut mir Leid", "War keine Absicht" };
+					JOptionPane.showOptionDialog(null,
+							"Leider haben sie keine WiFi Karte in ihrem System! \n Das tut mir sehr leid für sie! \n Diese hier kann ich empfehlen: https://www.amazon.de/CSL-Netzwerkkarte-empfangsstarke-Hochleistungs-Doppelantenne-Schnittstelle/dp/B01NBR7MQ9/ref=sr_1_13?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=wifi+karte&pldnSite=1&qid=1560699777&s=gateway&sr=8-13 ",
+							"Kein WiFi Fehler!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options,
+							options[0]);
 				}
 			}
 		});
