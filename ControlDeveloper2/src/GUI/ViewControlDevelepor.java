@@ -82,7 +82,7 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 		// ERgänzen der Einzelnen Planes
 		add(pMB, BorderLayout.NORTH);
 		add(rootPanel, BorderLayout.CENTER);
-		// pack();
+		this.pack();
 
 	};
 
@@ -161,15 +161,6 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 	}
 
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public void testList() {
-		pCV.testList();
-
-	}
 
 	/**
 	 * Methode um Befehl an TableModel Weiterzuleiten
