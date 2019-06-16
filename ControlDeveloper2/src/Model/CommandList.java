@@ -217,7 +217,7 @@ public class CommandList {
 	 * @return
 	 */
 	public boolean moveUp(int pos) {
-		System.out.println("DesiredMoveUp at POsition" + pos);
+		System.out.println("DesiredMoveUp at Position" + pos);
 		if (pos < size && pos > 0) {
 			Element runner = getRoot().getNext();
 			for (int i = 1; i < size; ++i) {
@@ -225,6 +225,9 @@ public class CommandList {
 					runner.getPrev().setNext(runner.getNext());
 					if (i != size - 1) {
 						runner.getNext().setPrev(runner.getPrev());
+					}
+					else {
+						setTreeTop(runner.getPrev());
 					}
 					--size;
 					add(runner.getElement(), pos - 1);

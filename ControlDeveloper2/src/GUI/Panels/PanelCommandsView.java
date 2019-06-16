@@ -129,15 +129,6 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 
 	}
 
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public void testList() {
-		mTM.test();
-
-	}
 
 	/**
 	 * Methode um Befehl an TableModel Weiterzuleiten
