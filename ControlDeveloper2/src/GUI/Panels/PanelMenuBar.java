@@ -118,7 +118,7 @@ public class PanelMenuBar extends JMenuBar {
 				WiFiCardHandler wiFiCardHandler = new WiFiCardHandler();
 				WiFiCard wiFiCards[] = wiFiCardHandler.getWiFiCards();
 				Vector<String> wifiNames = new Vector<String>();
-				if (wiFiCards.length != 0) {
+				if (wiFiCards.length >= 0) {
 					for (WiFiCard wiFiCard : wiFiCards) {
 						wifiNames.add(wiFiCard.getDisplayName());
 					}
