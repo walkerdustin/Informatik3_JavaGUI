@@ -83,6 +83,8 @@ public class ControlDevelepor {
 	 * Methode um einen Command in der Tabelle zu löschen
 	 */
 	public void removeCommand() {
+		
+		System.out.println("Heheho");
 		vCD.removeCommand(vCD.getSelectedCommandRow());
 
 	}
@@ -103,19 +105,7 @@ public class ControlDevelepor {
 
 	}
 
-//	Dustin sagt das kann / muss in Control Model .... Dustin hat das jetzt einfach so gemacht.
-//	public void stop() {
-//		// TODO CommandsPanel StopButton FUnktion implementieren
-//		System.out.println("Stop");
-//
-//	}
-//
-//	public void start() {
-//		// TODO CommandsPanel StartButton FUnktion implementiren
-//		System.out.println("Start");
-//		vCD.testList();
-//
-//	}
+
 
 	/**
 	 * Methode die Ausgelöst wird wenn dich die selektierte Zeile ändert
@@ -129,22 +119,7 @@ public class ControlDevelepor {
 		this.commandRowSelected = selectedRow;
 		PanelAttributionsView.getInstance().updateView();
 
-//
-//		switch (selection) {
-//		case "Direction":
-//			vCD.openDirectionPanel();
-//			break;
-//		case "Gear":
-//			vCD.openGearPanel();
-//			break;
-//		case "Pause":
-//			vCD.openPausePanel();
-//			break;
-//
-//		default:
-//			System.err.println("Stored NameString is invalid");
-//			break;
-//		}
+
 
 	}
 
@@ -157,16 +132,6 @@ public class ControlDevelepor {
 		return commandRowSelected;
 	}
 
-////	Dustin sagt das kann / muss in Control Model .... Dustin hat das jetzt einfach so gemacht.
-//	public void MenuLoadList() {
-//		// TODO@Dustin Auto-generated method stub
-//		
-//	}
-//
-//	public void MenuSaveList() {
-//		// TODO@Dustin Auto-generated method stub
-//		
-//	}
 
 	/**
 	 * Methode um die Komplette Tabelle zu löschen

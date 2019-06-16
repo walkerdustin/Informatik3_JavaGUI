@@ -66,7 +66,7 @@ public class TableCommandsModel extends AbstractTableModel {
 //			}
 //			else {}
 //		}
-//		listCommands.remove(row);
+		listCommands.remove(row);
 		fireTableDataChanged();
 
 	}

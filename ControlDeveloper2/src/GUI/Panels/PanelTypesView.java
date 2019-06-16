@@ -2,21 +2,15 @@ package GUI.Panels;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.util.Vector;
-
-import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import Controller.ControlDevelepor;
-import Controller.Updater;
 import GUI.iUpdater;
 import GUI.Bedienelemente.Button.ButtonAdd;
 import GUI.Bedienelemente.List.ListGui;
-import Model.ControlModel;
 
 /**
  * Klasse zum Erstellen des Panels TypesView - SINGELTON

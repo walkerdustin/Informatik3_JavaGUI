@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import GUI.iUpdater;
+
 /*
  * In dieser Klasse wird das AusgabeFenster erstellt und implementiert -SINGLETON
  */
@@ -41,4 +43,6 @@ public class PanelAusgabefensterView extends JPanel {
 	public void showStringInPanel(String string) {
 		aktuellerBefehl.setText(string);
 	}
+
+
 }
