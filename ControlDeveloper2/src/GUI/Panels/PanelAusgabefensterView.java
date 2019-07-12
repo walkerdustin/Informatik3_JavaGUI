@@ -5,14 +5,17 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import GUI.iUpdater;
+import hsrt.mec.controldeveloper.core.com.ComHandler;
+import hsrt.mec.controldeveloper.core.com.IComListener;
+import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 /*
  * In dieser Klasse wird das AusgabeFenster erstellt und implementiert -SINGLETON
  */
-public class PanelAusgabefensterView extends JPanel {
+public class PanelAusgabefensterView extends JPanel implements IComListener {
 	private JLabel aktuellerBefehl;
 	private static final String HEADLINE = "Ausgabe";
+	private ComHandler comHandler = ComHandler.getInstance();
 
 	private static PanelAusgabefensterView instance;
 
@@ -32,6 +35,8 @@ public class PanelAusgabefensterView extends JPanel {
 		aktuellerBefehl = new JLabel();
 		this.add(aktuellerBefehl, BorderLayout.CENTER);
 		aktuellerBefehl.setText("Test...");
+
+		comHandler.register(this);
 	}
 
 	/*
@@ -42,6 +47,17 @@ public class PanelAusgabefensterView extends JPanel {
 	 */
 	public void showStringInPanel(String string) {
 		aktuellerBefehl.setText(string);
+	}
+
+	/**
+	 * wird durch ComHandler aufgerufen, wenn ein neuer command Performed wird
+	 * 
+	 * @param command
+	 */
+	public void commandPerformed(ICommand command) {
+		System.out.print("Command performed: ");
+		System.out.println(command.getName());
+		PanelAusgabefensterView.getInstance().showStringInPanel(command.getName());
 	}
 
 }

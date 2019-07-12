@@ -1,18 +1,12 @@
 package Model;
 
-import java.io.File;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
-import GUI.Panels.PanelAusgabefensterView;
 import hsrt.mec.controldeveloper.core.com.ComHandler;
-import hsrt.mec.controldeveloper.core.com.IComListener;
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
-//import hsrt.mec.controldeveloper.io.TextFile;
-import hsrt.mec.controldeveloper.core.com.command.ICommand;
+import java.io.File;
 import hsrt.mec.controldeveloper.io.WiFi;
 import zzzDatenInterface.TextFile;
 
@@ -22,7 +16,7 @@ import zzzDatenInterface.TextFile;
  * 
  * Hier werden alle Funktionen und Daten des eigentlichen Programms gespeichert
  */
-public class ControlModel implements IComListener {
+public class ControlModel {
 	private static ControlModel instance;
 	private CommandType[] commandTypes = new CommandType[3];
 	private CommandList controlProzess;
@@ -39,7 +33,6 @@ public class ControlModel implements IComListener {
 		commandTypes[1] = new CommandType("Gear");
 		commandTypes[2] = new CommandType("Pause");
 
-		comHandler.register(this);
 	}
 
 	/**
@@ -112,17 +105,6 @@ public class ControlModel implements IComListener {
 		System.out.println(geleseneCommandStrings);// for Testing
 
 		return erfolgreich;
-	}
-
-	/**
-	 * wird durch ComHandler aufgerufen, wenn ein neuer command Performed wird
-	 * 
-	 * @param command
-	 */
-	public void commandPerformed(ICommand command) {
-		System.out.print("Command performed: ");
-		System.out.println(command.getName());
-		PanelAusgabefensterView.getInstance().showStringInPanel(command.getName());
 	}
 
 	/**
