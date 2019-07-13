@@ -148,7 +148,6 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 				break;
 			}
 			Updater.updateAll();
-			ControlDevelepor.getInstance().UpdateTableView();
 		}
 	}
 
@@ -313,8 +312,7 @@ public class PanelAttributionsView extends JPanel implements iUpdater {
 			System.out.println(NOTHINGPANEL + " is launched");
 			currentPanelString = NOTHINGPANEL;
 		} else {
-			String commandName = ControlModel.getInstance().getControlProcess().get(selectedRow).getName(); // get
-			// Command
+			String commandName = ControlModel.getInstance().listManager.get(selectedRow).getName();
 			String[] tempStringArray = commandName.split("#x#");
 			// Type of Selected Row
 			String selection = tempStringArray[0];

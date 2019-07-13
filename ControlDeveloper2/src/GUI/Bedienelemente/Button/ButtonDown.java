@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
+import Model.ControlModel;
 
 /**
  * Klasse für das Erstellen des DownButtons im PanelTableView
@@ -22,7 +23,7 @@ public class ButtonDown extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("DownButton gedrückt");
-				ControlDevelepor.getInstance().DownCommand();
+				ControlModel.getInstance().listManager.DownCommand(ControlDevelepor.getInstance().getSelectedRow());
 			}
 		});
 		setText("DOWN");

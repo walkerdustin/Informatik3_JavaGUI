@@ -13,8 +13,8 @@ import GUI.Bedienelemente.Button.ButtonRemove;
 import GUI.Bedienelemente.Button.ButtonStart;
 import GUI.Bedienelemente.Button.ButtonStop;
 import GUI.Bedienelemente.Button.ButtonUp;
-import GUI.Bedienelemente.Tabelle.TableCommandsModel;
 import GUI.Bedienelemente.Tabelle.TableCommandsView;
+import Model.ControlModel;
 
 /**
  * Klasse des Panels CommandsView
@@ -27,8 +27,8 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 	private static PanelCommandsView instance = new PanelCommandsView();
 	private static final String HEADLINE = "Commandliste";
 
-	TableCommandsModel mTM = new TableCommandsModel(cD);
-	TableCommandsView jT = new TableCommandsView(mTM);
+//	TableCommandsModel mTM = new TableCommandsModel(cD);
+//	TableCommandsView jT = new TableCommandsView(mTM);
 
 	private PanelCommandsView() {
 		Updater.add(this);
@@ -52,7 +52,7 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 //		jT.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 
 		add(panelButtonBar, BorderLayout.SOUTH);
-		add(new JScrollPane(jT), BorderLayout.CENTER);
+		add(new JScrollPane(TableCommandsView.getInstance()), BorderLayout.CENTER);
 
 	}
 
@@ -67,86 +67,7 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 
 	@Override
 	public void updateView() {
-		// TODO Auto-generated method stub
-
+		ControlModel.getInstance().myCommandsTableModel.fireTableDataChanged();
 	}
 
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public void addCommand(String strCommand) {
-		mTM.addCommand(strCommand);
-
-	}
-
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public String getCommandTypeAt(int row) {
-		return mTM.getValueAt(row, 1).toString();
-	}
-
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public int getSelectedCOmmandRow() {
-		return jT.getSelectedRow();
-	}
-
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public void removeCommand(int row) {
-		mTM.removeCommand(row);
-
-	}
-
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public void upCommand(int row) {
-		mTM.upCommand(row);
-
-	}
-
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public void downCommand(int row) {
-		mTM.downCommand(row);
-
-	}
-
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public void emptyList() {
-		mTM.emptyList();
-
-	}
-
-	/**
-	 * Methode um Befehl an TableModel Weiterzuleiten
-	 * 
-	 * @param strCommand
-	 */
-	public void UpdateTableView() {
-
-		mTM.fireTableDataChanged();
-
-	}
 }

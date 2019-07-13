@@ -5,24 +5,24 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import Controller.ControlDevelepor;
-import Controller.Updater;
-import GUI.iUpdater;
+import Model.ControlModel;
 
-/**
- * ViewKlasse der Tabelle
- * 
- * @author TheRealTripleM
- *
- */
 public class TableCommandsView extends JTable {
+	/////////////////////////////////////////// Singleton
+	private static TableCommandsView instance = new TableCommandsView();
 
-	public TableCommandsView(TableCommandsModel mTM) {
+	public static TableCommandsView getInstance() {
+		return instance;
+	}
 
-		setModel(mTM);
+	private TableCommandsView() {
+		setModel(ControlModel.getInstance().myCommandsTableModel);
+
 		getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
 			@Override
-			public void valueChanged(ListSelectionEvent e) { // TODO getSelectedRow() nur einmal abfragen?!
+			public void valueChanged(ListSelectionEvent e) {
+				// TODO Auto-generated method stub
 				System.out.println(getSelectedRow());
 				if (!e.getValueIsAdjusting()) {
 					System.out.println("CommandChanged");
@@ -33,7 +33,6 @@ public class TableCommandsView extends JTable {
 					}
 
 				}
-
 			}
 		});
 	}

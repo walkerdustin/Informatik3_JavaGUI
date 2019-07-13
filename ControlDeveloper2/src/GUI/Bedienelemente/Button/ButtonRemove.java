@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import Controller.ControlDevelepor;
+import Model.ControlModel;
 
 /**
  * Klasse für das Erstellen des RemoveButtons im PanelTableView
@@ -20,7 +21,7 @@ public class ButtonRemove extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("RemoveButton gedrückt");
-				ControlDevelepor.getInstance().removeCommand();
+				ControlModel.getInstance().listManager.removeCommand(ControlDevelepor.getInstance().getSelectedRow());
 			}
 		});
 		setText("REMOVE");

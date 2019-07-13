@@ -72,39 +72,12 @@ public class ControlDevelepor {
 	 * Add-Methode: Wird ausgelï¿½st von AddButton im PanelTypesView Koordiniert das
 	 * Hinzufï¿½gen eines neuen (leeren) Commands
 	 */
-	public void addType() {
+	public void addCommand() {
 		String strCommand = vCD.getSelectedType();
 		System.out.println("Folgender Command wird angelegt: " + strCommand);
-		vCD.addCommand(strCommand);
+		ControlModel.getInstance().listManager.addCommand(new CommandType(strCommand).createInstance());
 		Updater.updateAll();
 	}
-
-	/**
-	 * Methode um einen Command in der Tabelle zu löschen
-	 */
-	public void removeCommand() {
-		
-		System.out.println("Heheho");
-		vCD.removeCommand(vCD.getSelectedCommandRow());
-
-	}
-
-	/**
-	 * Methode um einen Command in der Tabelle um eins nach oben zu verschieben
-	 */
-	public void UpCommand() {
-		vCD.upCommand(vCD.getSelectedCommandRow());
-
-	}
-
-	/**
-	 * Methode um einen Command in der Tabelle um eins anch unten zu verschieben
-	 */
-	public void DownCommand() {
-		vCD.downCommand(vCD.getSelectedCommandRow());
-
-	}
-
 
 
 	/**
@@ -113,13 +86,11 @@ public class ControlDevelepor {
 	 * @param selectedRow
 	 */
 	public void CommandSelectionChanged(int selectedRow) {
-		String selection = vCD.getCommandTypeAt(selectedRow);
+		String selection = ControlModel.getInstance().listManager.getCommandTypeAt(selectedRow);
 		System.out.println("CommandSelection changed to : \"" + selection + "\"");
 
 		this.commandRowSelected = selectedRow;
 		PanelAttributionsView.getInstance().updateView();
-
-
 
 	}
 
@@ -132,7 +103,6 @@ public class ControlDevelepor {
 		return commandRowSelected;
 	}
 
-
 	/**
 	 * Methode um die Komplette Tabelle zu löschen
 	 * 
@@ -144,23 +114,15 @@ public class ControlDevelepor {
 				"Sie Sind im Begriff ihre komplette Liste zu Löschen... \n Ihre ganze Arbeit,... \n Das was Sie geleistet haben,... \n Es wird gelöscht,... \n Unwiederruflich zerstört,... \n Untergehen in einen unreferenzierten Datenmatsch,... \n Einsen und Nullen ohne jegliches Zugehörichkeitsgefühl...",
 				"WARNING", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
 		if (selection == 0) {
-			// vCD.emptyList(); //Dustin sagt nööööööö :
-			ControlModel.getInstance().getControlProcess().clear();
+			ControlModel.getInstance().listManager.EmptyList();
+
 			this.commandRowSelected = -1;
-			UpdateTableView();
+			// UpdateTableView();
 			Updater.updateAll();
 			return true;
 		} else {
 			return false;
 		}
-	}
-
-	/**
-	 * Methode um die TableView zu aktualisieren
-	 */
-	public void UpdateTableView() {
-		vCD.UpdateTableView();
-
 	}
 
 }

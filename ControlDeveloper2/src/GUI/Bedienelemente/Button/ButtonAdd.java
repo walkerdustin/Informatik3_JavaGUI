@@ -28,7 +28,7 @@ public class ButtonAdd extends JButton { // implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("AddButton gedrückt");
-			cD.addType();
+			cD.addCommand();
 		}
 	}
 

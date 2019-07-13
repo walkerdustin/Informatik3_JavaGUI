@@ -3,9 +3,14 @@ package Model;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 
+import Controller.ControlDevelepor;
+import Controller.Updater;
 import hsrt.mec.controldeveloper.core.com.ComHandler;
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
+import hsrt.mec.controldeveloper.core.com.command.ICommand;
+
 import java.io.File;
 import hsrt.mec.controldeveloper.io.WiFi;
 import zzzDatenInterface.TextFile;
@@ -24,6 +29,9 @@ public class ControlModel {
 	private WiFiCard wiFiCard = null;
 	private ComHandler comHandler = ComHandler.getInstance();
 
+	public CommandsTableModel myCommandsTableModel;
+	public ListManager listManager;
+
 	/**
 	 * Konstruktor der CommandType Array mit den Moeglichen CommandTypes befuellt
 	 */
@@ -33,6 +41,16 @@ public class ControlModel {
 		commandTypes[1] = new CommandType("Gear");
 		commandTypes[2] = new CommandType("Pause");
 
+		myCommandsTableModel = new CommandsTableModel();
+		listManager = new ListManager();
+		
+		// Befüllen der Liste mit Test Commands
+		controlProzess.add(new Direction(30));
+		controlProzess.add(new Gear(5, 5.0));
+		controlProzess.add(new Direction(30));
+		controlProzess.add(new Gear(5, 5.0));
+		controlProzess.add(new Direction(30));
+		controlProzess.add(new Gear(5, 5.0));
 	}
 
 	/**
@@ -160,5 +178,121 @@ public class ControlModel {
 	 */
 	public boolean stop() {
 		return comHandler.stop();
+	}
+
+	public class CommandsTableModel extends AbstractTableModel {
+		private final String[] arrCOLUMNNAMES = { "Nr.", "Command", "Configuration" };
+
+		private CommandsTableModel() {
+		}
+
+		@Override
+		public int getColumnCount() {
+
+			return 3;
+		}
+
+		@Override
+		public int getRowCount() {
+			return controlProzess.getSize();
+		}
+
+		@Override
+		public Object getValueAt(int rowIndex, int columnIndex) {
+			String commandName = controlProzess.get(rowIndex).getName();
+			// Command
+			String[] tempStringArray = commandName.split("#x#");
+			// Type of Selected Row
+			switch (columnIndex) {
+			case 0:
+				return rowIndex + 1;
+			case 1:
+				return tempStringArray[0];
+			case 2:
+				return tempStringArray[1];
+			default:
+				return null;
+			}
+		}
+
+		/**
+		 * Methode die dei Spaltenueberschirften festlegt
+		 */
+		@Override
+		public String getColumnName(int column) {
+			return arrCOLUMNNAMES[column];
+		}
+	}
+
+	public class ListManager {
+		private ListManager() {
+
+		}
+
+		public void removeCommand(int row) {
+			controlProzess.printList();
+			System.out.println("DesiredPosition" + row);
+			System.out.println("List:" + controlProzess.getSize());
+			System.out.println("DesiredPosition" + row);
+
+			controlProzess.remove(row);
+			Updater.updateAll();
+
+		}
+
+		/**
+		 * Methode um einen Command in der Tabelle um eins nach oben zu verschieben
+		 */
+		public void UpCommand(int row) {
+			controlProzess.moveUp(row);
+			Updater.updateAll();
+		}
+
+		/**
+		 * Methode um einen Command in der Tabelle um eins anch unten zu verschieben
+		 */
+		public void DownCommand(int row) {
+			controlProzess.moveDown(row);
+			Updater.updateAll();
+		}
+
+		/**
+		 * Methode um die Komplette Tabelle zu löschen
+		 * 
+		 * @return
+		 */
+		public boolean EmptyList() {
+			Object[] options = { "OK", "CANCEL" };
+			int selection = JOptionPane.showOptionDialog(null,
+					"Sie Sind im Begriff ihre komplette Liste zu Löschen... \n Ihre ganze Arbeit,... \n Das was Sie geleistet haben,... \n Es wird gelöscht,... \n Unwiederruflich zerstört,... \n Untergehen in einen unreferenzierten Datenmatsch,... \n Einsen und Nullen ohne jegliches Zugehörichkeitsgefühl...",
+					"WARNING", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+			if (selection == 0) {
+				controlProzess.clear();
+//				this.commandRowSelected = -1;
+//				UpdateTableView();
+				Updater.updateAll();
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		/**
+		 * Hinzufï¿½gen eines neuen (leeren) Commands
+		 */
+		public void addCommand(ICommand command) {
+			controlProzess.add(command);
+			Updater.updateAll();
+		}
+
+		public ICommand get(int row) {
+			return controlProzess.get(row);
+		}
+
+		public String getCommandTypeAt(int row) {
+			String commandName = controlProzess.get(row).getName();
+			String[] tempStringArray = commandName.split("#x#");
+			return tempStringArray[0];
+		}
 	}
 }

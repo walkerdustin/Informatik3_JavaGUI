@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
+import Model.ControlModel;
 
 /**
  * Klasse für das Erstellen des UPButtons im PanelTableView
@@ -22,7 +23,7 @@ public class ButtonUp extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("UpButton gedrückt");
-				ControlDevelepor.getInstance().UpCommand();
+				ControlModel.getInstance().listManager.UpCommand(ControlDevelepor.getInstance().getSelectedRow());
 			}
 		});
 		setText("UP");

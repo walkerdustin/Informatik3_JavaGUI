@@ -12,6 +12,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import Controller.ControlDevelepor;
+import Controller.Updater;
 import GUI.ViewControlDevelepor;
 import Model.ControlModel;
 import hsrt.mec.controldeveloper.core.com.WiFiCard;
@@ -75,7 +76,7 @@ public class PanelMenuBar extends JMenuBar {
 				} else {
 					System.out.println("Panel Menu Bar: Load File abgebrochen");
 				}
-				PanelCommandsView.getInstance().UpdateTableView();
+				Updater.updateAll();
 			}
 		});
 
