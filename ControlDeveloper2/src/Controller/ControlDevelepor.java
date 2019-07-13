@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.Vector;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -27,6 +29,7 @@ public class ControlDevelepor {
 
 	// State Variables
 	private int commandRowSelected = -1;
+	private Vector<Integer> commandRowsSelected = new Vector<Integer>();
 
 	private ControlDevelepor() {
 		// cM = ControlModel.getInstance();
@@ -67,18 +70,6 @@ public class ControlDevelepor {
 		cD.setControlDeveleporView(vCD);
 
 	}
-
-	/**
-	 * Add-Methode: Wird ausgelï¿½st von AddButton im PanelTypesView Koordiniert das
-	 * Hinzufï¿½gen eines neuen (leeren) Commands
-	 */
-	public void addCommand() {
-		String strCommand = vCD.getSelectedType();
-		System.out.println("Folgender Command wird angelegt: " + strCommand);
-		ControlModel.getInstance().listManager.addCommand(new CommandType(strCommand).createInstance());
-		Updater.updateAll();
-	}
-
 
 	/**
 	 * Methode die Ausgelöst wird wenn dich die selektierte Zeile ändert

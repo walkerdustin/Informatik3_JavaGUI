@@ -6,7 +6,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import org.omg.CORBA.Current;
+
 import Controller.ControlDevelepor;
+import GUI.Panels.PanelCommandsView;
 import Model.ControlModel;
 
 /**
@@ -23,7 +26,9 @@ public class ButtonDown extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("DownButton gedrückt");
-				ControlModel.getInstance().listManager.DownCommand(ControlDevelepor.getInstance().getSelectedRow());
+				int currentRow = ControlDevelepor.getInstance().getSelectedRow();
+				ControlModel.getInstance().listManager.DownCommand(currentRow);
+				PanelCommandsView.getInstance().setSelection(currentRow + 1);
 			}
 		});
 		setText("DOWN");

@@ -17,7 +17,6 @@ public class TableCommandsView extends JTable {
 
 	private TableCommandsView() {
 		setModel(ControlModel.getInstance().myCommandsTableModel);
-
 		getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
 			@Override
@@ -31,7 +30,6 @@ public class TableCommandsView extends JTable {
 					} else {
 						System.out.println("Nothing selected");
 					}
-
 				}
 			}
 		});

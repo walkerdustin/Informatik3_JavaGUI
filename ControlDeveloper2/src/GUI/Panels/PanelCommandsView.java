@@ -3,6 +3,8 @@ package GUI.Panels;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.util.Set;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import Controller.ControlDevelepor;
@@ -68,6 +70,11 @@ public class PanelCommandsView extends JPanel implements iUpdater {
 	@Override
 	public void updateView() {
 		ControlModel.getInstance().myCommandsTableModel.fireTableDataChanged();
+	}
+
+	public void setSelection(int row) {
+		System.out.println("PCV: set Selection to " + Integer.toString(row));
+		TableCommandsView.getInstance().setRowSelectionInterval(row, row);
 	}
 
 }

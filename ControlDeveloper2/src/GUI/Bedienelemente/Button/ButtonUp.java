@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
+import GUI.Panels.PanelCommandsView;
 import Model.ControlModel;
 
 /**
@@ -23,7 +24,9 @@ public class ButtonUp extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("UpButton gedrückt");
-				ControlModel.getInstance().listManager.UpCommand(ControlDevelepor.getInstance().getSelectedRow());
+				int currentRow = ControlDevelepor.getInstance().getSelectedRow();
+				ControlModel.getInstance().listManager.UpCommand(currentRow);
+				PanelCommandsView.getInstance().setSelection(currentRow - 1);
 			}
 		});
 		setText("UP");

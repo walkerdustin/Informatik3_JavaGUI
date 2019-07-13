@@ -43,7 +43,7 @@ public class ControlModel {
 
 		myCommandsTableModel = new CommandsTableModel();
 		listManager = new ListManager();
-		
+
 		// Befüllen der Liste mit Test Commands
 		controlProzess.add(new Direction(30));
 		controlProzess.add(new Gear(5, 5.0));
@@ -198,21 +198,25 @@ public class ControlModel {
 		}
 
 		@Override
-		public Object getValueAt(int rowIndex, int columnIndex) {
-			String commandName = controlProzess.get(rowIndex).getName();
-			// Command
-			String[] tempStringArray = commandName.split("#x#");
-			// Type of Selected Row
-			switch (columnIndex) {
+		public Object getValueAt(int row, int col) {
+			Object o = "";
+
+			String[] comContent = CommandType.showInstance(controlProzess.get(row));
+			switch (col) {
 			case 0:
-				return rowIndex + 1;
+				o = "" + (row + 1);
+				break;
 			case 1:
-				return tempStringArray[0];
+				o = comContent[0];
+				break;
 			case 2:
-				return tempStringArray[1];
+				o = comContent[1];
+				break;
 			default:
-				return null;
+				System.err.println("ERROR - INVALID ICOMMAND");
+				break;
 			}
+			return o;
 		}
 
 		/**
@@ -280,6 +284,14 @@ public class ControlModel {
 		/**
 		 * Hinzufï¿½gen eines neuen (leeren) Commands
 		 */
+		public void addCommand(ICommand command, int row) {
+			controlProzess.add(command, row);
+			Updater.updateAll();
+		}
+
+		/**
+		 * Hinzufï¿½gen eines neuen (leeren) Commands
+		 */
 		public void addCommand(ICommand command) {
 			controlProzess.add(command);
 			Updater.updateAll();
@@ -287,6 +299,10 @@ public class ControlModel {
 
 		public ICommand get(int row) {
 			return controlProzess.get(row);
+		}
+
+		public int getSize() {
+			return controlProzess.getSize();
 		}
 
 		public String getCommandTypeAt(int row) {

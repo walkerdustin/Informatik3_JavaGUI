@@ -7,6 +7,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import Controller.ControlDevelepor;
+import Controller.Updater;
+import GUI.ViewControlDevelepor;
+import GUI.Panels.PanelCommandsView;
+import Model.CommandType;
+import Model.ControlModel;
 
 /**
  * Klasse für das Erstellen des AddButtons im PanelTypesView
@@ -28,7 +33,12 @@ public class ButtonAdd extends JButton { // implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("AddButton gedrückt");
-			cD.addCommand();
+			String strCommand = ViewControlDevelepor.getInstance().getSelectedType();
+			System.out.println("Folgender Command wird angelegt: " + strCommand);
+			ControlModel.getInstance().listManager.addCommand(new CommandType(strCommand).createInstance());
+			Updater.updateAll();
+			PanelCommandsView.getInstance().setSelection(ControlModel.getInstance().listManager.getSize() - 1);
+
 		}
 	}
 
