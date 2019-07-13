@@ -5,7 +5,6 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
-import Controller.ControlDevelepor;
 import Controller.Updater;
 import hsrt.mec.controldeveloper.core.com.ComHandler;
 import hsrt.mec.controldeveloper.core.com.WiFiCard;

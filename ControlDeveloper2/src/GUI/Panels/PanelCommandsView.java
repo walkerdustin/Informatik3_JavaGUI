@@ -3,11 +3,9 @@ package GUI.Panels;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.util.Set;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import Controller.ControlDevelepor;
 import Controller.Updater;
 import GUI.iUpdater;
 import GUI.Bedienelemente.Button.ButtonDown;
@@ -25,16 +23,15 @@ import Model.ControlModel;
  *
  */
 public class PanelCommandsView extends JPanel implements iUpdater {
-	private ControlDevelepor cD;
 	private static PanelCommandsView instance = new PanelCommandsView();
-	private static final String HEADLINE = "Commandliste";
+	// private static final String HEADLINE = "Commandliste";
 
 //	TableCommandsModel mTM = new TableCommandsModel(cD);
 //	TableCommandsView jT = new TableCommandsView(mTM);
 
 	private PanelCommandsView() {
 		Updater.add(this);
-		cD = ControlDevelepor.getInstance();
+
 		setLayout(new BorderLayout());
 
 		JPanel panelButtonBar = new JPanel(new GridLayout());

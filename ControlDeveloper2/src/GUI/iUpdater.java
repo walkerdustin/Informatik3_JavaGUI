@@ -1,7 +1,5 @@
 package GUI;
 
-import java.awt.Color;
-
 /*
  * Interface um Updater.updateAll zu nutzen
  */

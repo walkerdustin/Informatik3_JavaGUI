@@ -6,11 +6,8 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Vector;
 
-import hsrt.mec.controldeveloper.core.com.WiFiCard;
-import hsrt.mec.controldeveloper.core.com.WiFiCardHandler;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.Console;
-import hsrt.mec.controldeveloper.io.WiFi;
 import zzzDatenInterface.TextFile;
 
 /**

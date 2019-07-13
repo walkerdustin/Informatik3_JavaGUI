@@ -1,16 +1,10 @@
 package Controller;
 
-import java.util.Vector;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import GUI.ViewControlDevelepor;
 import GUI.Panels.PanelAttributionsView;
-import Model.CommandType;
 import Model.ControlModel;
-import Model.Direction;
-import Model.Gear;
 
 /**
  * Hauptcontroller - Koordiniert hoffentlich alle Models und Views Singleton
@@ -21,15 +15,10 @@ import Model.Gear;
 public class ControlDevelepor {
 
 	private static ControlDevelepor INSTANCE = null;
-	// Models
-	private ControlModel cM;
-
-	// Views
-	private ViewControlDevelepor vCD;
 
 	// State Variables
 	private int commandRowSelected = -1;
-	private Vector<Integer> commandRowsSelected = new Vector<Integer>();
+	// private Vector<Integer> commandRowsSelected = new Vector<Integer>();
 
 	private ControlDevelepor() {
 		// cM = ControlModel.getInstance();
@@ -48,15 +37,6 @@ public class ControlDevelepor {
 	}
 
 	/**
-	 * Übergeben der ViewControlDevelepor
-	 * 
-	 * @param vCD
-	 */
-	private void setControlDeveleporView(ViewControlDevelepor vCD) {
-		this.vCD = vCD;
-	}
-
-	/**
 	 * Main_methode dient zum Aufrufen
 	 * 
 	 * @param args
@@ -67,8 +47,6 @@ public class ControlDevelepor {
 
 		ControlDevelepor cD = getInstance();
 		ViewControlDevelepor vCD = ViewControlDevelepor.getInstance();
-		cD.setControlDeveleporView(vCD);
-
 	}
 
 	/**
