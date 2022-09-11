@@ -1,34 +1,55 @@
 package Model;
 
-import java.io.File;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Vector;
 
-//import hsrt.mec.controldeveloper.io.TextFile;
+import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
+
+import Controller.Updater;
+import hsrt.mec.controldeveloper.core.com.ComHandler;
+import hsrt.mec.controldeveloper.core.com.WiFiCard;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
+
+import java.io.File;
+import hsrt.mec.controldeveloper.io.WiFi;
 import zzzDatenInterface.TextFile;
 
 /**
- * Klasse des ControlModels Enthält Mögliche Commands und eine Liste des
+ * Klasse des ControlModels Enthaelt Moegliche Commands und eine Liste des
  * bestehenden Prozesses
  * 
- *
+ * Hier werden alle Funktionen und Daten des eigentlichen Programms gespeichert
  */
 public class ControlModel {
-	private static ControlModel instance = new ControlModel();
-	private CommandType[] commandTypes = new CommandType[4];
-	private CommandList controlProzess = new CommandList();
+	private static ControlModel instance;
+	private CommandType[] commandTypes = new CommandType[3];
+	private CommandList controlProzess;
+
+	private WiFiCard wiFiCard = null;
+	private ComHandler comHandler = ComHandler.getInstance();
+
+	public CommandsTableModel myCommandsTableModel;
+	public ListManager listManager;
 
 	/**
-	 * Konstruktor der CommandType Array mit den Möglichen CommandTypes befüllt
+	 * Konstruktor der CommandType Array mit den Moeglichen CommandTypes befuellt
 	 */
 	private ControlModel() {
 		controlProzess = new CommandList();
 		commandTypes[0] = new CommandType("Direction");
 		commandTypes[1] = new CommandType("Gear");
 		commandTypes[2] = new CommandType("Pause");
-		commandTypes[3] = new CommandType("Command");
+
+		myCommandsTableModel = new CommandsTableModel();
+		listManager = new ListManager();
+
+		// Befüllen der Liste mit Test Commands
+		controlProzess.add(new Direction(30));
+		controlProzess.add(new Gear(5, 5.0));
+		controlProzess.add(new Direction(30));
+		controlProzess.add(new Gear(5, 5.0));
+		controlProzess.add(new Direction(30));
+		controlProzess.add(new Gear(5, 5.0));
 	}
 
 	/**
@@ -37,42 +58,46 @@ public class ControlModel {
 	 * @return Instanz des ControlModels
 	 */
 	public static ControlModel getInstance() {
-		return instance;
+		if (ControlModel.instance == null) {
+			ControlModel.instance = new ControlModel();
+		}
+		return ControlModel.instance;
+
 	}
 
 	/**
-	 * Funktion, die commandTypes mit den Command Types befüllen sollte. Dies ist
-	 * aber doof da es schon in dem Constructor gemacht wurde könnte / wird zu
-	 * fehlern führen wenn es dem Programmierer überlassen wird sich um die
-	 * befüllung des Arrays zu kümmern!
+	 * Funktion, die commandTypes mit den Command Types befuellen sollte. Dies ist
+	 * aber doof da es schon in dem Constructor gemacht wurde koennte / wird zu
+	 * fehlern fuehren wenn es dem Programmierer ueberlassen wird sich um die
+	 * befuellung des Arrays zu kuemmern!
 	 */
 	public void createCommandTypes() {
-		// könnte / wird zu fehlern führen wenn es dem Programmierer überlassen wird
-		// sich um die befüllung des Arrays zu kümmern!
 		// desshalb:
 		System.out.println("Well..... this is stupid, isnt it?");
 	}
 
 	/**
-	 * lädt commands Zeilenweise aus file commands werden überschrieben
+	 * laedt commands Zeilenweise aus file commands werden ueberschrieben
 	 * 
 	 * @param file Das file aus dem controlProzess erstellt werden soll
-	 * @return true
+	 * @return Ob das laden der Liste erfolgreich war
 	 */
 	public boolean load(File file) {
+		boolean erfolgreich = false;
 		TextFile commandsFile = new TextFile(file, true);
 		Vector<String> geleseneCommandStrings = new Vector<String>();
-		commandsFile.read(geleseneCommandStrings);
+		erfolgreich = commandsFile.read(geleseneCommandStrings);
 		controlProzess.VectorToList(geleseneCommandStrings);
 
-		return true;
+		return erfolgreich;
 	}
 
 	/**
-	 * Speichert die CommandList controlProzess als file ab. file wird überschrieben
+	 * Speichert die CommandList controlProzess als file ab. file wird
+	 * ueberschrieben
 	 * 
 	 * @param file
-	 * @return
+	 * @return Ob das speichern der Liste erfolgreich war.
 	 */
 	public boolean save(File file) {
 		TextFile textFile = new TextFile(file, false);
@@ -100,16 +125,7 @@ public class ControlModel {
 	}
 
 	/**
-	 * macht nichts bis jetzt
-	 * 
-	 * @param command
-	 */
-	public void commandPerformed(ICommand command) {
-
-	}
-
-	/**
-	 * Getter für controlProzess
+	 * Getter fuer die CommandList controlProzess
 	 * 
 	 * @return
 	 */
@@ -117,6 +133,11 @@ public class ControlModel {
 		return controlProzess;
 	}
 
+	/**
+	 * Methode die Alle CommandTypes als Vector liefert
+	 * 
+	 * @return
+	 */
 	public Vector<String> getCommandTypes() {
 		Vector<String> temp = new Vector<String>();
 		for (int i = 0; i < commandTypes.length; i++) {
@@ -125,41 +146,158 @@ public class ControlModel {
 		return temp;
 	}
 
-	public class ControlProzessManager {
-		public ICommand get(int pos) {
-			return controlProzess.get(pos);
+	/*
+	 * Setter für die aktuell selectierte WiFiCard
+	 */
+	public void setWiFiCard(WiFiCard wiFiCard) {
+		this.wiFiCard = wiFiCard;
+	}
 
+	/*
+	 * ruft die comHandler.start() auf mit der intern gespeicherten CommandList und
+	 * der intern gespeicherten WiFiCard
+	 * 
+	 * @return ob das starten erfolgreich war
+	 */
+	public boolean start() {
+		if (wiFiCard == null) {
+			System.out.println("Keine WifiKarte ist selektiert");
+			Object[] options = { "sorry", "Tut mir Leid", "War keine Absicht" };
+			JOptionPane.showOptionDialog(null, "Sie haben keine WifiKarte ausgewählt ", "Kein WiFi ausgewählt",
+					JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+			return false;
+		}
+		return comHandler.start(controlProzess.listToICommandsVector(), new WiFi(wiFiCard));
+	}
+
+	/*
+	 * ruft comHandler.stop() auf
+	 * 
+	 * @return ob das stoppen erfolgreich war
+	 */
+	public boolean stop() {
+		return comHandler.stop();
+	}
+
+	public class CommandsTableModel extends AbstractTableModel {
+		private final String[] arrCOLUMNNAMES = { "Nr.", "Command", "Configuration" };
+
+		private CommandsTableModel() {
 		}
 
-		public boolean add(ICommand c) {
-			return controlProzess.add(c);
+		@Override
+		public int getColumnCount() {
 
+			return 3;
 		}
 
-		public boolean add(ICommand c, int pos) {
-			return controlProzess.add(c, pos);
-
+		@Override
+		public int getRowCount() {
+			return controlProzess.getSize();
 		}
 
-		public boolean remove(int pos) {
-			return controlProzess.remove(pos);
+		@Override
+		public Object getValueAt(int row, int col) {
+			Object o = "";
 
+			String[] comContent = CommandType.showInstance(controlProzess.get(row));
+			switch (col) {
+			case 0:
+				o = "" + (row + 1);
+				break;
+			case 1:
+				o = comContent[0];
+				break;
+			case 2:
+				o = comContent[1];
+				break;
+			default:
+				System.err.println("ERROR - INVALID ICOMMAND");
+				break;
+			}
+			return o;
 		}
 
-		public boolean clear() {
-			return controlProzess.clear();
-
-		}
-
-		public boolean moveUp(int pos) {
-			return controlProzess.moveUp(pos);
-
-		}
-
-		public boolean moveDown(int pos) {
-			return controlProzess.moveDown(pos);
-
+		/**
+		 * Methode die dei Spaltenueberschirften festlegt
+		 */
+		@Override
+		public String getColumnName(int column) {
+			return arrCOLUMNNAMES[column];
 		}
 	}
 
+	public class ListManager {
+		private ListManager() {
+
+		}
+
+		public void removeCommand(int row) {
+			controlProzess.printList();
+			System.out.println("DesiredPosition" + row);
+			System.out.println("List:" + controlProzess.getSize());
+			System.out.println("DesiredPosition" + row);
+
+			controlProzess.remove(row);
+			Updater.updateAll();
+
+		}
+
+		/**
+		 * Methode um einen Command in der Tabelle um eins nach oben zu verschieben
+		 */
+		public void UpCommand(int row) {
+			controlProzess.moveUp(row);
+			Updater.updateAll();
+		}
+
+		/**
+		 * Methode um einen Command in der Tabelle um eins anch unten zu verschieben
+		 */
+		public void DownCommand(int row) {
+			controlProzess.moveDown(row);
+			Updater.updateAll();
+		}
+
+		/**
+		 * Methode um die Komplette Tabelle zu löschen
+		 * 
+		 * @return
+		 */
+		public boolean EmptyList() {
+			controlProzess.clear();
+			Updater.updateAll();
+			return true;
+		}
+
+		/**
+		 * Hinzufï¿½gen eines neuen (leeren) Commands
+		 */
+		public void addCommand(ICommand command, int row) {
+			controlProzess.add(command, row);
+			Updater.updateAll();
+		}
+
+		/**
+		 * Hinzufï¿½gen eines neuen (leeren) Commands
+		 */
+		public void addCommand(ICommand command) {
+			controlProzess.add(command);
+			Updater.updateAll();
+		}
+
+		public ICommand get(int row) {
+			return controlProzess.get(row);
+		}
+
+		public int getSize() {
+			return controlProzess.getSize();
+		}
+
+		public String getCommandTypeAt(int row) {
+			String commandName = controlProzess.get(row).getName();
+			String[] tempStringArray = commandName.split("#x#");
+			return tempStringArray[0];
+		}
+	}
 }

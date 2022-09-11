@@ -1,39 +1,61 @@
 package GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.util.Vector;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTable;
-import javax.swing.JToolBar;
 
 import Controller.ControlDevelepor;
 import Controller.Updater;
-import GUI.PanelTypesView;
+import GUI.Panels.PanelAttributionsView;
+import GUI.Panels.PanelAusgabefensterView;
+import GUI.Panels.PanelCommandsView;
+import GUI.Panels.PanelMenuBar;
+import GUI.Panels.PanelTypesView;
+import Model.ControlModel;
 
+/**
+ * Klasse für die Hauptview. Erstellt JFrame und fügt alle Panels zusammen
+ * 
+ * @author TheRealTripleM
+ *
+ */
 public class ViewControlDevelepor extends JFrame implements iUpdater {
-	private static Vector<iUpdater> internUpdateList = new Vector<iUpdater>();
-	private PanelTypesView pTV;
 	private ControlDevelepor cD;
-	
-	TableCommandsModel mTM = new TableCommandsModel(cD);
-	TableCommandsView jT = new TableCommandsView(mTM);
-	
-	
+	private static ViewControlDevelepor instance;
+	String[] arrCommands;
 
-	public ViewControlDevelepor(ControlDevelepor cD, String[] arrList) {
+	///////////////////////////////// Panels: \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	private PanelTypesView pTV;
+	private PanelAttributionsView pAV;
+	private PanelCommandsView pCV;
+	private PanelAusgabefensterView pAFV;
+	private PanelMenuBar pMB;
+
+	// ----------------------------------------------------------
+	/**
+	 * Methode liefert Instance
+	 * 
+	 * @return
+	 */
+	public static ViewControlDevelepor getInstance() {
+		if (ViewControlDevelepor.instance == null) {
+			ViewControlDevelepor.instance = new ViewControlDevelepor();
+		}
+		return ViewControlDevelepor.instance;
+	}
+
+	private ViewControlDevelepor() {
 		Updater.add(this); // registrieren beim Observer
 
-		this.cD = cD;
-		pTV = PanelTypesView.getTypesView(cD, arrList);
+		pAV = PanelAttributionsView.getInstance();
+		pCV = PanelCommandsView.getInstance();
+		pMB = PanelMenuBar.getInstance();
+		pAFV = PanelAusgabefensterView.getInstance();
 
+		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
+
+		this.cD = ControlDevelepor.getInstance();
+		pTV = PanelTypesView.getTypesView(cD, arrCommands);
 
 		// Haupteinstellungen
 		setLayout(new BorderLayout());
@@ -47,58 +69,36 @@ public class ViewControlDevelepor extends JFrame implements iUpdater {
 
 		JSplitPane mainPlain1 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		JSplitPane mainPlain2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		mainPlain2.setRightComponent(new JLabel("Rechts"));
-		mainPlain2.setLeftComponent(new JScrollPane(jT));
+		mainPlain2.setRightComponent(pAV);
+		mainPlain2.setLeftComponent(pCV);
 
 		mainPlain1.setLeftComponent(pTV);
 		mainPlain1.setRightComponent(mainPlain2);
-		
-		internUpdateList.add(jT);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 		JSplitPane rootPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		rootPanel.setBottomComponent(new JLabel("Ausgabefenster"));
+		rootPanel.setBottomComponent(pAFV);
 		rootPanel.setTopComponent(mainPlain1);
 
-		JToolBar toolBar = new JToolBar();
-		toolBar.add(new JButton("List"));
-		toolBar.add(new JButton("Aktion"));
-
 		// ERgänzen der Einzelnen Planes
-		add(toolBar, BorderLayout.NORTH);
+		add(pMB, BorderLayout.NORTH);
 		add(rootPanel, BorderLayout.CENTER);
-		// pack();
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		this.pack();
 
 	};
 
 	@Override
 	public void updateView() {
-		// TODO Auto-generated method stub
-		jT.repaint();
-
+		// TODO Funktion auskommentieren
 	}
 
+	// ********************************* Types Befehle ***************************
+	/**
+	 * Methode um Befehl an PanelTypesView weiterzuleiten
+	 * 
+	 * @return
+	 */
 	public String getSelectedType() {
 		return pTV.getSelectedType();
 
 	}
-
 }

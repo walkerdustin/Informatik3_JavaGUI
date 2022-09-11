@@ -61,6 +61,7 @@ public class CommandType {
 	 * @return Erstellter Command
 	 */
 	public Command createInstance() {
+		System.out.println("CommandType.createInstance() sagt: name == " + name);
 		switch (name) {
 		case "Direction":
 			return (new Direction(tempInt));
@@ -96,21 +97,20 @@ public class CommandType {
 			return null;
 		}
 	}
-	
-	
+
 	/**
-	 * Statisch Methode die den ICommand in einen StringArray auflöst mit folgenden Werten
-	 * return[0] - CommandType
-	 * return[1] - Configfuration in PrintFOrmat
+	 * Statisch Methode die den ICommand in einen StringArray auflöst mit folgenden
+	 * Werten return[0] - CommandType return[1] - Configfuration in PrintFOrmat
+	 * 
 	 * @param com
-	 * @return comArray 
+	 * @return comArray
 	 */
 	public static String[] showInstance(ICommand com) {
 		String[] tempArray = com.toString().split("#x#");
 		String[] comArray = new String[2];
 		comArray[0] = tempArray[0];
 		StringBuilder sB = new StringBuilder();
-		
+
 		switch (tempArray[0]) {
 		case "Direction":
 			sB.append(tempArray[1]);
@@ -134,7 +134,7 @@ public class CommandType {
 		}
 
 		comArray[1] = sB.toString();
-		
+
 		return comArray;
 	}
 

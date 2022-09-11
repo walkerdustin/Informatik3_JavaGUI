@@ -19,28 +19,26 @@ import GUI.iUpdater;
  */
 
 public class Updater {
-//	static Updater  instance = null;
 	private static Vector<iUpdater> updateList = new Vector<iUpdater>();
-	// private static Updater instance = new Updater();
 
 	private Updater() {
 	}
 
-//	public static Updater getInstance() {
-//		if (instance == null) {
-//			instance = new Updater();
-//		}
-//		return instance;
-//	}
-
+	/*
+	 * @param das iUpdater Objekt, das registriert werden soll
+	 * 
+	 * mit Updater.updateAll wird updateView aller registrierten Objekte aufgerufen
+	 */
 	public static void add(iUpdater element) {
 		updateList.add(element);
 	}
 
+	/*
+	 * mit Updater.updateAll wird updateView aller registriernen Objekte aufgerufen
+	 */
 	public static void updateAll() {
 		for (iUpdater iUpdater : updateList) { // for each erstellt mit Template. sieht cool aus
 			iUpdater.updateView();
 		}
 	}
-
 }

@@ -1,18 +1,16 @@
-package GUI;
+package GUI.Panels;
 
 import java.awt.BorderLayout;
-import java.util.Vector;
-
-import javax.swing.DefaultListModel;
+import java.awt.FlowLayout;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import Controller.ControlDevelepor;
-import Controller.Updater;
-import Model.ControlModel;
+import GUI.iUpdater;
+import GUI.Bedienelemente.Button.ButtonAdd;
+import GUI.Bedienelemente.List.ListGui;
 
 /**
  * Klasse zum Erstellen des Panels TypesView - SINGELTON
@@ -21,13 +19,11 @@ import Model.ControlModel;
  *
  */
 public class PanelTypesView extends JPanel implements iUpdater {
-	private ControlDevelepor cD;
 	private static PanelTypesView pTV = null;
 	private static ListGui TypesList = null;
 
 	private static final String HEADLINE = "Types";
 	private String[] arrCommandTypes;
-	private ButtonAdd bAdd;
 
 	/**
 	 * Konstruktor, erstellt Grunddarstellung
@@ -39,19 +35,20 @@ public class PanelTypesView extends JPanel implements iUpdater {
 
 		// Updater.add(this); // registrieren beim Observer
 
-		System.out.println("ConstruktorPanel");
-		this.cD = cD;
+		System.out.println("ConstruktorPanelTypesView");
 		arrCommandTypes = arrList;
 
 		setLayout(new BorderLayout());
 		add(new JLabel(HEADLINE, JLabel.CENTER), BorderLayout.NORTH);
-		setSize(200, 400);
-
+		setSize(200, 400); // JAVA DOC sagt: This method changes layout-related information, and
+							// therefore,invalidates the component hierarchy.
+							// die größe dieses Component sollte vom übergeordeten Panel geregelt werden...
 		System.out.println("PanelAngelegt");
 		testList();
 
-		bAdd = new ButtonAdd(cD);
-		add(bAdd, BorderLayout.SOUTH);
+		JPanel ButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		ButtonPanel.add(new ButtonAdd(cD));
+		add(ButtonPanel, BorderLayout.SOUTH);
 
 	}
 
@@ -83,7 +80,6 @@ public class PanelTypesView extends JPanel implements iUpdater {
 
 	}
 
-
 	/**
 	 * Metode um Ausgewaehltes Element aus der Liste zu bekommen
 	 * 
@@ -98,7 +94,7 @@ public class PanelTypesView extends JPanel implements iUpdater {
 	@Override
 	public void updateView() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

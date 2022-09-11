@@ -146,7 +146,9 @@ public class CommandList {
 						}
 					} else if (runner == getTreeTop()) {
 						//
+						System.out.println("DeleteTreeTop");
 						runner.getPrev().setNext(null);
+						setTreeTop(runner.getPrev());
 						--size;
 						return true;
 					} else {
@@ -215,6 +217,7 @@ public class CommandList {
 	 * @return
 	 */
 	public boolean moveUp(int pos) {
+		System.out.println("DesiredMoveUp at Position" + pos);
 		if (pos < size && pos > 0) {
 			Element runner = getRoot().getNext();
 			for (int i = 1; i < size; ++i) {
@@ -222,6 +225,8 @@ public class CommandList {
 					runner.getPrev().setNext(runner.getNext());
 					if (i != size - 1) {
 						runner.getNext().setPrev(runner.getPrev());
+					} else {
+						setTreeTop(runner.getPrev());
 					}
 					--size;
 					add(runner.getElement(), pos - 1);
@@ -354,6 +359,20 @@ public class CommandList {
 			// System.out.println(i);
 			System.out.println(get(i));
 		}
+	}
+
+	public Vector<ICommand> listToICommandsVector() {
+		if (getRoot() == null) { // falls die Liste wirklich leer ist ( Root == null )
+			return null;
+		}
+		Vector<ICommand> commandVector = new Vector<ICommand>();
+		Element runner = getRoot();
+
+		while (runner != null) {
+			commandVector.add(runner.getElement());
+			runner = runner.getNext();
+		}
+		return commandVector;
 	}
 
 }

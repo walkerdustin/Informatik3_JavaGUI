@@ -1,65 +1,96 @@
 package Controller;
 
-
-
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import GUI.ViewControlDevelepor;
-import Model.CommandType;
+import GUI.Panels.PanelAttributionsView;
 import Model.ControlModel;
-import Model.Direction;
-import Model.Gear;
-import sun.security.jca.GetInstance;
 
 /**
- * Hauptcontroller - Koordiniert hoffentlich alle Models und Views
+ * Hauptcontroller - Koordiniert hoffentlich alle Models und Views Singleton
  * 
  * @author TheRealTripleM
  *
  */
 public class ControlDevelepor {
-	
-	private static ControlDevelepor INSTANCE = new ControlDevelepor();
-	// Models
-	private ControlModel cM;
-	
 
-	// Views
-	private ViewControlDevelepor vCD;
+	private static ControlDevelepor INSTANCE = null;
+
+	// State Variables
+	private int commandRowSelected = -1;
+	// private Vector<Integer> commandRowsSelected = new Vector<Integer>();
 
 	private ControlDevelepor() {
-		cM = ControlModel.getInstance();
+		// cM = ControlModel.getInstance();
 	};
-	
+
+	/**
+	 * Methode die die Instance des ControlDeleper liefert.
+	 * 
+	 * @return
+	 */
 	public static ControlDevelepor getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new ControlDevelepor();
+		}
 		return INSTANCE;
 	}
 
-	private void setControlDeveleporView(ViewControlDevelepor vCD) {
-		this.vCD = vCD;
-	}
-	
+	/**
+	 * Main_methode dient zum Aufrufen
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		ControlDevelepor cD = getInstance();
 
-		String[] arrCommands;
-		arrCommands = ControlModel.getInstance().getCommandTypes().toArray(new String[0]);
-		ViewControlDevelepor vCD = new ViewControlDevelepor(cD, arrCommands);
-		
-		cD.setControlDeveleporView(vCD);
-		
-		Gear test = new Gear(30, 5.0);
-		System.out.println(CommandType.showInstance(test)[1]);
+		System.out.println("Programm gestartet");
+
+		ControlDevelepor cD = getInstance();
+		ViewControlDevelepor vCD = ViewControlDevelepor.getInstance();
+	}
+
+	/**
+	 * Methode die Ausgelöst wird wenn dich die selektierte Zeile ändert
+	 * 
+	 * @param selectedRow
+	 */
+	public void CommandSelectionChanged(int selectedRow) {
+		String selection = ControlModel.getInstance().listManager.getCommandTypeAt(selectedRow);
+		System.out.println("CommandSelection changed to : \"" + selection + "\"");
+
+		this.commandRowSelected = selectedRow;
+		PanelAttributionsView.getInstance().updateView();
 
 	}
 
 	/**
-	 * Add-Methode: Wird ausgelï¿½st von AddButton im PanelTypesView Koordiniert das
-	 * Hinzufï¿½gen eines neuen (leeren) Commands
+	 * Methode die die aktuellselektierte Zeile leifert
+	 * 
+	 * @return
 	 */
-	public void addType() {
-		String strCommand = vCD.getSelectedType();
-		System.out.println("Folgender Command wird angelegt: "+strCommand);
-		Updater.updateAll();
+	public int getSelectedRow() {
+		return commandRowSelected;
 	}
+
+	/**
+	 * Methode um die Komplette Tabelle zu löschen
+	 * 
+	 * @return
+	 */
+	public boolean EmptyList() {
+		Object[] options = { "OK", "CANCEL" };
+		int selection = JOptionPane.showOptionDialog(null,
+				"Sie Sind im Begriff ihre komplette Liste zu Löschen... \n Ihre ganze Arbeit,... \n Das was Sie geleistet haben,... \n Es wird gelöscht,... \n Unwiederruflich zerstört,... \n Untergehen in einen unreferenzierten Datenmatsch,... \n Einsen und Nullen ohne jegliches Zugehörichkeitsgefühl...",
+				"WARNING", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+		if (selection == 0) {
+			this.commandRowSelected = -1;
+			ControlModel.getInstance().listManager.EmptyList();
+
+			// UpdateTableView();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
